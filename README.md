@@ -1,4 +1,4 @@
-**Login and Sign Up**
+<!-- **Login and Sign Up**
 
 Login and sign up page built with Flutter
 
@@ -13,11 +13,11 @@ Login and sign up page built with Flutter
 
 <!-- <img src="ss/mockup.png"/> -->
 
-<img src="ss/ss1.png" width="400">
+<!-- <img src="ss/ss1.png" width="400">
 <img src="ss/ss2.png" width="400">
 
 
 
 ## 🤓 Author(s)
 
-**Flutter BoyFriend**
+**Flutter BoyFriend** --> -->
