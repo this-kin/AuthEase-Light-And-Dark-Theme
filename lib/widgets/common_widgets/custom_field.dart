@@ -35,18 +35,6 @@ class CustomTextField extends StatefulWidget {
     this.floatingAlign = Alignment.centerLeft,
     this.fillColor = AppColor.backgroundColor,
     this.hintText,
-    // this.hintStyle = const TextStyle(
-    //   fontSize: 15,
-    //   color: greyTextColor,
-    // ),
-    // this.errorStyle = const TextStyle(
-    //   height: 1,
-    //   color: Colors.transparent,
-    // ),
-    // this.inputStyle = const TextStyle(
-    //   fontSize: 15,
-    //   color: blackColor,
-    // ),
     this.contentPadding,
     required this.keyboardType,
     required this.textInputAction,
