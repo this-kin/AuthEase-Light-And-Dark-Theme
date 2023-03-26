@@ -16,8 +16,8 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final con = ref.watch(themeChangeProvider);
     return ScreenUtilInit(
-      builder: (BuildContext context, Widget child) {
-        con.switchTheme(context);
+      builder: (BuildContext context, Widget? child) {
+        ref.read(themeChangeProvider.notifier).switchTheme();
         return MaterialApp(
           title: "Authentication App",
           debugShowCheckedModeBanner: false,

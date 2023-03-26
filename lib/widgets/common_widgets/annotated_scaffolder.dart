@@ -5,9 +5,12 @@ import 'package:qoute_app/constants/app_constants.dart';
 import 'package:qoute_app/data/providers/theme_provider.dart';
 
 class AnnotatedScaffold extends ConsumerWidget {
-  final Widget child;
+  final Widget? child;
 
-  const AnnotatedScaffold({Key key, this.child}) : super(key: key);
+  const AnnotatedScaffold({
+    Key? key,
+    this.child,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final con = ref.watch(themeChangeProvider);
@@ -25,7 +28,7 @@ class AnnotatedScaffold extends ConsumerWidget {
               : Brightness.dark,
           statusBarColor: Colors.transparent,
         ),
-        child: child,
+        child: child!,
       ),
     );
   }
