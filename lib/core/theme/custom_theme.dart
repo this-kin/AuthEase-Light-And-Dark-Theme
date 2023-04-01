@@ -39,5 +39,8 @@ class CustomTheme {
     );
   }
 
-  static final appBarTheme = AppBarTheme(centerTitle: false, elevation: 0);
+  static final appBarTheme = AppBarTheme(
+    centerTitle: false,
+    elevation: 0,
+  );
 }
