@@ -29,8 +29,8 @@ class Login extends StatelessWidget {
                 children: [
                   SizedBox(height: 50.h),
                   SpanText(
-                    title: 'Welcome ',
-                    subtitle: 'Back',
+                    title: 'Login to Your\n',
+                    subtitle: 'Account',
                   ),
                   SizedBox(height: 70.h),
                   CustomTextField(
@@ -54,6 +54,23 @@ class Login extends StatelessWidget {
                         // login
                       }
                     },
+                  ),
+                  SizedBox(height: 20.h),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {
+                        // go to forgot password
+                      },
+                      child: Text("Forgot password?"),
+                    ),
+                  ),
+                  SizedBox(height: 240.h),
+                  Center(
+                    child: SmallSpanText(
+                      title: 'Don\'t have an Account? ',
+                      subtitle: 'Sign Up',
+                    ),
                   )
                 ],
               ),

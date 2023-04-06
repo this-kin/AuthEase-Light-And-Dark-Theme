@@ -33,6 +33,7 @@ dependencies:
   flutter_screenutil:
   pinput:
   country_picker: 
+  hooks_riverpod:
 
 dev_dependencies:
   flutter_test:

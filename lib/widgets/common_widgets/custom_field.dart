@@ -113,11 +113,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
               EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
           filled: true,
           counterText: '',
-          border: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          focusedErrorBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          errorBorder: errorBorder(),
+          border: primaryBorder(),
+          focusedBorder: focusBorder(),
+          focusedErrorBorder: focusBorder(),
+          enabledBorder: primaryBorder(),
+          errorBorder: showErrorBorder ? errorBorder() : null,
           suffixIcon: isPasswordField
               ? InkWell(
                   onTap: _togglePasswordVisibility,
@@ -131,6 +131,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
     );
   }
+}
+
+OutlineInputBorder focusBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8.sp),
+    borderSide: const BorderSide(color: AppColor.primaryColor),
+  );
+}
+
+OutlineInputBorder primaryBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8.sp),
+    borderSide: BorderSide(color: AppColor.accentColor.withOpacity(0.1)),
+  );
 }
 
 OutlineInputBorder errorBorder() {

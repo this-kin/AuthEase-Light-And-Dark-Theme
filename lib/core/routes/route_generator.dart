@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qoute_app/core/routes/app_router.dart';
+import 'package:qoute_app/modules/login.dart';
+import 'package:qoute_app/modules/register.dart';
 import 'package:qoute_app/route_selector.dart';
 
 class RouteGenerator {
@@ -13,9 +15,9 @@ class RouteGenerator {
       case AppRouter.selector:
         return MaterialPageRoute(builder: (_) => RouteSelector());
       case AppRouter.register:
-        return MaterialPageRoute(builder: (_) => RouteSelector());
+        return MaterialPageRoute(builder: (_) => Register());
       case AppRouter.login:
-        return MaterialPageRoute(builder: (_) => RouteSelector());
+        return MaterialPageRoute(builder: (_) => Login());
       case AppRouter.phone_verification:
         return MaterialPageRoute(builder: (_) => RouteSelector());
       case AppRouter.setup_pin:
