@@ -3,6 +3,7 @@ class AppRouter {
   // dynamic route name [optional]
   static const login = "login";
   static const register = "register";
+  static const recover = 'recover';
   static const setup_pin = "setup_pin";
   static const fingerprint = "fingerprint";
   static const selector = "route_selector";

@@ -6,19 +6,20 @@ import 'package:qoute_app/core/routes/app_router.dart';
 import 'package:qoute_app/core/routes/route_generator.dart';
 import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
 import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
+import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
 import 'package:qoute_app/widgets/common_widgets/primary_button.dart';
 import 'package:qoute_app/widgets/common_widgets/text_widgets.dart';
 
-class Login extends StatelessWidget {
+class Recover extends StatelessWidget {
   //
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
-  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return AnnotatedScaffold(
       child: Scaffold(
+        appBar: MyAppbar(context),
         backgroundColor: context.theme.scaffoldBackgroundColor,
         body: SafeArea(
           top: true,
@@ -29,56 +30,30 @@ class Login extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 50.h),
+                  SizedBox(height: 30.h),
                   SpanText(
-                    title: 'Login to Your\n',
-                    subtitle: 'Account',
+                    title: 'Forgot Password',
+                    subtitle: '',
                   ),
-                  SizedBox(height: 70.h),
+                  SizedBox(height: 10.h),
+                  Text(
+                      'Enter your email address so we can send\nan instructions about resetting your password'),
+                  SizedBox(height: 20.h),
                   CustomTextField(
-                    hintText: 'formatable2018@gmail.com',
+                    hintText: 'johndoe@gmail.com',
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     validator: CustomValidator.emailValidator,
                   ),
-                  SizedBox(height: 15.h),
-                  CustomTextField(
-                    hintText: '* * * * * * * * *',
-                    keyboardType: TextInputType.visiblePassword,
-                    textInputAction: TextInputAction.next,
-                    validator: CustomValidator.passwordValidator,
-                  ),
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 440.h),
                   PrimaryButton(
-                    text: "Login",
+                    text: "Continue",
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         // login
                       }
                     },
                   ),
-                  SizedBox(height: 20.h),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {
-                        // go to forgot password
-                        RouteGenerator.pushNamed(AppRouter.recover);
-                      },
-                      child: Text("Forgot password?"),
-                    ),
-                  ),
-                  SizedBox(height: 240.h),
-                  Center(
-                    child: SmallSpanText(
-                      title: 'Don\'t have an Account? ',
-                      subtitle: 'Sign Up',
-                      onPressed: () {
-                        // go to register
-                        RouteGenerator.pushNamed(AppRouter.register);
-                      },
-                    ),
-                  )
                 ],
               ),
             ),

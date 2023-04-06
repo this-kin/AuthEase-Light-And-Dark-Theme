@@ -6,6 +6,7 @@ import 'package:qoute_app/core/extensions/widget_extension.dart';
 import 'package:qoute_app/core/routes/route_generator.dart';
 import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
 import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
+import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
 import 'package:qoute_app/widgets/common_widgets/text_widgets.dart';
 import '../widgets/common_widgets/primary_button.dart';
 
@@ -20,10 +21,7 @@ class Register extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AnnotatedScaffold(
       child: Scaffold(
-        appBar: AppBar(
-          // leading: ,
-          backgroundColor: context.theme.scaffoldBackgroundColor,
-        ),
+        appBar: MyAppbar(context),
         backgroundColor: context.theme.scaffoldBackgroundColor,
         body: SafeArea(
           top: true,
