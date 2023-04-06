@@ -28,7 +28,7 @@ class AnnotatedScaffold extends ConsumerWidget {
               : Brightness.dark,
           statusBarColor: Colors.transparent,
         ),
-        child: child!,
+        child: Flexible(child: child!),
       ),
     );
   }

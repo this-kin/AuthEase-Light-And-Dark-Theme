@@ -2,6 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qoute_app/core/theme/theme_color.dart';
 
+class AppTextTheme {
+  const AppTextTheme._();
+
+  final TextStyle body =
+      const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400);
+  final TextStyle button =
+      const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400);
+  final TextStyle textField =
+      const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400);
+  final TextStyle textFieldLabel =
+      const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400);
+  final TextStyle textFieldHint =
+      const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400);
+  final TextStyle textFieldError = const TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+    color: AppColor.errorColor,
+  );
+}
+
 class CustomTheme {
   CustomTheme._();
 

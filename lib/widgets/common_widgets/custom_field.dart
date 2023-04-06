@@ -15,7 +15,7 @@ class CustomTextField extends StatefulWidget {
   final bool showErrorBorder;
   final TextAlign textAlign;
   final Alignment errorAlign, floatingAlign;
-  final Color fillColor;
+
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final String? Function(String? value) validator;
@@ -33,7 +33,6 @@ class CustomTextField extends StatefulWidget {
     this.textAlign = TextAlign.start,
     this.errorAlign = Alignment.centerRight,
     this.floatingAlign = Alignment.centerLeft,
-    this.fillColor = AppColor.backgroundColor,
     this.hintText,
     this.contentPadding,
     required this.keyboardType,
@@ -108,7 +107,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         onChanged: _onChanged,
         decoration: InputDecoration(
           hintText: widget.hintText,
-          fillColor: widget.fillColor,
+          fillColor: Colors.grey.withOpacity(0.05),
           prefixIcon: widget.prefix,
           contentPadding:
               EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
@@ -118,7 +117,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           focusedBorder: InputBorder.none,
           focusedErrorBorder: InputBorder.none,
           enabledBorder: InputBorder.none,
-          errorBorder: showErrorBorder ? errorBorder() : null,
+          errorBorder: errorBorder(),
           suffixIcon: isPasswordField
               ? InkWell(
                   onTap: _togglePasswordVisibility,

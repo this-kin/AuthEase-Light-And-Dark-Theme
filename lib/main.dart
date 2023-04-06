@@ -14,17 +14,16 @@ void main() {
 class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final con = ref.watch(themeChangeProvider);
     return ScreenUtilInit(
+      designSize: const Size(375, 812),
       builder: (BuildContext context, Widget? child) {
-        ref.read(themeChangeProvider.notifier).switchTheme();
         return MaterialApp(
           title: "Authentication App",
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.generateRoute,
           navigatorKey: RouteGenerator.navigatorKey,
           initialRoute: AppRouter.selector,
-          themeMode: con.themeMode,
+          themeMode: ref.watch(themeChangeProvider).themeMode,
           theme: CustomTheme.lightTheme(context),
           darkTheme: CustomTheme.darkTheme(context),
         );

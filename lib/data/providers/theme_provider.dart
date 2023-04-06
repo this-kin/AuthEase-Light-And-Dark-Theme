@@ -11,7 +11,9 @@ class ThemeChangeNotifier extends ChangeNotifier {
   }
 
   // retrieve data from local storage
-  void _initialize() async {}
+  void _initialize() async {
+    switchTheme();
+  }
 
   ThemeMode get themeMode => _themeMode;
   ThemeMode _themeMode = ThemeMode.light;
