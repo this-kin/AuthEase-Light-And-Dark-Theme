@@ -35,11 +35,11 @@ class Verification extends StatelessWidget {
                     subtitle: '',
                   ),
                   SizedBox(height: 10.h),
-                  Text('Please enter your OTP below'),
+                  Text('OTP code sent to your email\njohndoe@gmail.com'),
                   SizedBox(height: 30.h),
                   Center(
                     child: Pinput(
-                      length: 4,
+                      length: 5,
                       controller: otpController,
                       closeKeyboardWhenCompleted: true,
                       defaultPinTheme: defaultPinTheme(context),

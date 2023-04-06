@@ -160,35 +160,44 @@ OutlineInputBorder errorBorder() {
 PinTheme defaultPinTheme(BuildContext context) => PinTheme(
       height: 60.h,
       width: 60.w,
-      // textStyle: context.theme.,
+      textStyle: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w700,
+      ),
       decoration: BoxDecoration(
         color: Colors.transparent,
-        border: Border.all(
-          color: Colors.grey.withOpacity(0.2),
-          width: 0.7,
+        border: Border(
+          bottom: BorderSide(color: AppColor.accentColor),
         ),
-        borderRadius: BorderRadius.circular(20.sp),
       ),
     );
 
 PinTheme focusPinTheme(context) => PinTheme(
       height: 60.h,
       width: 60.w,
-      // textStyle: CustomTheme.semiLargeText(context),
+      textStyle: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w700,
+      ),
       decoration: BoxDecoration(
         color: Colors.transparent,
-        border: Border.all(color: AppColor.primaryColor, width: 1),
-        borderRadius: BorderRadius.circular(8.sp),
+        border: Border(
+          bottom: BorderSide(color: AppColor.primaryColor),
+        ),
       ),
     );
 
 PinTheme errorPinTheme(context) => PinTheme(
       height: 60.h,
       width: 60.w,
-      // textStyle: CustomTheme.semiLargeText(context),
+      textStyle: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w700,
+      ),
       decoration: BoxDecoration(
         color: Colors.transparent,
-        border: Border.all(color: AppColor.errorColor, width: 0.7),
-        borderRadius: BorderRadius.circular(8.sp),
+        border: Border(
+          bottom: BorderSide(color: AppColor.errorColor),
+        ),
       ),
     );
