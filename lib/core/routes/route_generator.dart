@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:qoute_app/core/routes/app_router.dart';
+import 'package:qoute_app/modules/fingerprint.dart';
 import 'package:qoute_app/modules/login.dart';
 import 'package:qoute_app/modules/phone_verification.dart';
 import 'package:qoute_app/modules/recover.dart';
 import 'package:qoute_app/modules/register.dart';
+import 'package:qoute_app/modules/verification.dart';
 import 'package:qoute_app/route_selector.dart';
 
 class RouteGenerator {
@@ -23,11 +25,11 @@ class RouteGenerator {
       case AppRouter.recover:
         return MaterialPageRoute(builder: (_) => Recover());
       case AppRouter.phone_verification:
-        return MaterialPageRoute(builder: (_) => RouteSelector());
+        return MaterialPageRoute(builder: (_) => BvnVerification());
       case AppRouter.setup_pin:
         return MaterialPageRoute(builder: (_) => RouteSelector());
       case AppRouter.fingerprint:
-        return MaterialPageRoute(builder: (_) => RouteSelector());
+        return MaterialPageRoute(builder: (_) => FingerPrint());
       case AppRouter.verification:
         return MaterialPageRoute(builder: (_) => Verification());
       default:
