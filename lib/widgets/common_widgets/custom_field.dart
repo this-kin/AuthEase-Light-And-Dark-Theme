@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pinput/pinput.dart';
+import 'package:qoute_app/core/extensions/widget_extension.dart';
+import 'package:qoute_app/core/theme/custom_theme.dart';
 import 'package:qoute_app/core/theme/theme_color.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -154,37 +157,38 @@ OutlineInputBorder errorBorder() {
   );
 }
 
+PinTheme defaultPinTheme(BuildContext context) => PinTheme(
+      height: 60.h,
+      width: 60.w,
+      // textStyle: context.theme.,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        border: Border.all(
+          color: Colors.grey.withOpacity(0.2),
+          width: 0.7,
+        ),
+        borderRadius: BorderRadius.circular(20.sp),
+      ),
+    );
 
+PinTheme focusPinTheme(context) => PinTheme(
+      height: 60.h,
+      width: 60.w,
+      // textStyle: CustomTheme.semiLargeText(context),
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        border: Border.all(color: AppColor.primaryColor, width: 1),
+        borderRadius: BorderRadius.circular(8.sp),
+      ),
+    );
 
-// PinTheme defaultPinTheme(context) => PinTheme(
-//       height: 80.h,
-//       width: 52.w,
-//       textStyle: CustomTheme.semiLargeText(context),
-//       decoration: BoxDecoration(
-//         color: backgroundColor,
-//         border: Border.all(color: greyTextColor, width: 0.7),
-//         borderRadius: BorderRadius.circular(8.sp),
-//       ),
-//     );
-
-// PinTheme focusPinTheme(context) => PinTheme(
-//       height: 80.h,
-//       width: 52.w,
-//       textStyle: CustomTheme.semiLargeText(context),
-//       decoration: BoxDecoration(
-//         color: backgroundColor,
-//         border: Border.all(color: primaryColor, width: 1),
-//         borderRadius: BorderRadius.circular(8.sp),
-//       ),
-//     );
-
-// PinTheme errorPinTheme(context) => PinTheme(
-//       height: 80.h,
-//       width: 52.w,
-//       textStyle: CustomTheme.semiLargeText(context),
-//       decoration: BoxDecoration(
-//         color: backgroundColor,
-//         border: Border.all(color: redColor, width: 0.7),
-//         borderRadius: BorderRadius.circular(8.sp),
-//       ),
-//     );
+PinTheme errorPinTheme(context) => PinTheme(
+      height: 60.h,
+      width: 60.w,
+      // textStyle: CustomTheme.semiLargeText(context),
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        border: Border.all(color: AppColor.errorColor, width: 0.7),
+        borderRadius: BorderRadius.circular(8.sp),
+      ),
+    );

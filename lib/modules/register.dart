@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qoute_app/core/custom_validator.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
+import 'package:qoute_app/core/routes/app_router.dart';
 import 'package:qoute_app/core/routes/route_generator.dart';
 import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
 import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
@@ -61,9 +62,10 @@ class Register extends HookConsumerWidget {
                   PrimaryButton(
                     text: "Sign Up",
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // sign up
-                      }
+                      // if (_formKey.currentState!.validate()) {
+                      //   // sign up
+                      // }
+                      RouteGenerator.pushNamed(AppRouter.verification);
                     },
                   ),
                   SizedBox(height: 250.h),
