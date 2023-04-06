@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoute_app/core/custom_validator.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
+import 'package:qoute_app/core/routes/app_router.dart';
+import 'package:qoute_app/core/routes/route_generator.dart';
 import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
 import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
 import 'package:qoute_app/widgets/common_widgets/primary_button.dart';
@@ -70,6 +72,10 @@ class Login extends StatelessWidget {
                     child: SmallSpanText(
                       title: 'Don\'t have an Account? ',
                       subtitle: 'Sign Up',
+                      onPressed: () {
+                        // go to register
+                        RouteGenerator.pushNamed(AppRouter.register);
+                      },
                     ),
                   )
                 ],

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qoute_app/core/custom_validator.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
+import 'package:qoute_app/core/routes/route_generator.dart';
 import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
 import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
 import 'package:qoute_app/widgets/common_widgets/text_widgets.dart';
@@ -19,6 +20,10 @@ class Register extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AnnotatedScaffold(
       child: Scaffold(
+        appBar: AppBar(
+          // leading: ,
+          backgroundColor: context.theme.scaffoldBackgroundColor,
+        ),
         backgroundColor: context.theme.scaffoldBackgroundColor,
         body: SafeArea(
           top: true,
@@ -29,12 +34,11 @@ class Register extends HookConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 50.h),
                   SpanText(
                     title: 'Create an\n',
                     subtitle: 'Account',
                   ),
-                  SizedBox(height: 70.h),
+                  SizedBox(height: 40.h),
                   CustomTextField(
                     hintText: 'John Doe',
                     keyboardType: TextInputType.emailAddress,
@@ -63,6 +67,17 @@ class Register extends HookConsumerWidget {
                         // sign up
                       }
                     },
+                  ),
+                  SizedBox(height: 250.h),
+                  Center(
+                    child: SmallSpanText(
+                      title: 'Already have an Account? ',
+                      subtitle: 'Login',
+                      onPressed: () {
+                        // go to register
+                        RouteGenerator.pop();
+                      },
+                    ),
                   )
                 ],
               ),
