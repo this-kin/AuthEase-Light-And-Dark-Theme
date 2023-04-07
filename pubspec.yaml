@@ -34,7 +34,14 @@ dependencies:
   pinput:
   country_picker: 
   hooks_riverpod:
+  local_auth:
   flutter_svg:
+
+  firebase_core: 
+  firebase_auth: 
+  cloud_firestore:
+  hive: ^2.0.6
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
