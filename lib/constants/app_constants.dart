@@ -31,4 +31,6 @@ class Constants {
   static const invalidFullNameError = 'Please enter a valid full name';
 
   static const invalidZipCodeError = 'Please enter a valid zip code';
+
+  static const kDuration = Duration(milliseconds: 300);
 }

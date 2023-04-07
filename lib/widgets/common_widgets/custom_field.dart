@@ -97,12 +97,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
         maxLength: widget.maxLength,
         keyboardType: widget.keyboardType,
         textInputAction: widget.textInputAction,
-        // style: CustomTheme.normalText(context),
+
+        style: context.theme.textTheme.bodySmall!.copyWith(
+          fontSize: 14.sp,
+        ),
         showCursor: widget.showCursor,
         maxLengthEnforcement: MaxLengthEnforcement.enforced,
         textAlignVertical: TextAlignVertical.center,
         autovalidateMode: AutovalidateMode.disabled,
-        cursorColor: Colors.white,
+        // cursorColor: ,
         obscureText: isPasswordField && hidePassword,
         validator: _runValidator,
         onFieldSubmitted: _runValidator,
@@ -161,7 +164,7 @@ PinTheme defaultPinTheme(BuildContext context) => PinTheme(
       height: 60.h,
       width: 60.w,
       textStyle: TextStyle(
-        fontSize: 16.sp,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w700,
       ),
       decoration: BoxDecoration(
@@ -176,7 +179,7 @@ PinTheme focusPinTheme(context) => PinTheme(
       height: 60.h,
       width: 60.w,
       textStyle: TextStyle(
-        fontSize: 16.sp,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w700,
       ),
       decoration: BoxDecoration(
@@ -191,8 +194,9 @@ PinTheme errorPinTheme(context) => PinTheme(
       height: 60.h,
       width: 60.w,
       textStyle: TextStyle(
-        fontSize: 16.sp,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w700,
+        color: AppColor.errorColor,
       ),
       decoration: BoxDecoration(
         color: Colors.transparent,

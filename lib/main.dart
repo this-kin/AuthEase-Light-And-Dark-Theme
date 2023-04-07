@@ -18,7 +18,7 @@ class MyApp extends ConsumerWidget {
       designSize: const Size(375, 812),
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
-          title: "Authentication App",
+          title: "AuthEase",
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.generateRoute,
           navigatorKey: RouteGenerator.navigatorKey,
