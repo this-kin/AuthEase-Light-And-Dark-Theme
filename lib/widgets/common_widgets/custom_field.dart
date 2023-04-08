@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/core/theme/custom_theme.dart';
 import 'package:qoute_app/core/theme/theme_color.dart';
 
 class CustomTextField extends StatefulWidget {
