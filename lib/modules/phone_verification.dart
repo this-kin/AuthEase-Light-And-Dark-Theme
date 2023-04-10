@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pinput/pinput.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/core/routes/app_router.dart';
 import 'package:qoute_app/core/routes/route_generator.dart';
 import 'package:qoute_app/data/providers/auth_provider.dart';
 import 'package:qoute_app/data/states/auth_state.dart';

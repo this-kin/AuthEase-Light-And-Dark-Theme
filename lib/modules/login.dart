@@ -19,12 +19,9 @@ class Login extends HookConsumerWidget {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final emailController = useTextEditingController();
     final passwordController = TextEditingController();
-
     ref.listen<AuthState>(authProvider, (prev, next) {
       next.maybeWhen(
         authenticated: (_) {
-          // clear all exisiting controller
-          // and go to root route
           emailController.clear();
           passwordController.clear();
           RouteGenerator.popUntilRoot();
@@ -57,7 +54,7 @@ class Login extends HookConsumerWidget {
                     ),
                     SizedBox(height: 70.h),
                     CustomTextField(
-                      hintText: 'formatable2018@gmail.com',
+                      hintText: 'johndoe@gmail.com',
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       validator: CustomValidator.emailValidator,

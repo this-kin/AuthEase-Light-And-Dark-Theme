@@ -12,7 +12,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     state = const AuthState.authenticating();
     try {
       // fake authentication
-      Future.delayed(const Duration(seconds: 1));
+      Future.delayed(const Duration(minutes: 5));
       state = AuthState.authenticated(name);
     } on Exception catch (e) {
       state = AuthState.failed(reason: e.toString());
@@ -23,8 +23,9 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     state = const AuthState.authenticating();
     try {
       // fake authentication
-      Future.delayed(const Duration(seconds: 1));
-      state = AuthState.authenticated(email);
+      Future.delayed(const Duration(seconds: 30), () {
+        state = AuthState.authenticated(email);
+      });
     } on Exception catch (e) {
       state = AuthState.failed(reason: e.toString());
     }

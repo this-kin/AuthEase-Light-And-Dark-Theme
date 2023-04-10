@@ -23,20 +23,20 @@ class Register extends HookConsumerWidget {
     final nameController = useTextEditingController();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
-    ref.listen<AuthState>(authProvider, (prev, next) {
-      next.maybeWhen(
-        authenticated: (_) {
-          nameController.clear();
-          emailController.clear();
-          passwordController.clear();
-          RouteGenerator.pushNamed(AppRouter.verification);
-        },
-        failed: (message) {
-          // show dialog with message error
-        },
-        orElse: () {},
-      );
-    });
+    // ref.listen<AuthState>(authProvider, (prev, next) {
+    //   next.maybeWhen(
+    //     authenticated: (_) {
+    //       nameController.clear();
+    //       emailController.clear();
+    //       passwordController.clear();
+    //       RouteGenerator.pushNamed(AppRouter.verification);
+    //     },
+    //     failed: (message) {
+    //       // show dialog with message error
+    //     },
+    //     orElse: () {},
+    //   );
+    // });
     return AnnotatedScaffold(
       child: Scaffold(
         appBar: MyAppbar(context),
