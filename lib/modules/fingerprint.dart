@@ -18,49 +18,54 @@ class FingerPrint extends StatelessWidget {
         backgroundColor: context.theme.scaffoldBackgroundColor,
         body: SafeArea(
           top: true,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 30.h),
-                Center(
-                  child: Text(
-                    'Enable biometric Access',
-                    style: context.theme.textTheme.bodyLarge!.copyWith(
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.bold,
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 30.h),
+                    Center(
+                      child: Text(
+                        'Enable biometric Access',
+                        style: context.theme.textTheme.bodyLarge!.copyWith(
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(height: 10.h),
+                    Center(
+                      child: Text(
+                        'Login quickly and securely with the\n fingerprint stored on this device',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    SizedBox(height: 30.h),
+                    Center(
+                      child: Icon(
+                        Icons.fingerprint_sharp,
+                        size: 80.sp,
+                      ),
+                    ),
+                    SizedBox(height: 380.h),
+                    PrimaryButton(
+                      text: "Enable biotmetric access",
+                      onPressed: () {
+                        RouteGenerator.pushNamed(AppRouter.phone_verification);
+                      },
+                    ),
+                    Center(
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text("Skip for now"),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 10.h),
-                Center(
-                  child: Text(
-                    'Login quickly and securely with the\n fingerprint stored on this device',
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(height: 30.h),
-                Center(
-                  child: Icon(
-                    Icons.fingerprint_sharp,
-                    size: 80.sp,
-                  ),
-                ),
-                SizedBox(height: 380.h),
-                PrimaryButton(
-                  text: "Enable biotmetric access",
-                  onPressed: () {
-                    RouteGenerator.pushNamed(AppRouter.phone_verification);
-                  },
-                ),
-                Center(
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text("Skip for now"),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),

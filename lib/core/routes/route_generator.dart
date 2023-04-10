@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qoute_app/core/routes/app_router.dart';
 
 import 'package:qoute_app/modules/fingerprint.dart';
+import 'package:qoute_app/modules/home.dart';
 import 'package:qoute_app/modules/login.dart';
 import 'package:qoute_app/modules/phone_verification.dart';
 import 'package:qoute_app/modules/recover.dart';
@@ -23,7 +24,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Register());
       case AppRouter.login:
         return MaterialPageRoute(builder: (_) => Login());
-
+      case AppRouter.home:
+        return MaterialPageRoute(builder: (_) => Home());
       case AppRouter.recover:
         return MaterialPageRoute(builder: (_) => Recover());
       case AppRouter.phone_verification:
