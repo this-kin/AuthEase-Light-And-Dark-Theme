@@ -36,39 +36,41 @@ class Verification extends HookConsumerWidget {
           top: true,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 30.h),
-                SpanText(
-                  title: 'Enter your OTP',
-                  subtitle: '',
-                ),
-                SizedBox(height: 10.h),
-                Text('OTP code sent to your email\njohndoe@gmail.com'),
-                SizedBox(height: 30.h),
-                Center(
-                  child: Pinput(
-                    length: 5,
-                    controller: otpController,
-                    closeKeyboardWhenCompleted: true,
-                    defaultPinTheme: defaultPinTheme(context),
-                    focusedPinTheme: focusPinTheme(context),
-                    errorPinTheme: errorPinTheme(context),
-                    onCompleted: (value) {
-                      ref.read(authProvider.notifier).verify(code: value);
-                    },
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 30.h),
+                  SpanText(
+                    title: 'Enter your OTP',
+                    subtitle: '',
                   ),
-                ),
-                SizedBox(height: 440.h),
-                SmallSpanText(
-                  title: 'Didn\'t get code? ',
-                  subtitle: 'Resend Code',
-                  onPressed: () {
-                    // request for otp code
-                  },
-                )
-              ],
+                  SizedBox(height: 10.h),
+                  Text('OTP code sent to your email\njohndoe@gmail.com'),
+                  SizedBox(height: 30.h),
+                  Center(
+                    child: Pinput(
+                      length: 5,
+                      controller: otpController,
+                      closeKeyboardWhenCompleted: true,
+                      defaultPinTheme: defaultPinTheme(context),
+                      focusedPinTheme: focusPinTheme(context),
+                      errorPinTheme: errorPinTheme(context),
+                      onCompleted: (value) {
+                        ref.read(authProvider.notifier).verify(code: value);
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 440.h),
+                  SmallSpanText(
+                    title: 'Didn\'t get code? ',
+                    subtitle: 'Resend Code',
+                    onPressed: () {
+                      // request for otp code
+                    },
+                  )
+                ],
+              ),
             ),
           ),
         ),

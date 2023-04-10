@@ -47,64 +47,66 @@ class Register extends HookConsumerWidget {
             key: _formKey,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SpanText(
-                    title: 'Create an\n',
-                    subtitle: 'Account',
-                  ),
-                  SizedBox(height: 40.h),
-                  CustomTextField(
-                    hintText: 'John Doe',
-                    controller: nameController,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    validator: CustomValidator.emailValidator,
-                  ),
-                  SizedBox(height: 15.h),
-                  CustomTextField(
-                    hintText: 'johndoe@gmail.com',
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    validator: CustomValidator.emailValidator,
-                  ),
-                  SizedBox(height: 15.h),
-                  CustomTextField(
-                    hintText: '* * * * * * * * *',
-                    controller: passwordController,
-                    keyboardType: TextInputType.visiblePassword,
-                    textInputAction: TextInputAction.next,
-                    validator: CustomValidator.passwordValidator,
-                  ),
-                  SizedBox(height: 20.h),
-                  PrimaryButton(
-                    text: "Sign Up",
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // sign up
-                        _formKey.currentState!.save();
-                        ref.read(authProvider.notifier).signup(
-                              name: nameController.text,
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
-                      }
-                    },
-                  ),
-                  SizedBox(height: 250.h),
-                  Center(
-                    child: SmallSpanText(
-                      title: 'Already have an Account? ',
-                      subtitle: 'Login',
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SpanText(
+                      title: 'Create an\n',
+                      subtitle: 'Account',
+                    ),
+                    SizedBox(height: 40.h),
+                    CustomTextField(
+                      hintText: 'John Doe',
+                      controller: nameController,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                      validator: CustomValidator.emailValidator,
+                    ),
+                    SizedBox(height: 15.h),
+                    CustomTextField(
+                      hintText: 'johndoe@gmail.com',
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                      validator: CustomValidator.emailValidator,
+                    ),
+                    SizedBox(height: 15.h),
+                    CustomTextField(
+                      hintText: '* * * * * * * * *',
+                      controller: passwordController,
+                      keyboardType: TextInputType.visiblePassword,
+                      textInputAction: TextInputAction.next,
+                      validator: CustomValidator.passwordValidator,
+                    ),
+                    SizedBox(height: 20.h),
+                    PrimaryButton(
+                      text: "Sign Up",
                       onPressed: () {
-                        // go to register
-                        RouteGenerator.pop();
+                        if (_formKey.currentState!.validate()) {
+                          // sign up
+                          _formKey.currentState!.save();
+                          ref.read(authProvider.notifier).signup(
+                                name: nameController.text,
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                        }
                       },
                     ),
-                  )
-                ],
+                    SizedBox(height: 250.h),
+                    Center(
+                      child: SmallSpanText(
+                        title: 'Already have an Account? ',
+                        subtitle: 'Login',
+                        onPressed: () {
+                          // go to register
+                          RouteGenerator.pop();
+                        },
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

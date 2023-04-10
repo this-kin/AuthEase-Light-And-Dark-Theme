@@ -72,7 +72,7 @@ class Login extends HookConsumerWidget {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          // login
+                          // validating user input before login
                           ref.read(authProvider.notifier).login(
                                 email: emailController.text,
                                 password: passwordController.text,

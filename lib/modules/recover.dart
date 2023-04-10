@@ -25,34 +25,36 @@ class Recover extends StatelessWidget {
             key: _formKey,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 30.h),
-                  SpanText(
-                    title: 'Forgot Password',
-                    subtitle: '',
-                  ),
-                  SizedBox(height: 10.h),
-                  Text(
-                      'Enter your email address so we can send\nan instructions about resetting your password'),
-                  SizedBox(height: 20.h),
-                  CustomTextField(
-                    hintText: 'johndoe@gmail.com',
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    validator: CustomValidator.emailValidator,
-                  ),
-                  SizedBox(height: 440.h),
-                  PrimaryButton(
-                    text: "Continue",
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // login
-                      }
-                    },
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 30.h),
+                    SpanText(
+                      title: 'Forgot Password',
+                      subtitle: '',
+                    ),
+                    SizedBox(height: 10.h),
+                    Text(
+                        'Enter your email address so we can send\nan instructions about resetting your password'),
+                    SizedBox(height: 20.h),
+                    CustomTextField(
+                      hintText: 'johndoe@gmail.com',
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                      validator: CustomValidator.emailValidator,
+                    ),
+                    SizedBox(height: 440.h),
+                    PrimaryButton(
+                      text: "Continue",
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // we are validating before requestin forgot password
+                        }
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
