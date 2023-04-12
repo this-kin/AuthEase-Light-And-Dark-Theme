@@ -7,4 +7,26 @@ class RecoverStateNotifier extends StateNotifier<RecoveryState> {
   RecoverStateNotifier({required Ref ref})
       : _ref = ref,
         super(RecoveryState.idle());
+
+  Future<void> forgot({required String email}) async {
+    state = const RecoveryState.loading(loading: '');
+    try {
+      await Future.delayed(const Duration(seconds: 30));
+      state = RecoveryState.email();
+    } on Exception catch (e) {
+      final lastState = state;
+      state = RecoveryState.failed(reason: e.toString(), lastState: lastState);
+    }
+  }
+
+  Future resetPassword({required password, conPassword}) async {
+    state = const RecoveryState.loading(loading: '');
+    try {
+      await Future.delayed(const Duration(seconds: 30));
+      state = RecoveryState.success();
+    } on Exception catch (e) {
+      final lastState = state;
+      state = RecoveryState.failed(reason: e.toString(), lastState: lastState);
+    }
+  }
 }
