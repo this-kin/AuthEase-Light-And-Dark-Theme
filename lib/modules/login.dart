@@ -28,6 +28,8 @@ class Login extends HookConsumerWidget {
         },
         failed: (message) {
           // show dialog with message error
+          emailController.clear();
+          passwordController.clear();
         },
         orElse: () {},
       );

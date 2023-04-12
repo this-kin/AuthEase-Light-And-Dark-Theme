@@ -10,4 +10,5 @@ class AppRouter {
   static const selector = "/route_selector";
   static const verification = "/verification";
   static const phone_verification = "/phone_verification";
+  static const new_password = '/new_password';
 }

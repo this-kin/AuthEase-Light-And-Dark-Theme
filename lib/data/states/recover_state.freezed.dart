@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecoveryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() idle,
     required TResult Function() email,
     required TResult Function(String otpSentMessage) otp,
     required TResult Function(String otpVerifiedMessage) resetPassword,
@@ -28,6 +29,7 @@ mixin _$RecoveryState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
     TResult? Function()? email,
     TResult? Function(String otpSentMessage)? otp,
     TResult? Function(String otpVerifiedMessage)? resetPassword,
@@ -38,6 +40,7 @@ mixin _$RecoveryState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
     TResult Function()? email,
     TResult Function(String otpSentMessage)? otp,
     TResult Function(String otpVerifiedMessage)? resetPassword,
@@ -49,32 +52,35 @@ mixin _$RecoveryState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FORGOT_PW_EMAIL value) email,
-    required TResult Function(FORGOT_PW_OTP value) otp,
-    required TResult Function(FORGOT_PW_RESET_PASSWORD value) resetPassword,
-    required TResult Function(LOADING value) loading,
-    required TResult Function(FORGOT_PW_FAILED value) failed,
-    required TResult Function(FORGOT_PW_SUCCESS value) success,
+    required TResult Function(RESET_IDLE value) idle,
+    required TResult Function(REST_EMAIL value) email,
+    required TResult Function(RESET_OTP value) otp,
+    required TResult Function(RESET_PASSWORD value) resetPassword,
+    required TResult Function(RESET_LOADING value) loading,
+    required TResult Function(RESET_FAILED value) failed,
+    required TResult Function(RESET_SUCCESS value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FORGOT_PW_EMAIL value)? email,
-    TResult? Function(FORGOT_PW_OTP value)? otp,
-    TResult? Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult? Function(LOADING value)? loading,
-    TResult? Function(FORGOT_PW_FAILED value)? failed,
-    TResult? Function(FORGOT_PW_SUCCESS value)? success,
+    TResult? Function(RESET_IDLE value)? idle,
+    TResult? Function(REST_EMAIL value)? email,
+    TResult? Function(RESET_OTP value)? otp,
+    TResult? Function(RESET_PASSWORD value)? resetPassword,
+    TResult? Function(RESET_LOADING value)? loading,
+    TResult? Function(RESET_FAILED value)? failed,
+    TResult? Function(RESET_SUCCESS value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FORGOT_PW_EMAIL value)? email,
-    TResult Function(FORGOT_PW_OTP value)? otp,
-    TResult Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult Function(LOADING value)? loading,
-    TResult Function(FORGOT_PW_FAILED value)? failed,
-    TResult Function(FORGOT_PW_SUCCESS value)? success,
+    TResult Function(RESET_IDLE value)? idle,
+    TResult Function(REST_EMAIL value)? email,
+    TResult Function(RESET_OTP value)? otp,
+    TResult Function(RESET_PASSWORD value)? resetPassword,
+    TResult Function(RESET_LOADING value)? loading,
+    TResult Function(RESET_FAILED value)? failed,
+    TResult Function(RESET_SUCCESS value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -99,25 +105,157 @@ class _$RecoveryStateCopyWithImpl<$Res, $Val extends RecoveryState>
 }
 
 /// @nodoc
-abstract class _$$FORGOT_PW_EMAILCopyWith<$Res> {
-  factory _$$FORGOT_PW_EMAILCopyWith(
-          _$FORGOT_PW_EMAIL value, $Res Function(_$FORGOT_PW_EMAIL) then) =
-      __$$FORGOT_PW_EMAILCopyWithImpl<$Res>;
+abstract class _$$RESET_IDLECopyWith<$Res> {
+  factory _$$RESET_IDLECopyWith(
+          _$RESET_IDLE value, $Res Function(_$RESET_IDLE) then) =
+      __$$RESET_IDLECopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FORGOT_PW_EMAILCopyWithImpl<$Res>
-    extends _$RecoveryStateCopyWithImpl<$Res, _$FORGOT_PW_EMAIL>
-    implements _$$FORGOT_PW_EMAILCopyWith<$Res> {
-  __$$FORGOT_PW_EMAILCopyWithImpl(
-      _$FORGOT_PW_EMAIL _value, $Res Function(_$FORGOT_PW_EMAIL) _then)
+class __$$RESET_IDLECopyWithImpl<$Res>
+    extends _$RecoveryStateCopyWithImpl<$Res, _$RESET_IDLE>
+    implements _$$RESET_IDLECopyWith<$Res> {
+  __$$RESET_IDLECopyWithImpl(
+      _$RESET_IDLE _value, $Res Function(_$RESET_IDLE) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
-  const _$FORGOT_PW_EMAIL();
+class _$RESET_IDLE implements RESET_IDLE {
+  const _$RESET_IDLE();
+
+  @override
+  String toString() {
+    return 'RecoveryState.idle()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RESET_IDLE);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() idle,
+    required TResult Function() email,
+    required TResult Function(String otpSentMessage) otp,
+    required TResult Function(String otpVerifiedMessage) resetPassword,
+    required TResult Function(String loading) loading,
+    required TResult Function(String reason, RecoveryState lastState) failed,
+    required TResult Function(String? success) success,
+  }) {
+    return idle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
+    TResult? Function()? email,
+    TResult? Function(String otpSentMessage)? otp,
+    TResult? Function(String otpVerifiedMessage)? resetPassword,
+    TResult? Function(String loading)? loading,
+    TResult? Function(String reason, RecoveryState lastState)? failed,
+    TResult? Function(String? success)? success,
+  }) {
+    return idle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? email,
+    TResult Function(String otpSentMessage)? otp,
+    TResult Function(String otpVerifiedMessage)? resetPassword,
+    TResult Function(String loading)? loading,
+    TResult Function(String reason, RecoveryState lastState)? failed,
+    TResult Function(String? success)? success,
+    required TResult orElse(),
+  }) {
+    if (idle != null) {
+      return idle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RESET_IDLE value) idle,
+    required TResult Function(REST_EMAIL value) email,
+    required TResult Function(RESET_OTP value) otp,
+    required TResult Function(RESET_PASSWORD value) resetPassword,
+    required TResult Function(RESET_LOADING value) loading,
+    required TResult Function(RESET_FAILED value) failed,
+    required TResult Function(RESET_SUCCESS value) success,
+  }) {
+    return idle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RESET_IDLE value)? idle,
+    TResult? Function(REST_EMAIL value)? email,
+    TResult? Function(RESET_OTP value)? otp,
+    TResult? Function(RESET_PASSWORD value)? resetPassword,
+    TResult? Function(RESET_LOADING value)? loading,
+    TResult? Function(RESET_FAILED value)? failed,
+    TResult? Function(RESET_SUCCESS value)? success,
+  }) {
+    return idle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RESET_IDLE value)? idle,
+    TResult Function(REST_EMAIL value)? email,
+    TResult Function(RESET_OTP value)? otp,
+    TResult Function(RESET_PASSWORD value)? resetPassword,
+    TResult Function(RESET_LOADING value)? loading,
+    TResult Function(RESET_FAILED value)? failed,
+    TResult Function(RESET_SUCCESS value)? success,
+    required TResult orElse(),
+  }) {
+    if (idle != null) {
+      return idle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RESET_IDLE implements RecoveryState {
+  const factory RESET_IDLE() = _$RESET_IDLE;
+}
+
+/// @nodoc
+abstract class _$$REST_EMAILCopyWith<$Res> {
+  factory _$$REST_EMAILCopyWith(
+          _$REST_EMAIL value, $Res Function(_$REST_EMAIL) then) =
+      __$$REST_EMAILCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$REST_EMAILCopyWithImpl<$Res>
+    extends _$RecoveryStateCopyWithImpl<$Res, _$REST_EMAIL>
+    implements _$$REST_EMAILCopyWith<$Res> {
+  __$$REST_EMAILCopyWithImpl(
+      _$REST_EMAIL _value, $Res Function(_$REST_EMAIL) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$REST_EMAIL implements REST_EMAIL {
+  const _$REST_EMAIL();
 
   @override
   String toString() {
@@ -127,7 +265,7 @@ class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FORGOT_PW_EMAIL);
+        (other.runtimeType == runtimeType && other is _$REST_EMAIL);
   }
 
   @override
@@ -136,6 +274,7 @@ class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() idle,
     required TResult Function() email,
     required TResult Function(String otpSentMessage) otp,
     required TResult Function(String otpVerifiedMessage) resetPassword,
@@ -149,6 +288,7 @@ class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
     TResult? Function()? email,
     TResult? Function(String otpSentMessage)? otp,
     TResult? Function(String otpVerifiedMessage)? resetPassword,
@@ -162,6 +302,7 @@ class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
     TResult Function()? email,
     TResult Function(String otpSentMessage)? otp,
     TResult Function(String otpVerifiedMessage)? resetPassword,
@@ -179,12 +320,13 @@ class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FORGOT_PW_EMAIL value) email,
-    required TResult Function(FORGOT_PW_OTP value) otp,
-    required TResult Function(FORGOT_PW_RESET_PASSWORD value) resetPassword,
-    required TResult Function(LOADING value) loading,
-    required TResult Function(FORGOT_PW_FAILED value) failed,
-    required TResult Function(FORGOT_PW_SUCCESS value) success,
+    required TResult Function(RESET_IDLE value) idle,
+    required TResult Function(REST_EMAIL value) email,
+    required TResult Function(RESET_OTP value) otp,
+    required TResult Function(RESET_PASSWORD value) resetPassword,
+    required TResult Function(RESET_LOADING value) loading,
+    required TResult Function(RESET_FAILED value) failed,
+    required TResult Function(RESET_SUCCESS value) success,
   }) {
     return email(this);
   }
@@ -192,12 +334,13 @@ class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FORGOT_PW_EMAIL value)? email,
-    TResult? Function(FORGOT_PW_OTP value)? otp,
-    TResult? Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult? Function(LOADING value)? loading,
-    TResult? Function(FORGOT_PW_FAILED value)? failed,
-    TResult? Function(FORGOT_PW_SUCCESS value)? success,
+    TResult? Function(RESET_IDLE value)? idle,
+    TResult? Function(REST_EMAIL value)? email,
+    TResult? Function(RESET_OTP value)? otp,
+    TResult? Function(RESET_PASSWORD value)? resetPassword,
+    TResult? Function(RESET_LOADING value)? loading,
+    TResult? Function(RESET_FAILED value)? failed,
+    TResult? Function(RESET_SUCCESS value)? success,
   }) {
     return email?.call(this);
   }
@@ -205,12 +348,13 @@ class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FORGOT_PW_EMAIL value)? email,
-    TResult Function(FORGOT_PW_OTP value)? otp,
-    TResult Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult Function(LOADING value)? loading,
-    TResult Function(FORGOT_PW_FAILED value)? failed,
-    TResult Function(FORGOT_PW_SUCCESS value)? success,
+    TResult Function(RESET_IDLE value)? idle,
+    TResult Function(REST_EMAIL value)? email,
+    TResult Function(RESET_OTP value)? otp,
+    TResult Function(RESET_PASSWORD value)? resetPassword,
+    TResult Function(RESET_LOADING value)? loading,
+    TResult Function(RESET_FAILED value)? failed,
+    TResult Function(RESET_SUCCESS value)? success,
     required TResult orElse(),
   }) {
     if (email != null) {
@@ -220,25 +364,25 @@ class _$FORGOT_PW_EMAIL implements FORGOT_PW_EMAIL {
   }
 }
 
-abstract class FORGOT_PW_EMAIL implements RecoveryState {
-  const factory FORGOT_PW_EMAIL() = _$FORGOT_PW_EMAIL;
+abstract class REST_EMAIL implements RecoveryState {
+  const factory REST_EMAIL() = _$REST_EMAIL;
 }
 
 /// @nodoc
-abstract class _$$FORGOT_PW_OTPCopyWith<$Res> {
-  factory _$$FORGOT_PW_OTPCopyWith(
-          _$FORGOT_PW_OTP value, $Res Function(_$FORGOT_PW_OTP) then) =
-      __$$FORGOT_PW_OTPCopyWithImpl<$Res>;
+abstract class _$$RESET_OTPCopyWith<$Res> {
+  factory _$$RESET_OTPCopyWith(
+          _$RESET_OTP value, $Res Function(_$RESET_OTP) then) =
+      __$$RESET_OTPCopyWithImpl<$Res>;
   @useResult
   $Res call({String otpSentMessage});
 }
 
 /// @nodoc
-class __$$FORGOT_PW_OTPCopyWithImpl<$Res>
-    extends _$RecoveryStateCopyWithImpl<$Res, _$FORGOT_PW_OTP>
-    implements _$$FORGOT_PW_OTPCopyWith<$Res> {
-  __$$FORGOT_PW_OTPCopyWithImpl(
-      _$FORGOT_PW_OTP _value, $Res Function(_$FORGOT_PW_OTP) _then)
+class __$$RESET_OTPCopyWithImpl<$Res>
+    extends _$RecoveryStateCopyWithImpl<$Res, _$RESET_OTP>
+    implements _$$RESET_OTPCopyWith<$Res> {
+  __$$RESET_OTPCopyWithImpl(
+      _$RESET_OTP _value, $Res Function(_$RESET_OTP) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -246,7 +390,7 @@ class __$$FORGOT_PW_OTPCopyWithImpl<$Res>
   $Res call({
     Object? otpSentMessage = null,
   }) {
-    return _then(_$FORGOT_PW_OTP(
+    return _then(_$RESET_OTP(
       otpSentMessage: null == otpSentMessage
           ? _value.otpSentMessage
           : otpSentMessage // ignore: cast_nullable_to_non_nullable
@@ -257,8 +401,8 @@ class __$$FORGOT_PW_OTPCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
-  const _$FORGOT_PW_OTP({required this.otpSentMessage});
+class _$RESET_OTP implements RESET_OTP {
+  const _$RESET_OTP({required this.otpSentMessage});
 
   @override
   final String otpSentMessage;
@@ -272,7 +416,7 @@ class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FORGOT_PW_OTP &&
+            other is _$RESET_OTP &&
             (identical(other.otpSentMessage, otpSentMessage) ||
                 other.otpSentMessage == otpSentMessage));
   }
@@ -283,12 +427,13 @@ class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FORGOT_PW_OTPCopyWith<_$FORGOT_PW_OTP> get copyWith =>
-      __$$FORGOT_PW_OTPCopyWithImpl<_$FORGOT_PW_OTP>(this, _$identity);
+  _$$RESET_OTPCopyWith<_$RESET_OTP> get copyWith =>
+      __$$RESET_OTPCopyWithImpl<_$RESET_OTP>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() idle,
     required TResult Function() email,
     required TResult Function(String otpSentMessage) otp,
     required TResult Function(String otpVerifiedMessage) resetPassword,
@@ -302,6 +447,7 @@ class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
     TResult? Function()? email,
     TResult? Function(String otpSentMessage)? otp,
     TResult? Function(String otpVerifiedMessage)? resetPassword,
@@ -315,6 +461,7 @@ class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
     TResult Function()? email,
     TResult Function(String otpSentMessage)? otp,
     TResult Function(String otpVerifiedMessage)? resetPassword,
@@ -332,12 +479,13 @@ class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FORGOT_PW_EMAIL value) email,
-    required TResult Function(FORGOT_PW_OTP value) otp,
-    required TResult Function(FORGOT_PW_RESET_PASSWORD value) resetPassword,
-    required TResult Function(LOADING value) loading,
-    required TResult Function(FORGOT_PW_FAILED value) failed,
-    required TResult Function(FORGOT_PW_SUCCESS value) success,
+    required TResult Function(RESET_IDLE value) idle,
+    required TResult Function(REST_EMAIL value) email,
+    required TResult Function(RESET_OTP value) otp,
+    required TResult Function(RESET_PASSWORD value) resetPassword,
+    required TResult Function(RESET_LOADING value) loading,
+    required TResult Function(RESET_FAILED value) failed,
+    required TResult Function(RESET_SUCCESS value) success,
   }) {
     return otp(this);
   }
@@ -345,12 +493,13 @@ class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FORGOT_PW_EMAIL value)? email,
-    TResult? Function(FORGOT_PW_OTP value)? otp,
-    TResult? Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult? Function(LOADING value)? loading,
-    TResult? Function(FORGOT_PW_FAILED value)? failed,
-    TResult? Function(FORGOT_PW_SUCCESS value)? success,
+    TResult? Function(RESET_IDLE value)? idle,
+    TResult? Function(REST_EMAIL value)? email,
+    TResult? Function(RESET_OTP value)? otp,
+    TResult? Function(RESET_PASSWORD value)? resetPassword,
+    TResult? Function(RESET_LOADING value)? loading,
+    TResult? Function(RESET_FAILED value)? failed,
+    TResult? Function(RESET_SUCCESS value)? success,
   }) {
     return otp?.call(this);
   }
@@ -358,12 +507,13 @@ class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FORGOT_PW_EMAIL value)? email,
-    TResult Function(FORGOT_PW_OTP value)? otp,
-    TResult Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult Function(LOADING value)? loading,
-    TResult Function(FORGOT_PW_FAILED value)? failed,
-    TResult Function(FORGOT_PW_SUCCESS value)? success,
+    TResult Function(RESET_IDLE value)? idle,
+    TResult Function(REST_EMAIL value)? email,
+    TResult Function(RESET_OTP value)? otp,
+    TResult Function(RESET_PASSWORD value)? resetPassword,
+    TResult Function(RESET_LOADING value)? loading,
+    TResult Function(RESET_FAILED value)? failed,
+    TResult Function(RESET_SUCCESS value)? success,
     required TResult orElse(),
   }) {
     if (otp != null) {
@@ -373,31 +523,30 @@ class _$FORGOT_PW_OTP implements FORGOT_PW_OTP {
   }
 }
 
-abstract class FORGOT_PW_OTP implements RecoveryState {
-  const factory FORGOT_PW_OTP({required final String otpSentMessage}) =
-      _$FORGOT_PW_OTP;
+abstract class RESET_OTP implements RecoveryState {
+  const factory RESET_OTP({required final String otpSentMessage}) = _$RESET_OTP;
 
   String get otpSentMessage;
   @JsonKey(ignore: true)
-  _$$FORGOT_PW_OTPCopyWith<_$FORGOT_PW_OTP> get copyWith =>
+  _$$RESET_OTPCopyWith<_$RESET_OTP> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FORGOT_PW_RESET_PASSWORDCopyWith<$Res> {
-  factory _$$FORGOT_PW_RESET_PASSWORDCopyWith(_$FORGOT_PW_RESET_PASSWORD value,
-          $Res Function(_$FORGOT_PW_RESET_PASSWORD) then) =
-      __$$FORGOT_PW_RESET_PASSWORDCopyWithImpl<$Res>;
+abstract class _$$RESET_PASSWORDCopyWith<$Res> {
+  factory _$$RESET_PASSWORDCopyWith(
+          _$RESET_PASSWORD value, $Res Function(_$RESET_PASSWORD) then) =
+      __$$RESET_PASSWORDCopyWithImpl<$Res>;
   @useResult
   $Res call({String otpVerifiedMessage});
 }
 
 /// @nodoc
-class __$$FORGOT_PW_RESET_PASSWORDCopyWithImpl<$Res>
-    extends _$RecoveryStateCopyWithImpl<$Res, _$FORGOT_PW_RESET_PASSWORD>
-    implements _$$FORGOT_PW_RESET_PASSWORDCopyWith<$Res> {
-  __$$FORGOT_PW_RESET_PASSWORDCopyWithImpl(_$FORGOT_PW_RESET_PASSWORD _value,
-      $Res Function(_$FORGOT_PW_RESET_PASSWORD) _then)
+class __$$RESET_PASSWORDCopyWithImpl<$Res>
+    extends _$RecoveryStateCopyWithImpl<$Res, _$RESET_PASSWORD>
+    implements _$$RESET_PASSWORDCopyWith<$Res> {
+  __$$RESET_PASSWORDCopyWithImpl(
+      _$RESET_PASSWORD _value, $Res Function(_$RESET_PASSWORD) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -405,7 +554,7 @@ class __$$FORGOT_PW_RESET_PASSWORDCopyWithImpl<$Res>
   $Res call({
     Object? otpVerifiedMessage = null,
   }) {
-    return _then(_$FORGOT_PW_RESET_PASSWORD(
+    return _then(_$RESET_PASSWORD(
       otpVerifiedMessage: null == otpVerifiedMessage
           ? _value.otpVerifiedMessage
           : otpVerifiedMessage // ignore: cast_nullable_to_non_nullable
@@ -416,8 +565,8 @@ class __$$FORGOT_PW_RESET_PASSWORDCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
-  const _$FORGOT_PW_RESET_PASSWORD({required this.otpVerifiedMessage});
+class _$RESET_PASSWORD implements RESET_PASSWORD {
+  const _$RESET_PASSWORD({required this.otpVerifiedMessage});
 
   @override
   final String otpVerifiedMessage;
@@ -431,7 +580,7 @@ class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FORGOT_PW_RESET_PASSWORD &&
+            other is _$RESET_PASSWORD &&
             (identical(other.otpVerifiedMessage, otpVerifiedMessage) ||
                 other.otpVerifiedMessage == otpVerifiedMessage));
   }
@@ -442,14 +591,13 @@ class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FORGOT_PW_RESET_PASSWORDCopyWith<_$FORGOT_PW_RESET_PASSWORD>
-      get copyWith =>
-          __$$FORGOT_PW_RESET_PASSWORDCopyWithImpl<_$FORGOT_PW_RESET_PASSWORD>(
-              this, _$identity);
+  _$$RESET_PASSWORDCopyWith<_$RESET_PASSWORD> get copyWith =>
+      __$$RESET_PASSWORDCopyWithImpl<_$RESET_PASSWORD>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() idle,
     required TResult Function() email,
     required TResult Function(String otpSentMessage) otp,
     required TResult Function(String otpVerifiedMessage) resetPassword,
@@ -463,6 +611,7 @@ class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
     TResult? Function()? email,
     TResult? Function(String otpSentMessage)? otp,
     TResult? Function(String otpVerifiedMessage)? resetPassword,
@@ -476,6 +625,7 @@ class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
     TResult Function()? email,
     TResult Function(String otpSentMessage)? otp,
     TResult Function(String otpVerifiedMessage)? resetPassword,
@@ -493,12 +643,13 @@ class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FORGOT_PW_EMAIL value) email,
-    required TResult Function(FORGOT_PW_OTP value) otp,
-    required TResult Function(FORGOT_PW_RESET_PASSWORD value) resetPassword,
-    required TResult Function(LOADING value) loading,
-    required TResult Function(FORGOT_PW_FAILED value) failed,
-    required TResult Function(FORGOT_PW_SUCCESS value) success,
+    required TResult Function(RESET_IDLE value) idle,
+    required TResult Function(REST_EMAIL value) email,
+    required TResult Function(RESET_OTP value) otp,
+    required TResult Function(RESET_PASSWORD value) resetPassword,
+    required TResult Function(RESET_LOADING value) loading,
+    required TResult Function(RESET_FAILED value) failed,
+    required TResult Function(RESET_SUCCESS value) success,
   }) {
     return resetPassword(this);
   }
@@ -506,12 +657,13 @@ class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FORGOT_PW_EMAIL value)? email,
-    TResult? Function(FORGOT_PW_OTP value)? otp,
-    TResult? Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult? Function(LOADING value)? loading,
-    TResult? Function(FORGOT_PW_FAILED value)? failed,
-    TResult? Function(FORGOT_PW_SUCCESS value)? success,
+    TResult? Function(RESET_IDLE value)? idle,
+    TResult? Function(REST_EMAIL value)? email,
+    TResult? Function(RESET_OTP value)? otp,
+    TResult? Function(RESET_PASSWORD value)? resetPassword,
+    TResult? Function(RESET_LOADING value)? loading,
+    TResult? Function(RESET_FAILED value)? failed,
+    TResult? Function(RESET_SUCCESS value)? success,
   }) {
     return resetPassword?.call(this);
   }
@@ -519,12 +671,13 @@ class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FORGOT_PW_EMAIL value)? email,
-    TResult Function(FORGOT_PW_OTP value)? otp,
-    TResult Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult Function(LOADING value)? loading,
-    TResult Function(FORGOT_PW_FAILED value)? failed,
-    TResult Function(FORGOT_PW_SUCCESS value)? success,
+    TResult Function(RESET_IDLE value)? idle,
+    TResult Function(REST_EMAIL value)? email,
+    TResult Function(RESET_OTP value)? otp,
+    TResult Function(RESET_PASSWORD value)? resetPassword,
+    TResult Function(RESET_LOADING value)? loading,
+    TResult Function(RESET_FAILED value)? failed,
+    TResult Function(RESET_SUCCESS value)? success,
     required TResult orElse(),
   }) {
     if (resetPassword != null) {
@@ -534,29 +687,31 @@ class _$FORGOT_PW_RESET_PASSWORD implements FORGOT_PW_RESET_PASSWORD {
   }
 }
 
-abstract class FORGOT_PW_RESET_PASSWORD implements RecoveryState {
-  const factory FORGOT_PW_RESET_PASSWORD(
-      {required final String otpVerifiedMessage}) = _$FORGOT_PW_RESET_PASSWORD;
+abstract class RESET_PASSWORD implements RecoveryState {
+  const factory RESET_PASSWORD({required final String otpVerifiedMessage}) =
+      _$RESET_PASSWORD;
 
   String get otpVerifiedMessage;
   @JsonKey(ignore: true)
-  _$$FORGOT_PW_RESET_PASSWORDCopyWith<_$FORGOT_PW_RESET_PASSWORD>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$RESET_PASSWORDCopyWith<_$RESET_PASSWORD> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LOADINGCopyWith<$Res> {
-  factory _$$LOADINGCopyWith(_$LOADING value, $Res Function(_$LOADING) then) =
-      __$$LOADINGCopyWithImpl<$Res>;
+abstract class _$$RESET_LOADINGCopyWith<$Res> {
+  factory _$$RESET_LOADINGCopyWith(
+          _$RESET_LOADING value, $Res Function(_$RESET_LOADING) then) =
+      __$$RESET_LOADINGCopyWithImpl<$Res>;
   @useResult
   $Res call({String loading});
 }
 
 /// @nodoc
-class __$$LOADINGCopyWithImpl<$Res>
-    extends _$RecoveryStateCopyWithImpl<$Res, _$LOADING>
-    implements _$$LOADINGCopyWith<$Res> {
-  __$$LOADINGCopyWithImpl(_$LOADING _value, $Res Function(_$LOADING) _then)
+class __$$RESET_LOADINGCopyWithImpl<$Res>
+    extends _$RecoveryStateCopyWithImpl<$Res, _$RESET_LOADING>
+    implements _$$RESET_LOADINGCopyWith<$Res> {
+  __$$RESET_LOADINGCopyWithImpl(
+      _$RESET_LOADING _value, $Res Function(_$RESET_LOADING) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -564,7 +719,7 @@ class __$$LOADINGCopyWithImpl<$Res>
   $Res call({
     Object? loading = null,
   }) {
-    return _then(_$LOADING(
+    return _then(_$RESET_LOADING(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
@@ -575,8 +730,8 @@ class __$$LOADINGCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LOADING implements LOADING {
-  const _$LOADING({required this.loading});
+class _$RESET_LOADING implements RESET_LOADING {
+  const _$RESET_LOADING({required this.loading});
 
   @override
   final String loading;
@@ -590,7 +745,7 @@ class _$LOADING implements LOADING {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LOADING &&
+            other is _$RESET_LOADING &&
             (identical(other.loading, loading) || other.loading == loading));
   }
 
@@ -600,12 +755,13 @@ class _$LOADING implements LOADING {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LOADINGCopyWith<_$LOADING> get copyWith =>
-      __$$LOADINGCopyWithImpl<_$LOADING>(this, _$identity);
+  _$$RESET_LOADINGCopyWith<_$RESET_LOADING> get copyWith =>
+      __$$RESET_LOADINGCopyWithImpl<_$RESET_LOADING>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() idle,
     required TResult Function() email,
     required TResult Function(String otpSentMessage) otp,
     required TResult Function(String otpVerifiedMessage) resetPassword,
@@ -619,6 +775,7 @@ class _$LOADING implements LOADING {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
     TResult? Function()? email,
     TResult? Function(String otpSentMessage)? otp,
     TResult? Function(String otpVerifiedMessage)? resetPassword,
@@ -632,6 +789,7 @@ class _$LOADING implements LOADING {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
     TResult Function()? email,
     TResult Function(String otpSentMessage)? otp,
     TResult Function(String otpVerifiedMessage)? resetPassword,
@@ -649,12 +807,13 @@ class _$LOADING implements LOADING {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FORGOT_PW_EMAIL value) email,
-    required TResult Function(FORGOT_PW_OTP value) otp,
-    required TResult Function(FORGOT_PW_RESET_PASSWORD value) resetPassword,
-    required TResult Function(LOADING value) loading,
-    required TResult Function(FORGOT_PW_FAILED value) failed,
-    required TResult Function(FORGOT_PW_SUCCESS value) success,
+    required TResult Function(RESET_IDLE value) idle,
+    required TResult Function(REST_EMAIL value) email,
+    required TResult Function(RESET_OTP value) otp,
+    required TResult Function(RESET_PASSWORD value) resetPassword,
+    required TResult Function(RESET_LOADING value) loading,
+    required TResult Function(RESET_FAILED value) failed,
+    required TResult Function(RESET_SUCCESS value) success,
   }) {
     return loading(this);
   }
@@ -662,12 +821,13 @@ class _$LOADING implements LOADING {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FORGOT_PW_EMAIL value)? email,
-    TResult? Function(FORGOT_PW_OTP value)? otp,
-    TResult? Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult? Function(LOADING value)? loading,
-    TResult? Function(FORGOT_PW_FAILED value)? failed,
-    TResult? Function(FORGOT_PW_SUCCESS value)? success,
+    TResult? Function(RESET_IDLE value)? idle,
+    TResult? Function(REST_EMAIL value)? email,
+    TResult? Function(RESET_OTP value)? otp,
+    TResult? Function(RESET_PASSWORD value)? resetPassword,
+    TResult? Function(RESET_LOADING value)? loading,
+    TResult? Function(RESET_FAILED value)? failed,
+    TResult? Function(RESET_SUCCESS value)? success,
   }) {
     return loading?.call(this);
   }
@@ -675,12 +835,13 @@ class _$LOADING implements LOADING {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FORGOT_PW_EMAIL value)? email,
-    TResult Function(FORGOT_PW_OTP value)? otp,
-    TResult Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult Function(LOADING value)? loading,
-    TResult Function(FORGOT_PW_FAILED value)? failed,
-    TResult Function(FORGOT_PW_SUCCESS value)? success,
+    TResult Function(RESET_IDLE value)? idle,
+    TResult Function(REST_EMAIL value)? email,
+    TResult Function(RESET_OTP value)? otp,
+    TResult Function(RESET_PASSWORD value)? resetPassword,
+    TResult Function(RESET_LOADING value)? loading,
+    TResult Function(RESET_FAILED value)? failed,
+    TResult Function(RESET_SUCCESS value)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -690,20 +851,21 @@ class _$LOADING implements LOADING {
   }
 }
 
-abstract class LOADING implements RecoveryState {
-  const factory LOADING({required final String loading}) = _$LOADING;
+abstract class RESET_LOADING implements RecoveryState {
+  const factory RESET_LOADING({required final String loading}) =
+      _$RESET_LOADING;
 
   String get loading;
   @JsonKey(ignore: true)
-  _$$LOADINGCopyWith<_$LOADING> get copyWith =>
+  _$$RESET_LOADINGCopyWith<_$RESET_LOADING> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FORGOT_PW_FAILEDCopyWith<$Res> {
-  factory _$$FORGOT_PW_FAILEDCopyWith(
-          _$FORGOT_PW_FAILED value, $Res Function(_$FORGOT_PW_FAILED) then) =
-      __$$FORGOT_PW_FAILEDCopyWithImpl<$Res>;
+abstract class _$$RESET_FAILEDCopyWith<$Res> {
+  factory _$$RESET_FAILEDCopyWith(
+          _$RESET_FAILED value, $Res Function(_$RESET_FAILED) then) =
+      __$$RESET_FAILEDCopyWithImpl<$Res>;
   @useResult
   $Res call({String reason, RecoveryState lastState});
 
@@ -711,11 +873,11 @@ abstract class _$$FORGOT_PW_FAILEDCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FORGOT_PW_FAILEDCopyWithImpl<$Res>
-    extends _$RecoveryStateCopyWithImpl<$Res, _$FORGOT_PW_FAILED>
-    implements _$$FORGOT_PW_FAILEDCopyWith<$Res> {
-  __$$FORGOT_PW_FAILEDCopyWithImpl(
-      _$FORGOT_PW_FAILED _value, $Res Function(_$FORGOT_PW_FAILED) _then)
+class __$$RESET_FAILEDCopyWithImpl<$Res>
+    extends _$RecoveryStateCopyWithImpl<$Res, _$RESET_FAILED>
+    implements _$$RESET_FAILEDCopyWith<$Res> {
+  __$$RESET_FAILEDCopyWithImpl(
+      _$RESET_FAILED _value, $Res Function(_$RESET_FAILED) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -724,7 +886,7 @@ class __$$FORGOT_PW_FAILEDCopyWithImpl<$Res>
     Object? reason = null,
     Object? lastState = null,
   }) {
-    return _then(_$FORGOT_PW_FAILED(
+    return _then(_$RESET_FAILED(
       reason: null == reason
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
@@ -747,8 +909,8 @@ class __$$FORGOT_PW_FAILEDCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
-  const _$FORGOT_PW_FAILED({required this.reason, required this.lastState});
+class _$RESET_FAILED implements RESET_FAILED {
+  const _$RESET_FAILED({required this.reason, required this.lastState});
 
   @override
   final String reason;
@@ -764,7 +926,7 @@ class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FORGOT_PW_FAILED &&
+            other is _$RESET_FAILED &&
             (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.lastState, lastState) ||
                 other.lastState == lastState));
@@ -776,12 +938,13 @@ class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FORGOT_PW_FAILEDCopyWith<_$FORGOT_PW_FAILED> get copyWith =>
-      __$$FORGOT_PW_FAILEDCopyWithImpl<_$FORGOT_PW_FAILED>(this, _$identity);
+  _$$RESET_FAILEDCopyWith<_$RESET_FAILED> get copyWith =>
+      __$$RESET_FAILEDCopyWithImpl<_$RESET_FAILED>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() idle,
     required TResult Function() email,
     required TResult Function(String otpSentMessage) otp,
     required TResult Function(String otpVerifiedMessage) resetPassword,
@@ -795,6 +958,7 @@ class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
     TResult? Function()? email,
     TResult? Function(String otpSentMessage)? otp,
     TResult? Function(String otpVerifiedMessage)? resetPassword,
@@ -808,6 +972,7 @@ class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
     TResult Function()? email,
     TResult Function(String otpSentMessage)? otp,
     TResult Function(String otpVerifiedMessage)? resetPassword,
@@ -825,12 +990,13 @@ class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FORGOT_PW_EMAIL value) email,
-    required TResult Function(FORGOT_PW_OTP value) otp,
-    required TResult Function(FORGOT_PW_RESET_PASSWORD value) resetPassword,
-    required TResult Function(LOADING value) loading,
-    required TResult Function(FORGOT_PW_FAILED value) failed,
-    required TResult Function(FORGOT_PW_SUCCESS value) success,
+    required TResult Function(RESET_IDLE value) idle,
+    required TResult Function(REST_EMAIL value) email,
+    required TResult Function(RESET_OTP value) otp,
+    required TResult Function(RESET_PASSWORD value) resetPassword,
+    required TResult Function(RESET_LOADING value) loading,
+    required TResult Function(RESET_FAILED value) failed,
+    required TResult Function(RESET_SUCCESS value) success,
   }) {
     return failed(this);
   }
@@ -838,12 +1004,13 @@ class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FORGOT_PW_EMAIL value)? email,
-    TResult? Function(FORGOT_PW_OTP value)? otp,
-    TResult? Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult? Function(LOADING value)? loading,
-    TResult? Function(FORGOT_PW_FAILED value)? failed,
-    TResult? Function(FORGOT_PW_SUCCESS value)? success,
+    TResult? Function(RESET_IDLE value)? idle,
+    TResult? Function(REST_EMAIL value)? email,
+    TResult? Function(RESET_OTP value)? otp,
+    TResult? Function(RESET_PASSWORD value)? resetPassword,
+    TResult? Function(RESET_LOADING value)? loading,
+    TResult? Function(RESET_FAILED value)? failed,
+    TResult? Function(RESET_SUCCESS value)? success,
   }) {
     return failed?.call(this);
   }
@@ -851,12 +1018,13 @@ class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FORGOT_PW_EMAIL value)? email,
-    TResult Function(FORGOT_PW_OTP value)? otp,
-    TResult Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult Function(LOADING value)? loading,
-    TResult Function(FORGOT_PW_FAILED value)? failed,
-    TResult Function(FORGOT_PW_SUCCESS value)? success,
+    TResult Function(RESET_IDLE value)? idle,
+    TResult Function(REST_EMAIL value)? email,
+    TResult Function(RESET_OTP value)? otp,
+    TResult Function(RESET_PASSWORD value)? resetPassword,
+    TResult Function(RESET_LOADING value)? loading,
+    TResult Function(RESET_FAILED value)? failed,
+    TResult Function(RESET_SUCCESS value)? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -866,33 +1034,33 @@ class _$FORGOT_PW_FAILED implements FORGOT_PW_FAILED {
   }
 }
 
-abstract class FORGOT_PW_FAILED implements RecoveryState {
-  const factory FORGOT_PW_FAILED(
+abstract class RESET_FAILED implements RecoveryState {
+  const factory RESET_FAILED(
       {required final String reason,
-      required final RecoveryState lastState}) = _$FORGOT_PW_FAILED;
+      required final RecoveryState lastState}) = _$RESET_FAILED;
 
   String get reason;
   RecoveryState get lastState;
   @JsonKey(ignore: true)
-  _$$FORGOT_PW_FAILEDCopyWith<_$FORGOT_PW_FAILED> get copyWith =>
+  _$$RESET_FAILEDCopyWith<_$RESET_FAILED> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FORGOT_PW_SUCCESSCopyWith<$Res> {
-  factory _$$FORGOT_PW_SUCCESSCopyWith(
-          _$FORGOT_PW_SUCCESS value, $Res Function(_$FORGOT_PW_SUCCESS) then) =
-      __$$FORGOT_PW_SUCCESSCopyWithImpl<$Res>;
+abstract class _$$RESET_SUCCESSCopyWith<$Res> {
+  factory _$$RESET_SUCCESSCopyWith(
+          _$RESET_SUCCESS value, $Res Function(_$RESET_SUCCESS) then) =
+      __$$RESET_SUCCESSCopyWithImpl<$Res>;
   @useResult
   $Res call({String? success});
 }
 
 /// @nodoc
-class __$$FORGOT_PW_SUCCESSCopyWithImpl<$Res>
-    extends _$RecoveryStateCopyWithImpl<$Res, _$FORGOT_PW_SUCCESS>
-    implements _$$FORGOT_PW_SUCCESSCopyWith<$Res> {
-  __$$FORGOT_PW_SUCCESSCopyWithImpl(
-      _$FORGOT_PW_SUCCESS _value, $Res Function(_$FORGOT_PW_SUCCESS) _then)
+class __$$RESET_SUCCESSCopyWithImpl<$Res>
+    extends _$RecoveryStateCopyWithImpl<$Res, _$RESET_SUCCESS>
+    implements _$$RESET_SUCCESSCopyWith<$Res> {
+  __$$RESET_SUCCESSCopyWithImpl(
+      _$RESET_SUCCESS _value, $Res Function(_$RESET_SUCCESS) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -900,7 +1068,7 @@ class __$$FORGOT_PW_SUCCESSCopyWithImpl<$Res>
   $Res call({
     Object? success = freezed,
   }) {
-    return _then(_$FORGOT_PW_SUCCESS(
+    return _then(_$RESET_SUCCESS(
       success: freezed == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -911,8 +1079,8 @@ class __$$FORGOT_PW_SUCCESSCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
-  const _$FORGOT_PW_SUCCESS({this.success});
+class _$RESET_SUCCESS implements RESET_SUCCESS {
+  const _$RESET_SUCCESS({this.success});
 
   @override
   final String? success;
@@ -926,7 +1094,7 @@ class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FORGOT_PW_SUCCESS &&
+            other is _$RESET_SUCCESS &&
             (identical(other.success, success) || other.success == success));
   }
 
@@ -936,12 +1104,13 @@ class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FORGOT_PW_SUCCESSCopyWith<_$FORGOT_PW_SUCCESS> get copyWith =>
-      __$$FORGOT_PW_SUCCESSCopyWithImpl<_$FORGOT_PW_SUCCESS>(this, _$identity);
+  _$$RESET_SUCCESSCopyWith<_$RESET_SUCCESS> get copyWith =>
+      __$$RESET_SUCCESSCopyWithImpl<_$RESET_SUCCESS>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() idle,
     required TResult Function() email,
     required TResult Function(String otpSentMessage) otp,
     required TResult Function(String otpVerifiedMessage) resetPassword,
@@ -955,6 +1124,7 @@ class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
     TResult? Function()? email,
     TResult? Function(String otpSentMessage)? otp,
     TResult? Function(String otpVerifiedMessage)? resetPassword,
@@ -968,6 +1138,7 @@ class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
     TResult Function()? email,
     TResult Function(String otpSentMessage)? otp,
     TResult Function(String otpVerifiedMessage)? resetPassword,
@@ -985,12 +1156,13 @@ class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FORGOT_PW_EMAIL value) email,
-    required TResult Function(FORGOT_PW_OTP value) otp,
-    required TResult Function(FORGOT_PW_RESET_PASSWORD value) resetPassword,
-    required TResult Function(LOADING value) loading,
-    required TResult Function(FORGOT_PW_FAILED value) failed,
-    required TResult Function(FORGOT_PW_SUCCESS value) success,
+    required TResult Function(RESET_IDLE value) idle,
+    required TResult Function(REST_EMAIL value) email,
+    required TResult Function(RESET_OTP value) otp,
+    required TResult Function(RESET_PASSWORD value) resetPassword,
+    required TResult Function(RESET_LOADING value) loading,
+    required TResult Function(RESET_FAILED value) failed,
+    required TResult Function(RESET_SUCCESS value) success,
   }) {
     return success(this);
   }
@@ -998,12 +1170,13 @@ class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FORGOT_PW_EMAIL value)? email,
-    TResult? Function(FORGOT_PW_OTP value)? otp,
-    TResult? Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult? Function(LOADING value)? loading,
-    TResult? Function(FORGOT_PW_FAILED value)? failed,
-    TResult? Function(FORGOT_PW_SUCCESS value)? success,
+    TResult? Function(RESET_IDLE value)? idle,
+    TResult? Function(REST_EMAIL value)? email,
+    TResult? Function(RESET_OTP value)? otp,
+    TResult? Function(RESET_PASSWORD value)? resetPassword,
+    TResult? Function(RESET_LOADING value)? loading,
+    TResult? Function(RESET_FAILED value)? failed,
+    TResult? Function(RESET_SUCCESS value)? success,
   }) {
     return success?.call(this);
   }
@@ -1011,12 +1184,13 @@ class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FORGOT_PW_EMAIL value)? email,
-    TResult Function(FORGOT_PW_OTP value)? otp,
-    TResult Function(FORGOT_PW_RESET_PASSWORD value)? resetPassword,
-    TResult Function(LOADING value)? loading,
-    TResult Function(FORGOT_PW_FAILED value)? failed,
-    TResult Function(FORGOT_PW_SUCCESS value)? success,
+    TResult Function(RESET_IDLE value)? idle,
+    TResult Function(REST_EMAIL value)? email,
+    TResult Function(RESET_OTP value)? otp,
+    TResult Function(RESET_PASSWORD value)? resetPassword,
+    TResult Function(RESET_LOADING value)? loading,
+    TResult Function(RESET_FAILED value)? failed,
+    TResult Function(RESET_SUCCESS value)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1026,12 +1200,11 @@ class _$FORGOT_PW_SUCCESS implements FORGOT_PW_SUCCESS {
   }
 }
 
-abstract class FORGOT_PW_SUCCESS implements RecoveryState {
-  const factory FORGOT_PW_SUCCESS({final String? success}) =
-      _$FORGOT_PW_SUCCESS;
+abstract class RESET_SUCCESS implements RecoveryState {
+  const factory RESET_SUCCESS({final String? success}) = _$RESET_SUCCESS;
 
   String? get success;
   @JsonKey(ignore: true)
-  _$$FORGOT_PW_SUCCESSCopyWith<_$FORGOT_PW_SUCCESS> get copyWith =>
+  _$$RESET_SUCCESSCopyWith<_$RESET_SUCCESS> get copyWith =>
       throw _privateConstructorUsedError;
 }

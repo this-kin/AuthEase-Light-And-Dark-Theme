@@ -25,7 +25,7 @@ class Register extends HookConsumerWidget {
     final passwordController = useTextEditingController();
     ref.listen<AuthState>(authProvider, (prev, next) {
       next.maybeWhen(
-        authenticated: (_) {
+        registered: (_) {
           nameController.clear();
           emailController.clear();
           passwordController.clear();
@@ -33,6 +33,9 @@ class Register extends HookConsumerWidget {
         },
         failed: (message) {
           // show dialog with message error
+          nameController.clear();
+          emailController.clear();
+          passwordController.clear();
         },
         orElse: () {},
       );

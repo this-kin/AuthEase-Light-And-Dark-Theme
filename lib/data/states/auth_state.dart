@@ -10,5 +10,7 @@ class AuthState with _$AuthState {
 
   const factory AuthState.authenticated([name]) = AUTHENTICATED;
 
+  const factory AuthState.registered([name]) = REGISTERED;
+
   const factory AuthState.failed({required String reason}) = FAILED;
 }

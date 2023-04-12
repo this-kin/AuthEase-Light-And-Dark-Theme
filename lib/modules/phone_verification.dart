@@ -24,6 +24,7 @@ class Verification extends HookConsumerWidget {
         },
         failed: (message) {
           // show dialog with message error
+          otpController.clear();
         },
         orElse: () {},
       );
@@ -67,6 +68,7 @@ class Verification extends HookConsumerWidget {
                     subtitle: 'Resend Code',
                     onPressed: () {
                       // request for otp code
+                      ref.read(authProvider.notifier).resendOtp();
                     },
                   )
                 ],

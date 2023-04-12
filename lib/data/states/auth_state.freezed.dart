@@ -21,6 +21,7 @@ mixin _$AuthState {
     required TResult Function() unauthorized,
     required TResult Function() authenticating,
     required TResult Function(dynamic name) authenticated,
+    required TResult Function(dynamic name) registered,
     required TResult Function(String reason) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$AuthState {
     TResult? Function()? unauthorized,
     TResult? Function()? authenticating,
     TResult? Function(dynamic name)? authenticated,
+    TResult? Function(dynamic name)? registered,
     TResult? Function(String reason)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$AuthState {
     TResult Function()? unauthorized,
     TResult Function()? authenticating,
     TResult Function(dynamic name)? authenticated,
+    TResult Function(dynamic name)? registered,
     TResult Function(String reason)? failed,
     required TResult orElse(),
   }) =>
@@ -46,6 +49,7 @@ mixin _$AuthState {
     required TResult Function(UNAUTHORIZED value) unauthorized,
     required TResult Function(AUTHENTICATING value) authenticating,
     required TResult Function(AUTHENTICATED value) authenticated,
+    required TResult Function(REGISTERED value) registered,
     required TResult Function(FAILED value) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$AuthState {
     TResult? Function(UNAUTHORIZED value)? unauthorized,
     TResult? Function(AUTHENTICATING value)? authenticating,
     TResult? Function(AUTHENTICATED value)? authenticated,
+    TResult? Function(REGISTERED value)? registered,
     TResult? Function(FAILED value)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$AuthState {
     TResult Function(UNAUTHORIZED value)? unauthorized,
     TResult Function(AUTHENTICATING value)? authenticating,
     TResult Function(AUTHENTICATED value)? authenticated,
+    TResult Function(REGISTERED value)? registered,
     TResult Function(FAILED value)? failed,
     required TResult orElse(),
   }) =>
@@ -126,6 +132,7 @@ class _$UNAUTHORIZED implements UNAUTHORIZED {
     required TResult Function() unauthorized,
     required TResult Function() authenticating,
     required TResult Function(dynamic name) authenticated,
+    required TResult Function(dynamic name) registered,
     required TResult Function(String reason) failed,
   }) {
     return unauthorized();
@@ -137,6 +144,7 @@ class _$UNAUTHORIZED implements UNAUTHORIZED {
     TResult? Function()? unauthorized,
     TResult? Function()? authenticating,
     TResult? Function(dynamic name)? authenticated,
+    TResult? Function(dynamic name)? registered,
     TResult? Function(String reason)? failed,
   }) {
     return unauthorized?.call();
@@ -148,6 +156,7 @@ class _$UNAUTHORIZED implements UNAUTHORIZED {
     TResult Function()? unauthorized,
     TResult Function()? authenticating,
     TResult Function(dynamic name)? authenticated,
+    TResult Function(dynamic name)? registered,
     TResult Function(String reason)? failed,
     required TResult orElse(),
   }) {
@@ -163,6 +172,7 @@ class _$UNAUTHORIZED implements UNAUTHORIZED {
     required TResult Function(UNAUTHORIZED value) unauthorized,
     required TResult Function(AUTHENTICATING value) authenticating,
     required TResult Function(AUTHENTICATED value) authenticated,
+    required TResult Function(REGISTERED value) registered,
     required TResult Function(FAILED value) failed,
   }) {
     return unauthorized(this);
@@ -174,6 +184,7 @@ class _$UNAUTHORIZED implements UNAUTHORIZED {
     TResult? Function(UNAUTHORIZED value)? unauthorized,
     TResult? Function(AUTHENTICATING value)? authenticating,
     TResult? Function(AUTHENTICATED value)? authenticated,
+    TResult? Function(REGISTERED value)? registered,
     TResult? Function(FAILED value)? failed,
   }) {
     return unauthorized?.call(this);
@@ -185,6 +196,7 @@ class _$UNAUTHORIZED implements UNAUTHORIZED {
     TResult Function(UNAUTHORIZED value)? unauthorized,
     TResult Function(AUTHENTICATING value)? authenticating,
     TResult Function(AUTHENTICATED value)? authenticated,
+    TResult Function(REGISTERED value)? registered,
     TResult Function(FAILED value)? failed,
     required TResult orElse(),
   }) {
@@ -240,6 +252,7 @@ class _$AUTHENTICATING implements AUTHENTICATING {
     required TResult Function() unauthorized,
     required TResult Function() authenticating,
     required TResult Function(dynamic name) authenticated,
+    required TResult Function(dynamic name) registered,
     required TResult Function(String reason) failed,
   }) {
     return authenticating();
@@ -251,6 +264,7 @@ class _$AUTHENTICATING implements AUTHENTICATING {
     TResult? Function()? unauthorized,
     TResult? Function()? authenticating,
     TResult? Function(dynamic name)? authenticated,
+    TResult? Function(dynamic name)? registered,
     TResult? Function(String reason)? failed,
   }) {
     return authenticating?.call();
@@ -262,6 +276,7 @@ class _$AUTHENTICATING implements AUTHENTICATING {
     TResult Function()? unauthorized,
     TResult Function()? authenticating,
     TResult Function(dynamic name)? authenticated,
+    TResult Function(dynamic name)? registered,
     TResult Function(String reason)? failed,
     required TResult orElse(),
   }) {
@@ -277,6 +292,7 @@ class _$AUTHENTICATING implements AUTHENTICATING {
     required TResult Function(UNAUTHORIZED value) unauthorized,
     required TResult Function(AUTHENTICATING value) authenticating,
     required TResult Function(AUTHENTICATED value) authenticated,
+    required TResult Function(REGISTERED value) registered,
     required TResult Function(FAILED value) failed,
   }) {
     return authenticating(this);
@@ -288,6 +304,7 @@ class _$AUTHENTICATING implements AUTHENTICATING {
     TResult? Function(UNAUTHORIZED value)? unauthorized,
     TResult? Function(AUTHENTICATING value)? authenticating,
     TResult? Function(AUTHENTICATED value)? authenticated,
+    TResult? Function(REGISTERED value)? registered,
     TResult? Function(FAILED value)? failed,
   }) {
     return authenticating?.call(this);
@@ -299,6 +316,7 @@ class _$AUTHENTICATING implements AUTHENTICATING {
     TResult Function(UNAUTHORIZED value)? unauthorized,
     TResult Function(AUTHENTICATING value)? authenticating,
     TResult Function(AUTHENTICATED value)? authenticated,
+    TResult Function(REGISTERED value)? registered,
     TResult Function(FAILED value)? failed,
     required TResult orElse(),
   }) {
@@ -378,6 +396,7 @@ class _$AUTHENTICATED implements AUTHENTICATED {
     required TResult Function() unauthorized,
     required TResult Function() authenticating,
     required TResult Function(dynamic name) authenticated,
+    required TResult Function(dynamic name) registered,
     required TResult Function(String reason) failed,
   }) {
     return authenticated(name);
@@ -389,6 +408,7 @@ class _$AUTHENTICATED implements AUTHENTICATED {
     TResult? Function()? unauthorized,
     TResult? Function()? authenticating,
     TResult? Function(dynamic name)? authenticated,
+    TResult? Function(dynamic name)? registered,
     TResult? Function(String reason)? failed,
   }) {
     return authenticated?.call(name);
@@ -400,6 +420,7 @@ class _$AUTHENTICATED implements AUTHENTICATED {
     TResult Function()? unauthorized,
     TResult Function()? authenticating,
     TResult Function(dynamic name)? authenticated,
+    TResult Function(dynamic name)? registered,
     TResult Function(String reason)? failed,
     required TResult orElse(),
   }) {
@@ -415,6 +436,7 @@ class _$AUTHENTICATED implements AUTHENTICATED {
     required TResult Function(UNAUTHORIZED value) unauthorized,
     required TResult Function(AUTHENTICATING value) authenticating,
     required TResult Function(AUTHENTICATED value) authenticated,
+    required TResult Function(REGISTERED value) registered,
     required TResult Function(FAILED value) failed,
   }) {
     return authenticated(this);
@@ -426,6 +448,7 @@ class _$AUTHENTICATED implements AUTHENTICATED {
     TResult? Function(UNAUTHORIZED value)? unauthorized,
     TResult? Function(AUTHENTICATING value)? authenticating,
     TResult? Function(AUTHENTICATED value)? authenticated,
+    TResult? Function(REGISTERED value)? registered,
     TResult? Function(FAILED value)? failed,
   }) {
     return authenticated?.call(this);
@@ -437,6 +460,7 @@ class _$AUTHENTICATED implements AUTHENTICATED {
     TResult Function(UNAUTHORIZED value)? unauthorized,
     TResult Function(AUTHENTICATING value)? authenticating,
     TResult Function(AUTHENTICATED value)? authenticated,
+    TResult Function(REGISTERED value)? registered,
     TResult Function(FAILED value)? failed,
     required TResult orElse(),
   }) {
@@ -453,6 +477,155 @@ abstract class AUTHENTICATED implements AuthState {
   dynamic get name;
   @JsonKey(ignore: true)
   _$$AUTHENTICATEDCopyWith<_$AUTHENTICATED> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$REGISTEREDCopyWith<$Res> {
+  factory _$$REGISTEREDCopyWith(
+          _$REGISTERED value, $Res Function(_$REGISTERED) then) =
+      __$$REGISTEREDCopyWithImpl<$Res>;
+  @useResult
+  $Res call({dynamic name});
+}
+
+/// @nodoc
+class __$$REGISTEREDCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$REGISTERED>
+    implements _$$REGISTEREDCopyWith<$Res> {
+  __$$REGISTEREDCopyWithImpl(
+      _$REGISTERED _value, $Res Function(_$REGISTERED) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_$REGISTERED(
+      freezed == name ? _value.name! : name,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$REGISTERED implements REGISTERED {
+  const _$REGISTERED([this.name]);
+
+  @override
+  final dynamic name;
+
+  @override
+  String toString() {
+    return 'AuthState.registered(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$REGISTERED &&
+            const DeepCollectionEquality().equals(other.name, name));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$REGISTEREDCopyWith<_$REGISTERED> get copyWith =>
+      __$$REGISTEREDCopyWithImpl<_$REGISTERED>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unauthorized,
+    required TResult Function() authenticating,
+    required TResult Function(dynamic name) authenticated,
+    required TResult Function(dynamic name) registered,
+    required TResult Function(String reason) failed,
+  }) {
+    return registered(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unauthorized,
+    TResult? Function()? authenticating,
+    TResult? Function(dynamic name)? authenticated,
+    TResult? Function(dynamic name)? registered,
+    TResult? Function(String reason)? failed,
+  }) {
+    return registered?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unauthorized,
+    TResult Function()? authenticating,
+    TResult Function(dynamic name)? authenticated,
+    TResult Function(dynamic name)? registered,
+    TResult Function(String reason)? failed,
+    required TResult orElse(),
+  }) {
+    if (registered != null) {
+      return registered(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UNAUTHORIZED value) unauthorized,
+    required TResult Function(AUTHENTICATING value) authenticating,
+    required TResult Function(AUTHENTICATED value) authenticated,
+    required TResult Function(REGISTERED value) registered,
+    required TResult Function(FAILED value) failed,
+  }) {
+    return registered(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UNAUTHORIZED value)? unauthorized,
+    TResult? Function(AUTHENTICATING value)? authenticating,
+    TResult? Function(AUTHENTICATED value)? authenticated,
+    TResult? Function(REGISTERED value)? registered,
+    TResult? Function(FAILED value)? failed,
+  }) {
+    return registered?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UNAUTHORIZED value)? unauthorized,
+    TResult Function(AUTHENTICATING value)? authenticating,
+    TResult Function(AUTHENTICATED value)? authenticated,
+    TResult Function(REGISTERED value)? registered,
+    TResult Function(FAILED value)? failed,
+    required TResult orElse(),
+  }) {
+    if (registered != null) {
+      return registered(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class REGISTERED implements AuthState {
+  const factory REGISTERED([final dynamic name]) = _$REGISTERED;
+
+  dynamic get name;
+  @JsonKey(ignore: true)
+  _$$REGISTEREDCopyWith<_$REGISTERED> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -521,6 +694,7 @@ class _$FAILED implements FAILED {
     required TResult Function() unauthorized,
     required TResult Function() authenticating,
     required TResult Function(dynamic name) authenticated,
+    required TResult Function(dynamic name) registered,
     required TResult Function(String reason) failed,
   }) {
     return failed(reason);
@@ -532,6 +706,7 @@ class _$FAILED implements FAILED {
     TResult? Function()? unauthorized,
     TResult? Function()? authenticating,
     TResult? Function(dynamic name)? authenticated,
+    TResult? Function(dynamic name)? registered,
     TResult? Function(String reason)? failed,
   }) {
     return failed?.call(reason);
@@ -543,6 +718,7 @@ class _$FAILED implements FAILED {
     TResult Function()? unauthorized,
     TResult Function()? authenticating,
     TResult Function(dynamic name)? authenticated,
+    TResult Function(dynamic name)? registered,
     TResult Function(String reason)? failed,
     required TResult orElse(),
   }) {
@@ -558,6 +734,7 @@ class _$FAILED implements FAILED {
     required TResult Function(UNAUTHORIZED value) unauthorized,
     required TResult Function(AUTHENTICATING value) authenticating,
     required TResult Function(AUTHENTICATED value) authenticated,
+    required TResult Function(REGISTERED value) registered,
     required TResult Function(FAILED value) failed,
   }) {
     return failed(this);
@@ -569,6 +746,7 @@ class _$FAILED implements FAILED {
     TResult? Function(UNAUTHORIZED value)? unauthorized,
     TResult? Function(AUTHENTICATING value)? authenticating,
     TResult? Function(AUTHENTICATED value)? authenticated,
+    TResult? Function(REGISTERED value)? registered,
     TResult? Function(FAILED value)? failed,
   }) {
     return failed?.call(this);
@@ -580,6 +758,7 @@ class _$FAILED implements FAILED {
     TResult Function(UNAUTHORIZED value)? unauthorized,
     TResult Function(AUTHENTICATING value)? authenticating,
     TResult Function(AUTHENTICATED value)? authenticated,
+    TResult Function(REGISTERED value)? registered,
     TResult Function(FAILED value)? failed,
     required TResult orElse(),
   }) {
