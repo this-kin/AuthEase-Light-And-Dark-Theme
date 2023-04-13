@@ -21,6 +21,7 @@ AppBar MyAppbar(BuildContext context) {
           child: SvgPicture.asset(
             ConstantImage.back,
             fit: BoxFit.scaleDown,
+            color: context.theme.iconTheme.color,
           ),
         ),
       ),

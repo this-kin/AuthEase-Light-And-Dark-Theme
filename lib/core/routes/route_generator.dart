@@ -4,6 +4,7 @@ import 'package:qoute_app/core/routes/app_router.dart';
 import 'package:qoute_app/modules/fingerprint.dart';
 import 'package:qoute_app/modules/home.dart';
 import 'package:qoute_app/modules/login.dart';
+import 'package:qoute_app/modules/new_password.dart';
 import 'package:qoute_app/modules/phone_verification.dart';
 import 'package:qoute_app/modules/recover.dart';
 import 'package:qoute_app/modules/register.dart';
@@ -36,6 +37,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => FingerPrint());
       case AppRouter.verification:
         return MaterialPageRoute(builder: (_) => Verification());
+      case AppRouter.new_password:
+        return MaterialPageRoute(builder: (_) => NewPassword());
       default:
         return MaterialPageRoute(builder: (_) => RouteSelector());
     }

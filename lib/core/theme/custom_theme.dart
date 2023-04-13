@@ -47,7 +47,7 @@ class CustomTheme {
       primaryColor: AppColor.primaryColor,
       scaffoldBackgroundColor: AppColor.lightTextColor,
       appBarTheme: appBarTheme,
-      iconTheme: IconThemeData(color: AppColor.accentColor),
+      iconTheme: IconThemeData(color: Colors.white),
       textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme).apply(
         bodyColor: AppColor.darkTextColor,
       ),

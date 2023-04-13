@@ -49,7 +49,7 @@ class Register extends HookConsumerWidget {
           child: Form(
             key: _formKey,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,15 +86,16 @@ class Register extends HookConsumerWidget {
                     PrimaryButton(
                       text: "Sign Up",
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          // sign up
-                          _formKey.currentState!.save();
-                          ref.read(authProvider.notifier).signup(
-                                name: nameController.text,
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                        }
+                        RouteGenerator.pushNamed(AppRouter.verification);
+                        // if (_formKey.currentState!.validate()) {
+                        //   // sign up
+                        //   _formKey.currentState!.save();
+                        //   ref.read(authProvider.notifier).signup(
+                        //         name: nameController.text,
+                        //         email: emailController.text,
+                        //         password: passwordController.text,
+                        //       );
+                        // }
                       },
                     ),
                     SizedBox(height: 250.h),

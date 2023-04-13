@@ -67,9 +67,14 @@ class Recover extends ConsumerWidget {
                     PrimaryButton(
                       text: "Continue",
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          // we are validating before requestin forgot password
-                        }
+                        RouteGenerator.pushNamed(AppRouter.new_password);
+                        // if (_formKey.currentState!.validate()) {
+                        //   // we are validating before requestin forgot password
+                        //   final email = emailController.text;
+                        //   ref
+                        //       .read(recoveryProvider.notifier)
+                        //       .forgot(email: email);
+                        // }
                       },
                     ),
                   ],

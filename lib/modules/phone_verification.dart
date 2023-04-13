@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pinput/pinput.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
+import 'package:qoute_app/core/routes/app_router.dart';
 import 'package:qoute_app/core/routes/route_generator.dart';
 import 'package:qoute_app/data/providers/auth_provider.dart';
 import 'package:qoute_app/data/states/auth_state.dart';
@@ -58,18 +59,21 @@ class Verification extends HookConsumerWidget {
                       focusedPinTheme: focusPinTheme(context),
                       errorPinTheme: errorPinTheme(context),
                       onCompleted: (value) {
-                        ref.read(authProvider.notifier).verify(code: value);
+                        RouteGenerator.pushNamed(AppRouter.fingerprint);
+                        // ref.read(authProvider.notifier).verify(code: value);
                       },
                     ),
                   ),
                   SizedBox(height: 440.h),
-                  SmallSpanText(
-                    title: 'Didn\'t get code? ',
-                    subtitle: 'Resend Code',
-                    onPressed: () {
-                      // request for otp code
-                      ref.read(authProvider.notifier).resendOtp();
-                    },
+                  Center(
+                    child: SmallSpanText(
+                      title: 'Didn\'t get code? ',
+                      subtitle: 'Resend Code',
+                      onPressed: () {
+                        // request for otp code
+                        ref.read(authProvider.notifier).resendOtp();
+                      },
+                    ),
                   )
                 ],
               ),

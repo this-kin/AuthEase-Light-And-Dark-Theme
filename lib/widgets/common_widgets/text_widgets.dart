@@ -60,7 +60,7 @@ class SmallSpanText extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               text: title,
-              style: context.theme.textTheme.displaySmall!.copyWith(
+              style: context.theme.textTheme.bodyLarge!.copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),
