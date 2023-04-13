@@ -27,45 +27,38 @@ Flutter 3.7.0
 
  | 1 | 2|
 |------|-------|
-|<img src="ss/onboard11.png" width="400">|<img src="ss/onboard1.png" width="400">|
+|<img src="screenshots/screenshot_1.png" width="400">|<img src="screenshots/screenshot_2.png" width="400">|
 
 
  | 3 | 4|
 |------|-------|
-|<img src="ss/onboard22.png" width="400">|<img src="ss/onboard2.png" width="400">|
+|<img src="screenshots/screenshot_3.png" width="400">|<img src="screenshots/screenshot_4.png" width="400">|
 
 
 
  | 5 | 6|
 |------|-------|
-|<img src="ss/onboard33.png" width="400">|<img src="ss/onboard3.png" width="400">|
+|<img src="screenshots/screenshot_5.png" width="400">|<img src="screenshots/screenshot_6.png" width="400">|
 
 
 
  | 7 | 8|
 |------|-------|
-|<img src="ss/light_auth.png" width="400">|<img src="ss/ss2.png" width="400">|
+|<img src="screenshots/screenshot_7.png" width="400">|<img src="screenshots/screenshot_8.png" width="400">|
 
  | 9 | 10|
 |------|-------|
-|<img src="ss/ss3.png" width="400">|<img src="ss/ss8.png" width="400">|
+|<img src="screenshots/screenshot_9.png" width="400">|<img src="screenshots/screenshot_10.png" width="400">|
 
 
  | 11 | 12|
 |------|-------|
-|<img src="ss/empty_light.png" width="400">|<img src="ss/empty_dark.png" width="400">|
+|<img src="screenshots/screenshot_11.png" width="400">|<img src="screenshots/screenshot_12.png" width="400">|
 
  | 13 | 14|
 |------|-------|
-|<img src="ss/ss5.png" width="400">|<img src="ss/ss9.png" width="400">|
+|<img src="screenshots/screenshot_13.png" width="400">|<img src="screenshots/screenshot_14.png" width="400">|
 
- | 15 | 16|
-|------|-------|
-|<img src="ss/ss6.png" width="400">|<img src="ss/ss10.png" width="400">|
-
- | 17 | 18|
-|------|-------|
-|<img src="ss/ss7.png" width="400">|<img src="ss/ss11.png" width="400">|
 
 # Command
 ### Install dependencies
