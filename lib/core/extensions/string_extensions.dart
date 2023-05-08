@@ -1,6 +1,6 @@
 import 'package:qoute_app/constants/app_constants.dart';
 
-extension Strings on String {
+extension StringX on String {
   // an extension to get a validated email on string
   bool get isValidEmail => Constants.emailRegex.hasMatch(this);
   // an extension to get a validated name on string
@@ -9,7 +9,7 @@ extension Strings on String {
   bool get isValidContact => Constants.contactRegex.hasMatch(this);
 
   // get app images
-  String toImage() => "assets/images/$this";
+  String toImage() => "assets/images/$this.png";
 
   // get app svgs
   String toSvg() => "assets/svgs/$this.svg";
