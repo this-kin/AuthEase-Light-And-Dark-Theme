@@ -31,18 +31,13 @@ dependencies:
   flutter_riverpod:
   google_fonts:
   flutter_screenutil:
-  pinput:
-  country_picker: 
-  hooks_riverpod:
-  local_auth:
   flutter_svg:
 
-  firebase_core: 
-  firebase_auth: 
-  cloud_firestore:
-  hive: ^2.0.6
-  hive_flutter: ^1.1.0
-  flutter_hooks:
+  dio:
+  flutter_secure_storage:
+  go_router:
+  pinput:
+
 
 dev_dependencies:
   flutter_test:

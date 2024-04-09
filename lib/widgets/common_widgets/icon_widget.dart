@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/core/routes/route_generator.dart';
 
 // ignore: non_constant_identifier_names
 AppBar MyAppbar(BuildContext context) {
@@ -13,7 +12,6 @@ AppBar MyAppbar(BuildContext context) {
       child: InkWell(
         onTap: () {
           // go back
-          RouteGenerator.pop();
         },
         borderRadius: BorderRadius.circular(20.sp),
         child: Padding(

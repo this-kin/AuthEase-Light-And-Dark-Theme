@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pinput/pinput.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/core/routes/app_router.dart';
-import 'package:qoute_app/core/routes/route_generator.dart';
 import 'package:qoute_app/data/providers/auth_provider.dart';
 import 'package:qoute_app/data/states/auth_state.dart';
 import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
@@ -13,15 +10,15 @@ import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
 import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
 import 'package:qoute_app/widgets/common_widgets/text_widgets.dart';
 
-class Verification extends HookConsumerWidget {
+class Verification extends ConsumerWidget {
+  final otpController = TextEditingController();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final otpController = useTextEditingController();
     ref.listen<AuthState>(authProvider, (prev, next) {
       next.maybeWhen(
         authenticated: (_) {
           otpController.clear();
-          RouteGenerator.popUntilRoot();
         },
         failed: (message) {
           // show dialog with message error
@@ -59,7 +56,6 @@ class Verification extends HookConsumerWidget {
                       focusedPinTheme: focusPinTheme(context),
                       errorPinTheme: errorPinTheme(context),
                       onCompleted: (value) {
-                        RouteGenerator.pushNamed(AppRouter.fingerprint);
                         // ref.read(authProvider.notifier).verify(code: value);
                       },
                     ),

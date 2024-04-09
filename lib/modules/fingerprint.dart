@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/core/routes/app_router.dart';
-import 'package:qoute_app/core/routes/route_generator.dart';
-import 'package:qoute_app/data/notifiers/auth_notifiers.dart';
-import 'package:qoute_app/data/states/future_state.dart';
 import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
 import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
 import 'package:qoute_app/widgets/common_widgets/primary_button.dart';
@@ -15,11 +11,6 @@ class FingerPrint extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<FutureState>(biometricStateProvider, (prev, next) {
-      next.maybeWhen(
-        orElse: () {},
-      );
-    });
     return AnnotatedScaffold(
       child: Scaffold(
         appBar: MyAppbar(context),
@@ -62,7 +53,7 @@ class FingerPrint extends ConsumerWidget {
                     PrimaryButton(
                       text: "Enable biotmetric access",
                       onPressed: () {
-                        RouteGenerator.pushNamed(AppRouter.phone_verification);
+                        //
                       },
                     ),
                     Center(
