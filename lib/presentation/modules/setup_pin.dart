@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pinput/pinput.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
-import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
-import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
-import 'package:qoute_app/widgets/common_widgets/primary_button.dart';
-import 'package:qoute_app/widgets/common_widgets/text_widgets.dart';
+import '../widgets/common_widgets/annotated_scaffolder.dart';
+import '../widgets/common_widgets/custom_field.dart';
+import '../widgets/common_widgets/icon_widget.dart';
+import '../widgets/common_widgets/primary_button.dart';
+import '../widgets/common_widgets/text_widgets.dart';
 
-class BvnVerification extends StatelessWidget {
+class SetPin extends ConsumerWidget {
+  SetPin({super.key});
+
   //
   final _formKey = GlobalKey<FormState>();
   final otpController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return AnnotatedScaffold(
       child: Scaffold(
         appBar: MyAppbar(context),
@@ -30,25 +34,27 @@ class BvnVerification extends StatelessWidget {
                   children: [
                     SizedBox(height: 30.h),
                     SpanText(
-                      title: 'BVN Verification',
+                      title: 'Set your PIN code',
                       subtitle: '',
                     ),
                     SizedBox(height: 10.h),
                     Text(
-                        'We need this information before we can\nprovide you with account details'),
+                        'We use state-of-art security measure to protect your information at all times'),
                     SizedBox(height: 30.h),
-                    CustomTextField(
-                      controller: otpController,
-                      hintText: 'Enter your BVN',
-                      keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.done,
-                      validator: (v) {
-                        // create validator
-                      },
+                    Center(
+                      child: Pinput(
+                        length: 5,
+                        controller: otpController,
+                        closeKeyboardWhenCompleted: true,
+                        defaultPinTheme: defaultPinTheme(context),
+                        focusedPinTheme: focusPinTheme(context),
+                        errorPinTheme: errorPinTheme(context),
+                        onCompleted: (value) {},
+                      ),
                     ),
-                    SizedBox(height: 420.h),
+                    SizedBox(height: 440.h),
                     PrimaryButton(
-                      text: "Continue",
+                      text: "Create Pin",
                       onPressed: () {
                         // if (_formKey.currentState!.validate()) {
                         //   // login

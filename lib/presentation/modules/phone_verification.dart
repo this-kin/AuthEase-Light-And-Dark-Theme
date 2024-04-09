@@ -5,10 +5,10 @@ import 'package:pinput/pinput.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
 import 'package:qoute_app/data/providers/auth_provider.dart';
 import 'package:qoute_app/data/states/auth_state.dart';
-import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
-import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
-import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
-import 'package:qoute_app/widgets/common_widgets/text_widgets.dart';
+import '../widgets/common_widgets/annotated_scaffolder.dart';
+import '../widgets/common_widgets/custom_field.dart';
+import '../widgets/common_widgets/icon_widget.dart';
+import '../widgets/common_widgets/text_widgets.dart';
 
 class Verification extends ConsumerWidget {
   final otpController = TextEditingController();

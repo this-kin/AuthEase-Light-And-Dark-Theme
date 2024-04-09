@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoute_app/core/custom_validator.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
-import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
-import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
-import 'package:qoute_app/widgets/common_widgets/primary_button.dart';
-import 'package:qoute_app/widgets/common_widgets/text_widgets.dart';
+import '../widgets/common_widgets/annotated_scaffolder.dart';
+import '../widgets/common_widgets/custom_field.dart';
+import '../widgets/common_widgets/icon_widget.dart';
+import '../widgets/common_widgets/primary_button.dart';
+import '../widgets/common_widgets/text_widgets.dart';
 
-class Recover extends ConsumerWidget {
+class BvnVerification extends StatelessWidget {
   //
   final _formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
+  final otpController = TextEditingController();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return AnnotatedScaffold(
       child: Scaffold(
         appBar: MyAppbar(context),
@@ -32,24 +30,29 @@ class Recover extends ConsumerWidget {
                   children: [
                     SizedBox(height: 30.h),
                     SpanText(
-                      title: 'Forgot Password',
+                      title: 'BVN Verification',
                       subtitle: '',
                     ),
                     SizedBox(height: 10.h),
                     Text(
-                        'Enter your email address so we can send\nan instructions about resetting your password'),
-                    SizedBox(height: 20.h),
+                        'We need this information before we can\nprovide you with account details'),
+                    SizedBox(height: 30.h),
                     CustomTextField(
-                      hintText: 'johndoe@gmail.com',
-                      keyboardType: TextInputType.emailAddress,
-                      textInputAction: TextInputAction.next,
-                      validator: CustomValidator.emailValidator,
+                      controller: otpController,
+                      hintText: 'Enter your BVN',
+                      keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.done,
+                      validator: (v) {
+                        // create validator
+                      },
                     ),
-                    SizedBox(height: 440.h),
+                    SizedBox(height: 420.h),
                     PrimaryButton(
                       text: "Continue",
                       onPressed: () {
-                        //
+                        // if (_formKey.currentState!.validate()) {
+                        //   // login
+                        // }
                       },
                     ),
                   ],

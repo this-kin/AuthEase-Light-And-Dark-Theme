@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoute_app/core/custom_validator.dart';
-import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
-import 'package:qoute_app/widgets/common_widgets/custom_field.dart';
-import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
-import 'package:qoute_app/widgets/common_widgets/primary_button.dart';
-import 'package:qoute_app/widgets/common_widgets/text_widgets.dart';
+import '../widgets/common_widgets/annotated_scaffolder.dart';
+import '../widgets/common_widgets/custom_field.dart';
+import '../widgets/common_widgets/icon_widget.dart';
+import '../widgets/common_widgets/primary_button.dart';
+import '../widgets/common_widgets/text_widgets.dart';
 
 class NewPassword extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();

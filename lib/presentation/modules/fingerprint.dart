@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/widgets/common_widgets/annotated_scaffolder.dart';
-import 'package:qoute_app/widgets/common_widgets/icon_widget.dart';
-import 'package:qoute_app/widgets/common_widgets/primary_button.dart';
+import '../widgets/common_widgets/annotated_scaffolder.dart';
+import '../widgets/common_widgets/icon_widget.dart';
+import '../widgets/common_widgets/primary_button.dart';
 
 class FingerPrint extends ConsumerWidget {
   const FingerPrint({super.key});
