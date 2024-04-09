@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
-import 'package:qoute_app/data/providers/auth_provider.dart';
-import 'package:qoute_app/data/states/auth_state.dart';
+import 'package:qoute_app/presentation/providers/auth_provider.dart';
+import 'package:qoute_app/presentation/providers/states/auth_state.dart';
 import '../widgets/common_widgets/annotated_scaffolder.dart';
 import '../widgets/common_widgets/custom_field.dart';
 import '../widgets/common_widgets/icon_widget.dart';
@@ -67,7 +67,6 @@ class Verification extends ConsumerWidget {
                       subtitle: 'Resend Code',
                       onPressed: () {
                         // request for otp code
-                        ref.read(authProvider.notifier).resendOtp();
                       },
                     ),
                   )
