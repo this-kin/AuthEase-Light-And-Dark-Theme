@@ -37,6 +37,7 @@ dependencies:
   flutter_secure_storage:
   go_router:
   pinput:
+  shared_preferences:
 
 
 dev_dependencies:
