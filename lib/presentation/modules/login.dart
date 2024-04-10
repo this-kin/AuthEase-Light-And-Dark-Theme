@@ -53,16 +53,16 @@ class Login extends ConsumerWidget {
                     ),
                     SizedBox(height: 70.h),
                     CustomTextField(
-                      hintText: 'johndoe@gmail.com',
-                      keyboardType: TextInputType.emailAddress,
+                      hintText: 'John Doe',
+                      keyboardType: TextInputType.name,
                       textInputAction: TextInputAction.next,
-                      validator: CustomValidator.emailValidator,
+                      validator: CustomValidator.fullNameValidator,
                     ),
                     SizedBox(height: 15.h),
                     CustomTextField(
                       hintText: '* * * * * * * * *',
                       keyboardType: TextInputType.visiblePassword,
-                      textInputAction: TextInputAction.next,
+                      textInputAction: TextInputAction.done,
                       validator: CustomValidator.passwordValidator,
                     ),
                     SizedBox(height: 20.h),
@@ -73,7 +73,7 @@ class Login extends ConsumerWidget {
                           formKey.currentState!.save();
                           // validating user input before login
                           ref.read(authProvider.notifier).login(
-                                email: emailController.text,
+                                name: emailController.text,
                                 password: passwordController.text,
                               );
                         }
