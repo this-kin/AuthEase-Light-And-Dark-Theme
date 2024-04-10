@@ -25,7 +25,9 @@ class RouteNotifier extends ChangeNotifier {
 
   RouteNotifier(this._ref);
 
-  String? redirectLogic(BuildContext context, GoRouterState state) {}
+  String? redirectLogic(BuildContext context, GoRouterState state) {
+    return null;
+  }
 
   List<RouteBase> get routes => _routes;
 

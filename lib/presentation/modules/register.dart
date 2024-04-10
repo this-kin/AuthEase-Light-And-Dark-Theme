@@ -12,10 +12,12 @@ import '../widgets/common_widgets/text_widgets.dart';
 import '../widgets/common_widgets/primary_button.dart';
 
 class Register extends ConsumerWidget {
-  final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  static final _formKey = GlobalKey<FormState>();
+  static final nameController = TextEditingController();
+  static final emailController = TextEditingController();
+  static final phoneController = TextEditingController();
+  static final addressController = TextEditingController();
+  static final passwordController = TextEditingController();
 
   Register({super.key});
   @override
@@ -23,16 +25,11 @@ class Register extends ConsumerWidget {
     ref.listen<AuthState>(authProvider, (prev, next) {
       next.maybeWhen(
         registered: (_) {
-          nameController.clear();
-          emailController.clear();
-          passwordController.clear();
-          // RouteGenerator.pushNamed(AppRouter.verification);
+          // dispose input controllers and show success message toast
+          _disposeController();
         },
         failed: (message) {
-          // show dialog with message error
-          nameController.clear();
-          emailController.clear();
-          passwordController.clear();
+          // show error message toast
         },
         orElse: () {},
       );
@@ -73,6 +70,22 @@ class Register extends ConsumerWidget {
                     ),
                     SizedBox(height: 15.h),
                     CustomTextField(
+                      hintText: '0906 873 2878',
+                      controller: phoneController,
+                      keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
+                      validator: CustomValidator.emailValidator,
+                    ),
+                    SizedBox(height: 15.h),
+                    CustomTextField(
+                      hintText: '3b Admiralty Lagos',
+                      controller: addressController,
+                      keyboardType: TextInputType.streetAddress,
+                      textInputAction: TextInputAction.next,
+                      validator: CustomValidator.fullNameValidator,
+                    ),
+                    SizedBox(height: 15.h),
+                    CustomTextField(
                       hintText: '* * * * * * * * *',
                       controller: passwordController,
                       keyboardType: TextInputType.visiblePassword,
@@ -83,16 +96,16 @@ class Register extends ConsumerWidget {
                     PrimaryButton(
                       text: "Sign Up",
                       onPressed: () {
-                        // RouteGenerator.pushNamed(AppRouter.verification);
-                        // if (_formKey.currentState!.validate()) {
-                        //   // sign up
-                        //   _formKey.currentState!.save();
-                        //   ref.read(authProvider.notifier).signup(
-                        //         name: nameController.text,
-                        //         email: emailController.text,
-                        //         password: passwordController.text,
-                        //       );
-                        // }
+                        if (_formKey.currentState!.validate()) {
+                          /// if forms are filled correctly then sign up
+                          ref.read(authProvider.notifier).signup(
+                                name: nameController.text,
+                                email: emailController.text,
+                                phone: phoneController.text,
+                                address: addressController.text,
+                                password: passwordController.text,
+                              );
+                        }
                       },
                     ),
                     SizedBox(height: 250.h),
@@ -114,5 +127,13 @@ class Register extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  void _disposeController() {
+    nameController.clear();
+    emailController.clear();
+    passwordController.clear();
+    phoneController.clear();
+    addressController.clear();
   }
 }

@@ -21,7 +21,7 @@ class LoggingInterceptor extends Interceptor {
   /// - [handler.resolve]/[super.onResponse], if you want to resolve the
   /// request with your custom [Response]. All ** request ** interceptors are ignored.
   /// - [handler.reject]/[super.onError], if you want to fail the request
-  /// with your custom [DioError].
+  /// with your custom [DioException].
   @override
   void onRequest(
     RequestOptions options,
@@ -66,7 +66,7 @@ class LoggingInterceptor extends Interceptor {
   /// - [handler.resolve]/[super.onResponse], if you want to resolve the
   /// [Response] with your custom data. All ** response ** interceptors are ignored.
   /// - [handler.reject]/[super.onError], if you want to fail the response
-  /// with your custom [DioError].
+  /// with your custom [DioException].
   @override
   void onResponse(
     Response response,
@@ -100,10 +100,10 @@ class LoggingInterceptor extends Interceptor {
   /// - [handler.resolve]/[super.onResponse], if you want to resolve the
   /// [Response] with your custom data. All ** error ** interceptors are ignored.
   /// - [handler.reject]/[super.onError], if you want to fail the response
-  /// with your custom [DioError].
+  /// with your custom [DioException].
   @override
   void onError(
-    DioError dioError,
+    DioException dioError,
     ErrorInterceptorHandler handler,
   ) {
     debugPrint('--> ERROR');
