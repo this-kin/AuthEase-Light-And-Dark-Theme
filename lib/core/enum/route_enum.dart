@@ -1,6 +1,7 @@
 enum RouteGenerator {
   login(path: "/login", name: 'login'),
   register(path: "/register", name: 'register'),
+  forgot(path: "/forgot", name: "forgot"),
   home(path: '/home', name: 'home'),
   profile(path: '/profile', name: 'profile');
 

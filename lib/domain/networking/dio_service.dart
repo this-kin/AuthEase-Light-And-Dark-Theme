@@ -11,7 +11,7 @@ class DioService {
     Iterable<Interceptor>? interceptors,
   })  : _client = client,
         _cancelToken = CancelToken() {
-    if (interceptors!.isNotEmpty) _client.interceptors.addAll(interceptors);
+    if (interceptors != null) _client.interceptors.addAll(interceptors);
   }
 
   void cancelRequests({CancelToken? cancelToken}) async {
@@ -45,7 +45,7 @@ class DioService {
   }) async {
     final response = await _client.post(
       endpoint,
-      queryParameters: params,
+      data: params,
       options: options,
       cancelToken: cancelToken ?? _cancelToken,
     );

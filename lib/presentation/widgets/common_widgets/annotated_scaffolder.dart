@@ -28,7 +28,7 @@ class AnnotatedScaffold extends ConsumerWidget {
               : Brightness.dark,
           statusBarColor: Colors.transparent,
         ),
-        child: Flexible(child: child!),
+        child: Expanded(child: child ?? const SizedBox.shrink()),
       ),
     );
   }

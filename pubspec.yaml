@@ -38,6 +38,8 @@ dependencies:
   go_router:
   pinput:
   shared_preferences:
+  toastification: 
+  flutter_styled_toast: 
 
 
 dev_dependencies:

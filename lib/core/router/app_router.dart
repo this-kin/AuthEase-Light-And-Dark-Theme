@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:qoute_app/core/router/routes.dart';
 import 'package:qoute_app/core/enum/route_enum.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qoute_app/presentation/modules/recover.dart';
 
 final GlobalKey<NavigatorState> _rootNavigator = GlobalKey(debugLabel: 'root');
 
@@ -41,6 +42,11 @@ class RouteNotifier extends ChangeNotifier {
       path: RouteGenerator.register.path,
       name: RouteGenerator.register.name,
       builder: (_, __) => Register(),
+    ),
+    GoRoute(
+      path: RouteGenerator.forgot.path,
+      name: RouteGenerator.forgot.name,
+      builder: (_, __) => Recover(),
     ),
     GoRoute(
       path: RouteGenerator.home.path,

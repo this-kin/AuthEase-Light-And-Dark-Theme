@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qoute_app/core/custom_validator.dart';
+import 'package:qoute_app/core/enum/route_enum.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
 import 'package:qoute_app/presentation/providers/auth_provider.dart';
 import 'package:qoute_app/presentation/providers/states/auth_state.dart';
@@ -11,22 +14,25 @@ import '../widgets/common_widgets/primary_button.dart';
 import '../widgets/common_widgets/text_widgets.dart';
 
 class Login extends ConsumerWidget {
+  final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formKey = GlobalKey<FormState>();
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
     ref.listen<AuthState>(authProvider, (prev, next) {
       next.maybeWhen(
         authenticated: (_) {
-          emailController.clear();
-          passwordController.clear();
-          // RouteGenerator.popUntilRoot();
+          //  show success message toast
+          showToast(
+            "Login Successful",
+            context: context,
+            position: StyledToastPosition.bottom,
+          );
         },
         failed: (message) {
-          // show dialog with message error
-          emailController.clear();
-          passwordController.clear();
+          // dispose input controllers and show error message toast
+          _disposeController();
         },
         orElse: () {},
       );
@@ -55,29 +61,47 @@ class Login extends ConsumerWidget {
                     CustomTextField(
                       hintText: 'John Doe',
                       keyboardType: TextInputType.name,
+                      controller: emailController,
                       textInputAction: TextInputAction.next,
                       validator: CustomValidator.fullNameValidator,
                     ),
                     SizedBox(height: 15.h),
                     CustomTextField(
                       hintText: '* * * * * * * * *',
+                      controller: passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
                       validator: CustomValidator.passwordValidator,
                     ),
                     SizedBox(height: 20.h),
-                    PrimaryButton(
-                      text: "Login",
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          formKey.currentState!.save();
-                          // validating user input before login
-                          ref.read(authProvider.notifier).login(
-                                name: emailController.text,
-                                password: passwordController.text,
-                              );
-                        }
+                    Consumer(
+                      builder: (_, WidgetRef ref, child) {
+                        final state = ref.watch(authProvider);
+                        return state.maybeWhen(
+                          /// if state is [AuthState.authenticating] or loading displays a
+                          /// CircularProgressIndicator else if it's failed or authenticated
+                          /// displays the PrimaryButton for retrying [return a type of widget
+                          /// or function]
+
+                          authenticating: () => Center(
+                            child: const CircularProgressIndicator.adaptive(),
+                          ),
+                          orElse: () => child!,
+                        );
                       },
+                      child: PrimaryButton(
+                        text: "Login",
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            formKey.currentState!.save();
+                            // validating user input before login
+                            ref.read(authProvider.notifier).login(
+                                  name: emailController.text,
+                                  password: passwordController.text,
+                                );
+                          }
+                        },
+                      ),
                     ),
                     SizedBox(height: 20.h),
                     Align(
@@ -85,7 +109,8 @@ class Login extends ConsumerWidget {
                       child: TextButton(
                         onPressed: () {
                           // go to forgot password
-                          // RouteGenerator.pushNamed(AppRouter.recover);
+                          GoRouter.of(context)
+                              .pushNamed(RouteGenerator.forgot.name);
                         },
                         child: Text("Forgot password?"),
                       ),
@@ -97,7 +122,8 @@ class Login extends ConsumerWidget {
                         subtitle: 'Sign Up',
                         onPressed: () {
                           // go to register
-                          // RouteGenerator.pushNamed(AppRouter.register);
+                          GoRouter.of(context)
+                              .pushNamed(RouteGenerator.register.name);
                         },
                       ),
                     )
@@ -109,5 +135,10 @@ class Login extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  void _disposeController() {
+    emailController.clear();
+    passwordController.clear();
   }
 }
