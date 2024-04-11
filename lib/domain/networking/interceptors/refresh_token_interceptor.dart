@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:qoute_app/core/typedef.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qoute_app/constants/api_constants.dart';
 import 'package:qoute_app/presentation/providers/auth_provider.dart';
 
 /// A class that holds intercepting logic for refreshing expired tokens. This
@@ -56,9 +57,8 @@ class RefreshTokenInterceptor extends Interceptor {
           //Get auth details for refresh token request
           final kVStorageService = _ref.read(kvStorageProvider);
           final data = {
-            'email': kVStorageService.getAuthUser()!.email,
+            'username': kVStorageService.getAuthUser()!.username,
             'password': await kVStorageService.getAuthPassword(),
-            'oldToken': await kVStorageService.getAuthToken(),
           };
 
           //Make refresh request and get new token
@@ -71,10 +71,10 @@ class RefreshTokenInterceptor extends Interceptor {
 
           if (newToken == null) return super.onError(dioError, handler);
 
-          //Update auth and unlock old dio
+          /// Update auth and unlock old dio
           kVStorageService.setAuthToken(newToken);
 
-          //Make original req with new token
+          /// Send  original request with new token
           final response = await _dio.request<Json>(
             dioError.requestOptions.path,
             data: dioError.requestOptions.data,
@@ -108,7 +108,7 @@ class RefreshTokenInterceptor extends Interceptor {
       debugPrint('\tBody: $data');
 
       final response =
-          await tokenDio.post<Json>("Refresh Token Endpoint", data: data);
+          await tokenDio.post<Json>(ApiConstants.login, data: data);
 
       debugPrint('\tStatus code:${response.statusCode}');
       debugPrint('\tResponse: ${response.data}');
@@ -122,7 +122,7 @@ class RefreshTokenInterceptor extends Interceptor {
       } else {
         throw Exception;
       }
-    } on DioError catch (de) {
+    } on DioException catch (de) {
       //only caught here for logging
       //forward to try-catch in dio_service for handling
       debugPrint('\t--> ERROR');
@@ -134,8 +134,8 @@ class RefreshTokenInterceptor extends Interceptor {
 
       return null;
     } on Exception catch (ex) {
-      //only caught here for logging
-      //forward to try-catch in dio_service for handling
+      /// only caught here for logging
+      /// forward to try-catch in dio_service for handling
       debugPrint('\t--> ERROR');
       debugPrint('\t\t--> Exception: $ex');
       debugPrint('\t<-- END ERROR');
