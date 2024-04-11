@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/data/entities/user_model.dart';
+import 'package:qoute_app/domain/local_storage/kv_storage.dart';
 import 'package:qoute_app/domain/repositories/base_auth_repository.dart';
 import 'package:qoute_app/presentation/providers/states/auth_state.dart';
 import 'package:qoute_app/presentation/providers/states/future_state.dart';
@@ -11,29 +13,67 @@ final userStateProvider = StateProvider<FutureState<UserData?>>((ref) {
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final Ref _ref;
+  final KeyValueStorage _storage;
   final BaseAuthRepository _authRepository;
+
+  late String? _email;
+  late String? _password;
+  late UserData? _currentUser;
 
   AuthStateNotifier({
     required Ref ref,
+    required KeyValueStorage storage,
     required BaseAuthRepository authRepository,
   })  : _ref = ref,
+        _storage = storage,
         _authRepository = authRepository,
         super(AuthState.unauthorized()) {
     _initialize();
   }
 
-  void _initialize() async {}
+  void _initialize() async {
+    state = AuthState.authenticating();
+    try {
+      _currentUser = _storage.getAuthUser();
+      _email = await _storage.getAuthEmail();
+      _password = await _storage.getAuthPassword();
 
-  /// A function to signup new user if successful [AuthState] is [AuthState.registered]
+      bool? authenticated = _storage.getAuthState();
+      if (!authenticated ||
+          _currentUser == null ||
+          _email!.isEmpty ||
+          _password!.isEmpty) {
+        state = AuthState.unauthorized();
+      }
+
+      state = AuthState.authenticated(_currentUser!.username);
+    } catch (e) {
+      state = AuthState.failed(reason: e.toString());
+    }
+  }
+
+  void _updateCredential(String email, password) {
+    _storage.setAuthEmail(email);
+    _storage.setAuthPassword(password);
+  }
+
+  void _updateAuthProfile() {
+    _storage.setAuthState(state);
+    debugPrint('auth state $state');
+    _storage.setAuthUser(_currentUser!);
+    debugPrint('auth user ${_currentUser.toString()}');
+  }
+
+  /// A function to signup new user if successful [AuthState] is [REGISTERED]
   /// else [AuthState] is [AuthState.failed] with reason of failure,
-  /// [AuthState.authenticating] is the loading state of provider.
+  /// [AUTHENTICATING] is the loading state of provider.
 
   Future<void> signup({
-    required String? name,
-    email,
-    password,
-    phone,
-    address,
+    required String name,
+    required String email,
+    required String password,
+    required String phone,
+    required String address,
   }) async {
     state = const AuthState.authenticating();
     try {
@@ -45,16 +85,18 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
         address: address,
       );
       state = AuthState.registered(result);
+      _updateCredential(email, password);
+      _updateAuthProfile();
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
     }
   }
 
-  /// A function to login new  if successful [AuthState] is [AuthState.authenticated]
+  /// A function to login new  if successful [AuthState] is [AUTHENTICATED]
   /// else [AuthState] is [AuthState.failed] with reason of failure,
-  /// [AuthState.authenticating] is the loading state of provider.
+  /// [LOADING] is the loading state of provider.
 
-  Future<void> login({required String? name, password}) async {
+  Future<void> login({required String name, password}) async {
     state = const AuthState.authenticating();
     try {
       // fake authentication
@@ -63,6 +105,8 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
         password: password,
       );
       state = AuthState.authenticated(result);
+      _updateCredential(name, password);
+      _updateAuthProfile();
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
     }
@@ -75,8 +119,9 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     final userState = _ref.watch(userStateProvider.notifier);
     userState.state = FutureState.loading();
     try {
-      final result = await _authRepository.getUser();
-      userState.state = FutureState.data(data: result);
+      _currentUser = await _authRepository.getUser();
+      userState.state = FutureState.data(data: _currentUser);
+      _updateAuthProfile();
     } catch (e) {
       userState.state = FutureState.failed(reason: e.toString());
     }
