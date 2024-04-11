@@ -127,4 +127,16 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       userState.state = FutureState.failed(reason: e.toString());
     }
   }
+
+  Future<void> logout() async {
+    state = AuthState.authenticating();
+    final userState = _ref.watch(userStateProvider.notifier);
+    try {
+      _storage.resetKey();
+      userState.state = FutureState.idle();
+      state = AuthState.unauthorized();
+    } catch (e) {
+      state = AuthState.failed(reason: e.toString());
+    }
+  }
 }

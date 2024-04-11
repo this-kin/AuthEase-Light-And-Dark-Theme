@@ -23,7 +23,7 @@ class MyApp extends ConsumerWidget {
         return MaterialApp.router(
           title: "AuthEase",
           debugShowCheckedModeBanner: false,
-          themeMode: ref.watch(themeChangeProvider).themeMode,
+          themeMode: ref.watch(themeProvider).themeMode,
           theme: CustomTheme.lightTheme(context),
           darkTheme: CustomTheme.darkTheme(context),
           routerDelegate: router.routerDelegate,

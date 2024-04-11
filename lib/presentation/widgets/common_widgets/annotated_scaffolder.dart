@@ -13,7 +13,7 @@ class AnnotatedScaffold extends ConsumerWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final con = ref.watch(themeChangeProvider);
+    final con = ref.watch(themeProvider);
     return AnimatedSwitcher(
       duration: kDuration,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
