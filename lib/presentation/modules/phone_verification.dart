@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
-import 'package:qoute_app/core/extensions/widget_extension.dart';
+import 'package:qoute_app/constants/image_constants.dart';
 import 'package:qoute_app/presentation/providers/auth_provider.dart';
 import 'package:qoute_app/presentation/providers/states/auth_state.dart';
 import '../widgets/common_widgets/annotated_scaffolder.dart';
 import '../widgets/common_widgets/custom_field.dart';
-import '../widgets/common_widgets/icon_widget.dart';
 import '../widgets/common_widgets/text_widgets.dart';
 
 class Verification extends ConsumerWidget {
@@ -27,10 +28,31 @@ class Verification extends ConsumerWidget {
         orElse: () {},
       );
     });
+    final theme = Theme.of(context);
     return AnnotatedScaffold(
       child: Scaffold(
-        appBar: MyAppbar(context),
-        backgroundColor: context.theme.scaffoldBackgroundColor,
+        appBar: AppBar(
+          leading: Semantics(
+            button: true,
+            child: InkWell(
+              onTap: () {
+                // go back
+                GoRouter.of(context).pop();
+              },
+              borderRadius: BorderRadius.circular(20.sp),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: SvgPicture.asset(
+                  ConstantImage.back,
+                  fit: BoxFit.scaleDown,
+                  color: theme.iconTheme.color,
+                ),
+              ),
+            ),
+          ),
+          backgroundColor: theme.scaffoldBackgroundColor,
+        ),
+        backgroundColor: theme.scaffoldBackgroundColor,
         body: SafeArea(
           top: true,
           child: Container(

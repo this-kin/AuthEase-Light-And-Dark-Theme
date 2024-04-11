@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:qoute_app/constants/image_constants.dart';
 import 'package:qoute_app/core/custom_validator.dart';
 import '../widgets/common_widgets/annotated_scaffolder.dart';
 import '../widgets/common_widgets/custom_field.dart';
-import '../widgets/common_widgets/icon_widget.dart';
 import '../widgets/common_widgets/primary_button.dart';
 import '../widgets/common_widgets/text_widgets.dart';
 
@@ -17,9 +18,29 @@ class NewPassword extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
     return AnnotatedScaffold(
       child: Scaffold(
-        appBar: MyAppbar(context),
+        appBar: AppBar(
+          leading: Semantics(
+            button: true,
+            child: InkWell(
+              onTap: () {
+                // go back
+              },
+              borderRadius: BorderRadius.circular(20.sp),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: SvgPicture.asset(
+                  ConstantImage.back,
+                  fit: BoxFit.scaleDown,
+                  color: theme.iconTheme.color,
+                ),
+              ),
+            ),
+          ),
+          backgroundColor: theme.scaffoldBackgroundColor,
+        ),
         body: SafeArea(
           top: true,
           child: Form(
