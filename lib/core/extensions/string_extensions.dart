@@ -1,18 +1,21 @@
 import 'package:qoute_app/constants/app_constants.dart';
 
 extension StringX on String {
-  /// an extension to get a validated email on string
+  /// An extension to get a validated email on string
   bool get isValidEmail => Constants.emailRegex.hasMatch(this);
 
-  /// an extension to get a validated name on string
+  /// An extension to get a validated name on string
   bool get isValidFullName => Constants.fullNameRegex.hasMatch(this);
 
-  /// an extension to get a validated contact on string
-  bool get isValidContact => Constants.contactRegex.hasMatch(this);
+  /// An extension to get a validated contact on string
+  bool get isValidContact => Constants.phoneRegex.hasMatch(this);
 
-  /// get app images
+  /// An extension to get a validated contact on string
+  bool get isValidAddress => Constants.addressRegex.hasMatch(this);
+
+  /// An extension to get app images assets without rewriting a full path ['assets/images/path]
   String toImage() => "assets/images/$this.png";
 
-  /// get app svgs
+  /// An extension to get app svg assets without rewriting a full path ['assets/images/path]
   String toSvg() => "assets/svgs/$this.svg";
 }

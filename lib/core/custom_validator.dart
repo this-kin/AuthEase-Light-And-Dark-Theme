@@ -28,7 +28,27 @@ class CustomValidator {
 
   /// A function/method that validates user input name
   static String? fullNameValidator(String? fullName) {
-    if (fullName != null && fullName.isValidFullName) return null;
+    if (fullName != null && fullName.isValidFullName)
+      return null;
+    else if (fullName == null) return Constants.emptyNameError;
     return Constants.invalidFullNameError;
+  }
+
+  /// A function/method that validates user input address
+  static String? addressValidator(String? fullName) {
+    if (fullName != null && fullName.isValidFullName)
+      return null;
+    else if (fullName == null || fullName.isEmpty)
+      return Constants.emptyAddressError;
+    return Constants.invalidAddressError;
+  }
+
+  /// A function/method that validates user input name
+  static String? phoneValidator(String? fullName) {
+    if (fullName != null && fullName.isValidContact)
+      return null;
+    else if (fullName == null || fullName.isEmpty)
+      return Constants.emptyAddressError;
+    return Constants.invalidPhoneError;
   }
 }

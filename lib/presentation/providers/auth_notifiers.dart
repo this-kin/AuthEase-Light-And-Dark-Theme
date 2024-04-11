@@ -13,6 +13,10 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
         _authRepository = authRepository,
         super(AuthState.unauthorized());
 
+  /// A function to signup new user if successful [AuthState] is [AuthState.registered]
+  /// else [AuthState] is [AuthState.failed] with reason of failure,
+  /// [AuthState.authenticating] is the loading state of provider.
+
   Future<void> signup({
     required String? name,
     email,
@@ -34,6 +38,10 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       state = AuthState.failed(reason: e.toString());
     }
   }
+
+  /// A function to login new  if successful [AuthState] is [AuthState.authenticated]
+  /// else [AuthState] is [AuthState.failed] with reason of failure,
+  /// [AuthState.authenticating] is the loading state of provider.
 
   Future<void> login({required String? name, password}) async {
     state = const AuthState.authenticating();

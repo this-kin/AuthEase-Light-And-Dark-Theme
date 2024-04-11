@@ -26,7 +26,6 @@ class Register extends ConsumerWidget {
       next.maybeWhen(
         registered: (_) {
           // dispose input controllers and show success message toast
-          _disposeController();
         },
         failed: (message) {
           // show error message toast
@@ -49,16 +48,18 @@ class Register extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SpanText(
-                      title: 'Create an\n',
-                      subtitle: 'Account',
+                      title: 'Don\'t have an ',
+                      subtitle: 'account ?',
                     ),
-                    SizedBox(height: 40.h),
+                    SizedBox(height: 5.h),
+                    Text("Create an account and start a new Journey"),
+                    SizedBox(height: 35.h),
                     CustomTextField(
                       hintText: 'John Doe',
                       controller: nameController,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
-                      validator: CustomValidator.emailValidator,
+                      validator: CustomValidator.fullNameValidator,
                     ),
                     SizedBox(height: 15.h),
                     CustomTextField(
@@ -72,9 +73,9 @@ class Register extends ConsumerWidget {
                     CustomTextField(
                       hintText: '0906 873 2878',
                       controller: phoneController,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.phone,
                       textInputAction: TextInputAction.next,
-                      validator: CustomValidator.emailValidator,
+                      validator: CustomValidator.phoneValidator,
                     ),
                     SizedBox(height: 15.h),
                     CustomTextField(
@@ -82,7 +83,7 @@ class Register extends ConsumerWidget {
                       controller: addressController,
                       keyboardType: TextInputType.streetAddress,
                       textInputAction: TextInputAction.next,
-                      validator: CustomValidator.fullNameValidator,
+                      validator: CustomValidator.addressValidator,
                     ),
                     SizedBox(height: 15.h),
                     CustomTextField(
@@ -92,7 +93,7 @@ class Register extends ConsumerWidget {
                       textInputAction: TextInputAction.next,
                       validator: CustomValidator.passwordValidator,
                     ),
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 100.h),
                     PrimaryButton(
                       text: "Sign Up",
                       onPressed: () {
@@ -108,10 +109,10 @@ class Register extends ConsumerWidget {
                         }
                       },
                     ),
-                    SizedBox(height: 250.h),
+                    SizedBox(height: 20.h),
                     Center(
                       child: SmallSpanText(
-                        title: 'Already have an Account? ',
+                        title: 'Already have an account? ',
                         subtitle: 'Login',
                         onPressed: () {
                           // go to register
