@@ -4,6 +4,7 @@ import 'package:qoute_app/domain/networking/api_service.dart';
 import 'package:qoute_app/domain/networking/dio_service.dart';
 import 'package:qoute_app/data/repositories/auth_repository.dart';
 import 'package:qoute_app/domain/local_storage/kv_storage.dart';
+import 'package:qoute_app/domain/networking/interceptors/api_interceptor.dart';
 import 'package:qoute_app/domain/repositories/base_auth_repository.dart';
 import 'package:qoute_app/presentation/providers/auth_notifiers.dart';
 import 'package:qoute_app/presentation/providers/states/auth_state.dart';
@@ -37,6 +38,7 @@ final _dioService = Provider<DioService>(
   (ref) => DioService(
     client: ref.read(dioProvider),
     interceptors: [
+      ApiInterceptor(ref),
       LoggingInterceptor(),
       RefreshTokenInterceptor(ref: ref, dioClient: ref.read(dioProvider))
     ],
