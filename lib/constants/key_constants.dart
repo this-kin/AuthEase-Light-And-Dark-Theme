@@ -8,4 +8,6 @@ class KeyConstant {
   static const String authStateKey = "auth_state_key";
 
   static const String userKey = "user_state_key";
+
+  static const String authToken = "auth_token_key";
 }

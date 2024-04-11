@@ -13,6 +13,11 @@ class KeyValueStorage {
     return await _storage.getEncrypted(KeyConstant.passwordKey) ?? '';
   }
 
+  // Retrieves string token from encrypted storage
+  Future<String?> getAuthToken() async {
+    return await _storage.getEncrypted(KeyConstant.passwordKey) ?? '';
+  }
+
   /// retrieves string email from encrypted storage
   Future<String?> getAuthEmail() async {
     return await _storage.getEncrypted(KeyConstant.emailKey) ?? '';
@@ -39,6 +44,11 @@ class KeyValueStorage {
   /// Saves user email in an encrypted storage
   void setAuthEmail(String email) {
     _storage.setEncrypted(KeyConstant.emailKey, email);
+  }
+
+  /// Saves user email in an encrypted storage
+  void setAuthToken(String token) {
+    _storage.setEncrypted(KeyConstant.authToken, token);
   }
 
   /// Save auth state local storage
