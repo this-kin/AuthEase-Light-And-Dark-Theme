@@ -7,9 +7,7 @@ import 'package:qoute_app/presentation/providers/states/auth_state.dart';
 import 'package:qoute_app/presentation/providers/states/future_state.dart';
 
 /// A Global [StateProvider] for retreiving [UserData] information
-final userStateProvider = StateProvider<FutureState<UserData?>>((ref) {
-  return FutureState.idle();
-});
+final userStateProvider = StateProvider<UserData?>((ref) => null);
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final Ref _ref;
@@ -46,7 +44,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
           _password!.isEmpty) {
         state = AuthState.unauthorized();
       }
-      userState.state = FutureState.data(data: _currentUser);
+      userState.state = _currentUser;
       state = AuthState.authenticated(_currentUser!.username);
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
@@ -118,13 +116,13 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   /// [LOADING] is the loading state of this loading state of this provider
   Future<void> getUser() async {
     final userState = _ref.watch(userStateProvider.notifier);
-    userState.state = FutureState.loading();
+    state = AuthState.authenticating();
     try {
       _currentUser = await _authRepository.getUser();
-      userState.state = FutureState.data(data: _currentUser);
+      userState.state = _currentUser;
       _updateAuthProfile();
     } catch (e) {
-      userState.state = FutureState.failed(reason: e.toString());
+      state = AuthState.failed(reason: e.toString());
     }
   }
 
@@ -133,7 +131,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     final userState = _ref.watch(userStateProvider.notifier);
     try {
       _storage.resetKey();
-      userState.state = FutureState.idle();
+      userState.state = null;
       state = AuthState.unauthorized();
     } catch (e) {
       state = AuthState.failed(reason: e.toString());

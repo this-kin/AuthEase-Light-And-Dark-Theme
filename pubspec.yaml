@@ -41,6 +41,8 @@ dependencies:
   toastification: 
   flutter_styled_toast: 
 
+  cached_network_image:
+
 
 dev_dependencies:
   flutter_test:

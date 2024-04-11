@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:qoute_app/presentation/providers/auth_notifiers.dart';
 import 'package:qoute_app/presentation/providers/auth_provider.dart';
 import 'package:qoute_app/presentation/providers/theme_provider.dart';
 
@@ -12,6 +14,7 @@ class Profile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final userData = ref.watch(userStateProvider);
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -34,6 +37,14 @@ class Profile extends ConsumerWidget {
             ),
           ),
         ),
+        centerTitle: true,
+        title: Text(
+          "${userData!.username}",
+          style: theme.textTheme.bodyMedium!.copyWith(
+            fontSize: 17.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -54,7 +65,24 @@ class Profile extends ConsumerWidget {
       ),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.symmetric(),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CachedNetworkImage(
+                width: 200.w,
+                height: 200.h,
+                imageUrl: "${userData.image}",
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+              SizedBox(height: 5.h),
+              Text("${userData.phone}"),
+              SizedBox(height: 5.h),
+              Text("${userData.email}"),
+            ],
+          ),
         ),
       ),
     );
