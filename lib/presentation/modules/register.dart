@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qoute_app/core/custom_validator.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
 import 'package:qoute_app/presentation/providers/auth_provider.dart';
@@ -116,7 +117,7 @@ class Register extends ConsumerWidget {
                         subtitle: 'Login',
                         onPressed: () {
                           // go to register
-                          // RouteGenerator.pop();
+                          GoRouter.of(context).pop();
                         },
                       ),
                     )

@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:qoute_app/core/exception/network_exception.dart';
 import 'package:qoute_app/core/typedef.dart';
 import 'package:qoute_app/domain/networking/dio_service.dart';
 import 'package:qoute_app/domain/networking/api_interface.dart';
+import 'package:qoute_app/core/exception/network_exception.dart';
 
 class ApiService implements ApiInterface {
   late final DioService _dio;
