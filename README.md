@@ -1,4 +1,4 @@
-# Careex Technical Interview  🔐
+# Cubex Technical Interview  🔐
 
 
 Securely access your world with ease, powered by our Authentication app with auto-themeing technology. Say goodbye to the hassle of manually switching themes and trust in the reliable Riverpod and Flutter framework at the core of our app 
