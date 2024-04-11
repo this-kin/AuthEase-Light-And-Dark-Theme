@@ -32,6 +32,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   }
 
   void _initialize() async {
+    final userState = _ref.watch(userStateProvider.notifier);
     state = AuthState.authenticating();
     try {
       _currentUser = _storage.getAuthUser();
@@ -45,7 +46,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
           _password!.isEmpty) {
         state = AuthState.unauthorized();
       }
-
+      userState.state = FutureState.data(data: _currentUser);
       state = AuthState.authenticated(_currentUser!.username);
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
