@@ -1,8 +1,8 @@
 enum RouteGenerator {
-  login(path: "/login", name: 'login'),
-  register(path: "/register", name: 'register'),
-  forgot(path: "/forgot", name: "forgot"),
   home(path: '/home', name: 'home'),
+  inbox(path: "/inbox", name: 'inbox'),
+  search(path: "/search", name: 'search'),
+  searchforgot(path: "/forgot", name: "forgot"),
   profile(path: '/profile', name: 'profile');
 
   final String path;
