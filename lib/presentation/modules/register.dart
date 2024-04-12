@@ -1,18 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:qoute_app/core/custom_validator.dart';
-import 'package:qoute_app/presentation/providers/auth_provider.dart';
-import 'package:qoute_app/presentation/providers/states/auth_state.dart';
 import '../widgets/common_widgets/annotated_scaffolder.dart';
 import '../widgets/common_widgets/custom_field.dart';
 import '../widgets/common_widgets/text_widgets.dart';
-import '../widgets/common_widgets/primary_button.dart';
 
 class Register extends ConsumerWidget {
   static final _formKey = GlobalKey<FormState>();
@@ -26,29 +21,7 @@ class Register extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    ref.listen<AuthState>(authProvider, (prev, next) {
-      next.maybeWhen(
-        registered: (_) {
-          // dispose input controllers and show success message toast
-          showToast(
-            "Registeration Successful",
-            context: context,
-            backgroundColor: Colors.greenAccent,
-            position: StyledToastPosition.bottom,
-          );
-        },
-        failed: (message) {
-          // show error message toast
-          showToast(
-            "$message",
-            context: context,
-            backgroundColor: Colors.redAccent,
-            position: StyledToastPosition.bottom,
-          );
-        },
-        orElse: () {},
-      );
-    });
+
     return AnnotatedScaffold(
       child: Scaffold(
         appBar: AppBar(
@@ -130,32 +103,6 @@ class Register extends ConsumerWidget {
                       validator: CustomValidator.passwordValidator,
                     ),
                     SizedBox(height: 100.h),
-                    Consumer(
-                      builder: (_, WidgetRef ref, child) {
-                        final state = ref.watch(authProvider);
-                        return state.maybeWhen(
-                          orElse: () => child!,
-                          authenticating: () => const Center(
-                            child: CupertinoActivityIndicator(),
-                          ),
-                        );
-                      },
-                      child: PrimaryButton(
-                        text: "Sign Up",
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            /// if forms are filled correctly then sign up
-                            ref.read(authProvider.notifier).signup(
-                                  name: nameController.text,
-                                  email: emailController.text,
-                                  phone: phoneController.text,
-                                  address: addressController.text,
-                                  password: passwordController.text,
-                                );
-                          }
-                        },
-                      ),
-                    ),
                     SizedBox(height: 20.h),
                     Center(
                       child: SmallSpanText(

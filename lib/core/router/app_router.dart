@@ -4,7 +4,6 @@ import 'package:qoute_app/core/router/routes.dart';
 import 'package:qoute_app/core/enum/route_enum.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/presentation/modules/recover.dart';
-import 'package:qoute_app/presentation/providers/auth_provider.dart';
 import 'package:qoute_app/presentation/providers/states/auth_state.dart';
 
 final GlobalKey<NavigatorState> _rootNavigator = GlobalKey(debugLabel: 'root');
@@ -26,13 +25,11 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((ref) {
 class RouteNotifier extends ChangeNotifier {
   final Ref _ref;
 
-  RouteNotifier(this._ref) {
-    _ref.listen<AuthState>(authProvider, (previous, next) => notifyListeners());
-  }
+  RouteNotifier(this._ref) {}
 
   String? redirectLogic(BuildContext context, GoRouterState state) {
     // auth provider
-    final authState = _ref.read<AuthState>(authProvider);
+    final authState = true;
 
     /// returns TRUE if current page is HOME
     final isHome = state.matchedLocation == RouteGenerator.home.path;

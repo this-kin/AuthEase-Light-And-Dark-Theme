@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'package:qoute_app/constants/key_constants.dart';
-import 'package:qoute_app/data/entities/user_model.dart';
 import 'package:qoute_app/domain/local_storage/base_kv_storage.dart';
 import 'package:qoute_app/presentation/providers/states/auth_state.dart';
 
@@ -34,11 +32,11 @@ class KeyValueStorage {
   }
 
   /// Retrieves user model  from local storage
-  UserData? getAuthUser() {
-    final user = _storage.getCommon(KeyConstant.userKey);
-    if (user == null) return null;
-    return UserData.fromJson(jsonDecode(user));
-  }
+  // UserData? getAuthUser() {
+  //   final user = _storage.getCommon(KeyConstant.userKey);
+  //   if (user == null) return null;
+  //   return UserData.fromJson(jsonDecode(user));
+  // }
 
   /// Saves user password in an encrypted storage
   void setAuthPassword(String password) {
@@ -62,9 +60,9 @@ class KeyValueStorage {
   }
 
   /// Saves [UserData] in local storage
-  void setAuthUser(UserData user) async {
-    _storage.setCommon<String>(KeyConstant.userKey, jsonEncode(user));
-  }
+  // void setAuthUser(UserData user) async {
+  //   _storage.setCommon<String>(KeyConstant.userKey, jsonEncode(user));
+  // }
 
   /// Clears all local storage memory
   void resetKey() async {

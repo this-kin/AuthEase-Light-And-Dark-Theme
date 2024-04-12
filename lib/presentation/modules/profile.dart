@@ -4,9 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoute_app/data/entities/user_model.dart';
-import 'package:qoute_app/presentation/providers/auth_notifiers.dart';
-import 'package:qoute_app/presentation/providers/auth_provider.dart';
 import 'package:qoute_app/presentation/providers/theme_provider.dart';
 
 class Profile extends ConsumerStatefulWidget {
@@ -18,16 +15,7 @@ class Profile extends ConsumerStatefulWidget {
 
 class _ProfileState extends ConsumerState<Profile> {
   @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(milliseconds: 0), () {
-      ref.read(authProvider.notifier).getUser();
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    UserData? userData = ref.watch(userStateProvider) ?? UserData.toJson();
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -53,7 +41,7 @@ class _ProfileState extends ConsumerState<Profile> {
         ),
         centerTitle: true,
         title: Text(
-          userData.username ?? "",
+          "",
           style: theme.textTheme.bodyMedium!.copyWith(
             fontSize: 17.sp,
             color: Colors.white,
@@ -72,7 +60,6 @@ class _ProfileState extends ConsumerState<Profile> {
           IconButton(
             onPressed: () {
               // logout
-              ref.read(authProvider.notifier).logout();
             },
             icon: Icon(Icons.logout_rounded),
           ),
@@ -97,9 +84,6 @@ class _ProfileState extends ConsumerState<Profile> {
                   errorBuilder: (context, url, error) => Icon(Icons.error),
                 ),
                 SizedBox(height: 5.h),
-                Text(userData.phone ?? ""),
-                SizedBox(height: 5.h),
-                Text(userData.email ?? ""),
               ],
             ),
           ),

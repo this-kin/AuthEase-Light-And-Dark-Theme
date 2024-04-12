@@ -65,9 +65,7 @@ class BvnVerification extends StatelessWidget {
                       hintText: 'Enter your BVN',
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.done,
-                      validator: (v) {
-                        // create validator
-                      },
+                      validator: (v) => null,
                     ),
                     SizedBox(height: 420.h),
                     PrimaryButton(
