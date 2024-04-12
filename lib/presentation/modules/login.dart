@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,9 +15,9 @@ import '../widgets/common_widgets/primary_button.dart';
 import '../widgets/common_widgets/text_widgets.dart';
 
 class Login extends ConsumerWidget {
-  final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  static final formKey = GlobalKey<FormState>();
+  static final emailController = TextEditingController();
+  static final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -90,8 +91,8 @@ class Login extends ConsumerWidget {
                           /// displays the PrimaryButton for retrying [return a type of widget
                           /// or function]
 
-                          authenticating: () => Center(
-                            child: const CircularProgressIndicator.adaptive(),
+                          authenticating: () => const Center(
+                            child: CupertinoActivityIndicator(),
                           ),
                           orElse: () => child!,
                         );
@@ -142,10 +143,5 @@ class Login extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  void _disposeController() {
-    emailController.clear();
-    passwordController.clear();
   }
 }

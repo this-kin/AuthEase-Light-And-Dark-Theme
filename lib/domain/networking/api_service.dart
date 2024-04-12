@@ -50,18 +50,19 @@ class ApiService implements ApiInterface {
     Json? params,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json json) result,
+    required T Function(dynamic json) result,
   }) async {
-    late Json json;
+    late dynamic json;
     try {
-      final result = await _dio.post<Json>(
+      final result = await _dio.post<dynamic>(
         endpoint: endpoint,
         params: params,
         cancelToken: cancelToken,
-        options: Options(headers: <String, Object?>{
-          'token': acceptToken,
-          // "Accept": "application/json"
-        }),
+        options: Options(
+          headers: <String, Object?>{
+            'token': acceptToken,
+          },
+        ),
       );
       json = result;
     } on Exception catch (e) {

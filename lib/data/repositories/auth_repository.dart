@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:qoute_app/constants/api_constants.dart';
 import 'package:qoute_app/data/entities/user_model.dart';
 import 'package:qoute_app/domain/networking/api_service.dart';
@@ -15,7 +13,6 @@ class AuthRepository extends BaseAuthRepository {
       acceptToken: true,
       endpoint: ApiConstants.profile,
       result: (result) {
-        debugPrint('get user response $result');
         final response = UserData.fromJson(result);
         return response;
       },
@@ -33,27 +30,26 @@ class AuthRepository extends BaseAuthRepository {
       acceptToken: false,
       result: (result) {
         final response = result['token'];
-        return response;
+        return response.toString();
       },
     );
   }
 
   @override
-  Future<dynamic> register(
-      {username, email, password, phone, address, image}) async {
-    return await _apiService.postData(
+  Future<dynamic> register({username, email, password, phone, address}) async {
+    return await _apiService.postData<dynamic>(
       endpoint: ApiConstants.register,
       params: {
         "username": username,
         "email": email,
         "phone": phone,
-        "image": image,
+        "image": "string",
         "address": address,
         "password": password,
       },
       acceptToken: false,
       result: (result) {
-        return jsonEncode(result);
+        return result;
       },
     );
   }

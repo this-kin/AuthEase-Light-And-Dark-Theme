@@ -86,6 +86,28 @@ class ApiInterceptor extends Interceptor {
       DioException(
         requestOptions: response.requestOptions,
         response: response,
+        error: response.statusMessage,
+        message: response.statusMessage,
+      ),
+    );
+  }
+
+  @override
+  void onError(
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) {
+    final response = err.response!;
+    final message = response.data;
+    final success = response.statusCode == 200 || response.statusCode == 201;
+
+    if (success) return handler.resolve(response);
+
+    handler.reject(
+      DioException(
+        requestOptions: err.requestOptions,
+        response: err.response,
+        message: message,
       ),
     );
   }

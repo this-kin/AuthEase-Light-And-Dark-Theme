@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -103,10 +105,7 @@ class NetworkException with _$NetworkException {
               message: 'Connection Error',
             );
           case DioExceptionType.unknown:
-            debugPrint("err  ${error.response}");
-            debugPrint("err is ${error.message}");
-            debugPrint("err response is  ${error.response?.data}");
-            debugPrint("err status code is  ${error.response?.statusCode}");
+            debugPrint("error message ${error.response!.statusMessage}");
             if (error.message!.contains(ExceptionConstants.socketException)) {
               return const NetworkException.fetchDataException(
                 name: ExceptionConstants.fetchDataException,
@@ -119,8 +118,8 @@ class NetworkException with _$NetworkException {
                 message: 'Connection closed while receiving data',
               );
             } else {
-              final name = error.response?.data['message'];
-              final message = error.response?.data['message'];
+              final name = "UnknownError";
+              final message = error.message!;
               switch (name) {
                 case ExceptionConstants.tokenExpiredException:
                   return NetworkException.tokenExpiredException(

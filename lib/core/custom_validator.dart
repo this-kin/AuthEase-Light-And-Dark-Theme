@@ -36,7 +36,7 @@ class CustomValidator {
 
   /// A function/method that validates user input address
   static String? addressValidator(String? address) {
-    if (address != null && address.isEmpty) return null;
+    if (address != null && address.isNotEmpty) return null;
     return Constants.emptyAddressError;
   }
 

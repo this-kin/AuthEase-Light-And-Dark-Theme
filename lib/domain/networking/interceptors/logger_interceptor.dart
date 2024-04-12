@@ -107,17 +107,20 @@ class LoggingInterceptor extends Interceptor {
     ErrorInterceptorHandler handler,
   ) {
     debugPrint('--> ERROR');
+    debugPrint('\tMessage: ${dioError.error}'); // message
     final httpMethod = dioError.requestOptions.method.toUpperCase();
     final url = dioError.requestOptions.baseUrl + dioError.requestOptions.path;
-
+    debugPrint('\tStatus code: ${dioError.response!.statusCode}');
     debugPrint('\tMETHOD: $httpMethod'); // GET
     debugPrint('\tURL: $url'); // URL
+    debugPrint('\tMessage: ${dioError.message}'); // message
     if (dioError.response != null) {
-      debugPrint('\tStatus code: ${dioError.response!.statusCode}');
+      debugPrint(
+          '\tStatus code: ${dioError.response!.statusCode}'); // STATUSCODE
       if (dioError.response!.statusCode != 200 ||
           dioError.response!.statusCode != 201) {
         final response = dioError.response!;
-        final message = response.data['message'] as String; //API Dependant
+        final message = response.data; //API Dependant
         final code = response.statusCode.toString(); //API Dependant
         debugPrint('\tException: $code');
         debugPrint('\tMessage: $message');
@@ -128,15 +131,28 @@ class LoggingInterceptor extends Interceptor {
             debugPrint('\tData: $data');
           }
         }
+      } else if (dioError.response!.statusCode == 200 ||
+          dioError.response!.statusCode == 201) {
+        final response = dioError.response!;
+        final message = response.data; //API Dependant
+        final code = response.statusCode; //API Dependant
+        debugPrint('\tException: $code');
+        debugPrint('\tMessage: $message');
+        if (response.data != null) {
+          //API Dependant
+          final data = response.data as Json;
+          if (data.isNotEmpty) {
+            debugPrint('\tData: $data');
+          }
+        }
       } else {
-        debugPrint('${dioError.response!.data}');
+        debugPrint('Error Data: ${dioError.response!.data}');
       }
     } else if (dioError.error is SocketException) {
       const message = 'No internet connectivity';
-      debugPrint('\tException: FetchDataException');
       debugPrint('\tMessage: $message');
     } else {
-      debugPrint('\tUnknown Error');
+      debugPrint('\tUnknown Error ${dioError.response!.data}');
     }
     debugPrint('<-- END ERROR');
     return super.onError(dioError, handler);

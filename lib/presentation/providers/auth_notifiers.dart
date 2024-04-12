@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qoute_app/core/exception/network_exception.dart';
 import 'package:qoute_app/data/entities/user_model.dart';
 import 'package:qoute_app/domain/local_storage/kv_storage.dart';
 import 'package:qoute_app/domain/repositories/base_auth_repository.dart';
@@ -76,17 +77,19 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   }) async {
     state = const AuthState.authenticating();
     try {
-      final result = await _authRepository.register(
+      await _authRepository.register(
         username: name,
         email: email,
         password: password,
         phone: phone,
         address: address,
       );
-      state = AuthState.registered(result);
+      state = AuthState.registered(name);
       _updateCredential(email, password);
-      login(name: name, password: password);
+      // login(name: name, password: password);
       _storage.setAuthState(state);
+    } on NetworkException catch (e) {
+      state = AuthState.failed(reason: e.message);
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
     }
@@ -107,6 +110,8 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       state = AuthState.authenticated(name);
       _updateCredential(name, password);
       _storage.setAuthToken(result!);
+    } on NetworkException catch (e) {
+      state = AuthState.failed(reason: e.message);
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
     }
@@ -135,6 +140,8 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       _storage.resetKey();
       userState.state = null;
       state = AuthState.unauthorized();
+    } on NetworkException catch (e) {
+      state = AuthState.failed(reason: e.message);
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
     }
