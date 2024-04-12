@@ -7,7 +7,7 @@ import 'package:qoute_app/presentation/providers/states/auth_state.dart';
 import 'package:qoute_app/presentation/providers/states/future_state.dart';
 
 /// A Global [StateProvider] for retreiving [UserData] information
-final userStateProvider = StateProvider<UserData?>((ref) => null);
+final userStateProvider = StateProvider<UserData?>((ref) => UserData.toJson());
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final Ref _ref;
@@ -59,7 +59,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   void _updateAuthProfile() {
     _storage.setAuthState(state);
     debugPrint('auth state $state');
-    _storage.setAuthUser(_currentUser!);
+    _storage.setAuthUser(_currentUser ?? UserData.toJson());
     debugPrint('auth user ${_currentUser.toString()}');
   }
 
@@ -86,7 +86,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       state = AuthState.registered(result);
       _updateCredential(email, password);
       login(name: name, password: password);
-      _updateAuthProfile();
+      _storage.setAuthState(state);
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
     }
@@ -108,7 +108,6 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       _updateCredential(name, password);
       _storage.setAuthToken(result!);
     } catch (e) {
-      debugPrint("provider error $e");
       state = AuthState.failed(reason: e.toString());
     }
   }
@@ -121,10 +120,10 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     state = AuthState.authenticating();
     try {
       final result = await _authRepository.getUser();
-      // userState.state = _currentUser;
-      // _updateAuthProfile();
+      _currentUser = result;
+      userState.state = _currentUser;
+      _updateAuthProfile();
     } catch (e) {
-      debugPrint("get user provider $e");
       state = AuthState.failed(reason: e.toString());
     }
   }

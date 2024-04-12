@@ -16,9 +16,8 @@ class AuthRepository extends BaseAuthRepository {
       endpoint: ApiConstants.profile,
       result: (result) {
         debugPrint('get user response $result');
-        // final response = UserData.fromJson(result);
-        // return response;
-        return UserData();
+        final response = UserData.fromJson(result);
+        return response;
       },
     );
   }

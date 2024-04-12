@@ -30,7 +30,7 @@ class ApiService implements ApiInterface {
         params: params,
         cancelToken: cancelToken,
         options: Options(headers: <String, Object?>{
-          'token': acceptToken,
+          'acceptToken': acceptToken,
         }),
       );
       json = result;

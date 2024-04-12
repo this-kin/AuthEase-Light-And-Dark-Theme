@@ -19,7 +19,7 @@ class KeyValueStorage {
 
   // Retrieves string token from encrypted storage
   Future<String?> getAuthToken() async {
-    return await _storage.getEncrypted(KeyConstant.passwordKey) ?? '';
+    return await _storage.getEncrypted(KeyConstant.authToken) ?? '';
   }
 
   /// retrieves string email from encrypted storage

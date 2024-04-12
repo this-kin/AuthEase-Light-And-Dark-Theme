@@ -13,6 +13,16 @@ class UserData {
     this.image,
   });
 
+  factory UserData.toJson() {
+    return UserData(
+      username: "",
+      email: "",
+      phone: "",
+      address: "",
+      image: "",
+    );
+  }
+
   factory UserData.fromJson(Map<String?, dynamic> json) {
     return UserData(
       username: json['username'],

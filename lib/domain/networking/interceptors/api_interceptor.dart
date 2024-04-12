@@ -35,14 +35,14 @@ class ApiInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    if (options.headers.containsKey('requiresAuthToken')) {
-      if (options.headers['requiresAuthToken'] == true) {
+    if (options.headers.containsKey('acceptToken')) {
+      if (options.headers['acceptToken'] == true) {
         final token = await _ref.read(kvStorageProvider).getAuthToken();
         options.headers
             .addAll(<String, Object?>{'Authorization': 'Bearer $token'});
       }
 
-      options.headers.remove('requiresAuthToken');
+      options.headers.remove('acceptToken');
     }
     return handler.next(options);
   }
@@ -77,13 +77,13 @@ class ApiInterceptor extends Interceptor {
     Response response,
     ResponseInterceptorHandler handler,
   ) {
-    final success = response.data['headers']['success'] == 1;
+    final success = response.statusCode == 200 || response.statusCode == 201;
 
     if (success) return handler.next(response);
 
-    //Reject all error codes from server except 402 and 200 OK
+    /// Reject all error codes from server except 402 and 200 OK
     return handler.reject(
-      DioError(
+      DioException(
         requestOptions: response.requestOptions,
         response: response,
       ),

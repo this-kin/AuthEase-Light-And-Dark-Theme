@@ -4,16 +4,30 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoute_app/data/entities/user_model.dart';
 import 'package:qoute_app/presentation/providers/auth_notifiers.dart';
 import 'package:qoute_app/presentation/providers/auth_provider.dart';
 import 'package:qoute_app/presentation/providers/theme_provider.dart';
 
-class Profile extends ConsumerWidget {
+class Profile extends ConsumerStatefulWidget {
   const Profile({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final userData = ref.watch(userStateProvider);
+  ConsumerState<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends ConsumerState<Profile> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 0), () {
+      ref.read(authProvider.notifier).getUser();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    UserData? userData = ref.watch(userStateProvider) ?? UserData.toJson();
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -39,9 +53,10 @@ class Profile extends ConsumerWidget {
         ),
         centerTitle: true,
         title: Text(
-          "Dammy Richie",
+          userData.username ?? "",
           style: theme.textTheme.bodyMedium!.copyWith(
             fontSize: 17.sp,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -72,7 +87,7 @@ class Profile extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.network(
-                  "https://avataaars.io/?accessoriesType=Blank&avatarStyle=Circle&clotheColor=Black&clotheType=ShirtCrewNeck&eyeType=Hearts&eyebrowType=SadConcernedNatural&facialHairColor=Blonde&facialHairType=BeardMedium&hairColor=Black&hatColor=Blue01&mouthType=Twinkle&skinColor=Pale&topType=ShortHairSides",
+                  "https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_640.png",
                   height: 100.h,
                   width: 100.w,
                   loadingBuilder: (context, child, loadingProgress) =>
@@ -82,9 +97,9 @@ class Profile extends ConsumerWidget {
                   errorBuilder: (context, url, error) => Icon(Icons.error),
                 ),
                 SizedBox(height: 5.h),
-                Text("09068732878"),
+                Text(userData.phone ?? ""),
                 SizedBox(height: 5.h),
-                Text("amailtodammy@gmail.com"),
+                Text(userData.email ?? ""),
               ],
             ),
           ),
