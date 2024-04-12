@@ -23,28 +23,21 @@ class GraphqlService {
   }
 
   Future<QueryResult> getAll<T>(String query) async {
-    final queryOptions = QueryOptions(
-      document: gql(query),
-      variables: {"nRepositories": 50},
-    );
+    final queryOptions = QueryOptions(document: gql(query));
     final result = await initialize().value.query(queryOptions);
     return result;
   }
 
   Future<QueryResult> post<T>(String query, Json data) async {
-    final mutationOptions = MutationOptions(
-      document: gql(query),
-      variables: data,
-    );
+    final mutationOptions =
+        MutationOptions(document: gql(query), variables: data);
     final result = await initialize().value.mutate(mutationOptions);
     return result;
   }
 
   Future<QueryResult> update<T>(String query, Json data) async {
-    final mutationOptions = MutationOptions(
-      document: gql(query),
-      variables: data,
-    );
+    final mutationOptions =
+        MutationOptions(document: gql(query), variables: data);
     final result = await initialize().value.mutate(mutationOptions);
     return result;
   }

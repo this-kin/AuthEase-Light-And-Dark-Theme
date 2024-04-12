@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/data/entities/blog_model.dart';
 import 'package:qoute_app/domain/repositories/base_crud_repository.dart';
@@ -23,6 +24,7 @@ class BlogStateNotifier extends StateNotifier<FutureState> {
       final result = await _repository.createBlog(model);
       state = FutureState.data(data: result);
     } catch (e) {
+      debugPrint("create err $e");
       state = FutureState.failed(reason: e.toString());
     }
   }

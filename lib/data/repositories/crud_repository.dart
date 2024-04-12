@@ -9,25 +9,30 @@ class CrudRepository extends BaseCrudRepository {
   CrudRepository(this._apiService);
 
   @override
-  Future createBlog(BlogModel model) async {
+  Future<BlogModel> createBlog(BlogModel model) async {
     return await _apiService.postData(
       query: """
-mutation createBlogPost(${model.title}: String!, ${model.subtitle}: String!, ${model.body}: String!) {
-  createBlog(title: ${model.title}, subTitle: ${model.subtitle}, body: ${model.body}) {
-    success
-    blogPost {
-      id
-      title
-      subTitle
-      body
-      dateCreated
-    }
-  }
-}
+         mutation createBlogPost(\$title: String!, \$subTitle: String!, \$body: String!) {
+            createBlog(title: \$title, subTitle: \$subTitle, body: \$body) {
+                success
+                blogPost {
+                  id
+                  title
+                  subTitle
+                  body
+                  dateCreated
+                }
+              }
+            }
 """,
-      param: model.toJson(),
+      param: {
+        "body": model.body,
+        "title": model.title,
+        "subTitle": model.subtitle,
+      },
       response: (response) {
-        return response;
+        final blog = BlogModel.fromJson(response);
+        return blog;
       },
     );
   }
@@ -38,11 +43,12 @@ mutation createBlogPost(${model.title}: String!, ${model.subtitle}: String!, ${m
       param: {
         "blogId": blogId,
       },
-      query: """mutation deleteBlogPost($blogId: String!) {
-            deleteBlog(blogId: $blogId) {
-            success
-          }
-        }
+      query: """
+      mutation deleteBlogPost(\$blogId: String!) {
+                deleteBlog(blogId: \$blogId) {
+                    success
+                }
+            }
       """,
       response: (response) {},
     );
@@ -96,7 +102,7 @@ mutation createBlogPost(${model.title}: String!, ${model.subtitle}: String!, ${m
   }
 
   @override
-  Future<String> updateBlog(BlogModel model) async {
+  Future<BlogModel> updateBlog(BlogModel model) async {
     return await _apiService.updateData(
       query: """
         mutation updateBlogPost(${model.id}: String!, ${model.title}: String!, ${model.subtitle}: String!, ${model.body}: String!) {

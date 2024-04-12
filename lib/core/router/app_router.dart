@@ -48,11 +48,6 @@ class RouteNotifier extends ChangeNotifier {
             name: RouteGenerator.home.name,
             builder: (_, __) => Article(),
           ),
-          GoRoute(
-            path: RouteGenerator.article.path,
-            name: RouteGenerator.article.name,
-            builder: (_, __) => CreateArticle(),
-          ),
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
@@ -76,6 +71,11 @@ class RouteNotifier extends ChangeNotifier {
           ),
         ]),
       ],
+    ),
+    GoRoute(
+      path: RouteGenerator.article.path,
+      name: RouteGenerator.article.name,
+      builder: (_, __) => CreateArticle(),
     ),
   ];
 }

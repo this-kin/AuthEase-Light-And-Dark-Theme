@@ -87,66 +87,80 @@ class _ArticleState extends ConsumerState<Article> {
               ),
             ),
             SizedBox(height: 20.h),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              child: articles.when(
-                loading: () => Center(
-                  child: CupertinoActivityIndicator(),
-                ),
-                data: (data) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: data.length,
-                    itemBuilder: (_, index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.h),
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 70.h,
-                                width: 70.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.sp),
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                      "https://plus.unsplash.com/premium_photo-1684171452382-3ff25b344227?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D",
+            Expanded(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                child: articles.when(
+                  loading: () => Center(
+                    child: CupertinoActivityIndicator(),
+                  ),
+                  data: (data) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: data.length,
+                      itemBuilder: (_, index) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.h),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 70.h,
+                                  width: 70.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.sp),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        "https://plus.unsplash.com/premium_photo-1684171452382-3ff25b344227?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D",
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(width: 10.w),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    data[index].title!,
-                                    style: TextStyle(
-                                      fontSize: 10.sp,
-                                      color: Colors.grey.withOpacity(0.6),
+                                SizedBox(width: 10.w),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          data[index].title!,
+                                          style: TextStyle(
+                                            fontSize: 12.sp,
+                                            color: Colors.grey.withOpacity(0.6),
+                                          ),
+                                        ),
+                                        SizedBox(width: 5.w),
+                                        Text(
+                                          data[index]
+                                              .dateCreated!
+                                              .split('T')[0],
+                                          style: TextStyle(
+                                            fontSize: 12.sp,
+                                            color: Colors.grey.withOpacity(0.6),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                  SizedBox(height: 12),
-                                  SizedBox(
-                                    height: 40.h,
-                                    width: 220.w,
-                                    child: Text(
-                                      data[index].subtitle!,
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
+                                    SizedBox(height: 12),
+                                    SizedBox(
+                                      height: 40.h,
+                                      width: 220.w,
+                                      child: Text(
+                                        data[index].subtitle!,
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  );
-                },
-                error: (Object error, StackTrace stackTrace) {
-                  return Expanded(
-                    child: Column(
+                        );
+                      },
+                    );
+                  },
+                  error: (Object error, StackTrace stackTrace) {
+                    return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -176,9 +190,9 @@ class _ArticleState extends ConsumerState<Article> {
                           ),
                         )
                       ],
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             )
           ],
