@@ -30,7 +30,7 @@ class DioService {
   }) async {
     final response = await _client.get(
       endpoint,
-      queryParameters: params,
+      data: params,
       options: options,
       cancelToken: cancelToken ?? _cancelToken,
     );
@@ -45,7 +45,7 @@ class DioService {
   }) async {
     final response = await _client.post(
       endpoint,
-      queryParameters: params,
+      data: params,
       options: options,
       cancelToken: cancelToken ?? _cancelToken,
     );

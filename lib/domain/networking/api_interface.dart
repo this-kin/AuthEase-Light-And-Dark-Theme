@@ -28,7 +28,7 @@ abstract class ApiInterface {
     Json? params,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json? json) result,
+    required T Function(dynamic json) result,
   });
 
   /// Base method for inserting [data] at the [endpoint].
@@ -48,7 +48,7 @@ abstract class ApiInterface {
     Json? params,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json json) result,
+    required T Function(dynamic json) result,
   });
 
   /// Base method for updating [data] at the [endpoint].

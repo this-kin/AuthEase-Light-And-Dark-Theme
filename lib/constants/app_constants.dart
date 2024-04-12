@@ -11,7 +11,7 @@ class Constants {
       RegExp(r'^(?:0|\234)-?(?:80|70|81|90|91)-?\d{2}-?\d{6}$');
 
   // a name regex (Regular Expression) to validate username (ex: Dammy, Richie)
-  static RegExp fullNameRegex = RegExp(r'^[a-zA-Z0-9]+$');
+  static RegExp fullNameRegex = RegExp(r'^[a-zA-Z0-9_][a-zA-Z0-9_ ]*$');
 
   // a zip code regex (Regular expression) to validate address
   static RegExp addressRegex = RegExp(r'^([a-zA-z0-9/\\' '(),-\s]{2,255})');

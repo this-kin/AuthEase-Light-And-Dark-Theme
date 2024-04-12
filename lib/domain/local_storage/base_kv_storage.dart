@@ -13,7 +13,7 @@ class BaseKeyValueStorage {
   static BaseKeyValueStorage get instance =>
       _instance ?? const BaseKeyValueStorage._();
 
-  static Future<void> init() async {
+  Future<void> init() async {
     _secureStorage ??= const FlutterSecureStorage();
     _preference ??= await SharedPreferences.getInstance();
   }

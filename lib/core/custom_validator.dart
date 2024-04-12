@@ -35,12 +35,9 @@ class CustomValidator {
   }
 
   /// A function/method that validates user input address
-  static String? addressValidator(String? fullName) {
-    if (fullName != null && fullName.isValidFullName)
-      return null;
-    else if (fullName == null || fullName.isEmpty)
-      return Constants.emptyAddressError;
-    return Constants.invalidAddressError;
+  static String? addressValidator(String? address) {
+    if (address != null && address.isEmpty) return null;
+    return Constants.emptyAddressError;
   }
 
   /// A function/method that validates user input name

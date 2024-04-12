@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:qoute_app/constants/api_constants.dart';
-import 'package:qoute_app/core/typedef.dart';
 import 'package:qoute_app/data/entities/user_model.dart';
 import 'package:qoute_app/domain/networking/api_service.dart';
 import 'package:qoute_app/domain/repositories/base_auth_repository.dart';
@@ -12,20 +11,21 @@ class AuthRepository extends BaseAuthRepository {
   AuthRepository(this._apiService);
   @override
   Future<UserData?> getUser() async {
-    return await _apiService.getData(
-      endpoint: ApiConstants.profile,
-      params: {},
+    return await _apiService.getData<UserData?>(
       acceptToken: true,
+      endpoint: ApiConstants.profile,
       result: (result) {
-        final response = UserData.fromJson(result);
-        return response;
+        debugPrint('get user response $result');
+        // final response = UserData.fromJson(result);
+        // return response;
+        return UserData();
       },
     );
   }
 
   @override
-  Future<dynamic> login({username, password}) async {
-    return await _apiService.postData<Json>(
+  Future<String> login({username, password}) async {
+    return await _apiService.postData<String>(
       endpoint: ApiConstants.login,
       params: {
         "username": username,
@@ -33,10 +33,8 @@ class AuthRepository extends BaseAuthRepository {
       },
       acceptToken: false,
       result: (result) {
-        debugPrint("result $result");
-        // return response[];
-
-        return {"": "response"};
+        final response = result['token'];
+        return response;
       },
     );
   }

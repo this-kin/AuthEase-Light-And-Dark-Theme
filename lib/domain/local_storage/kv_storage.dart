@@ -8,6 +8,10 @@ class KeyValueStorage {
   /// BaseKeyValueStorage instance variable
   final BaseKeyValueStorage _storage = BaseKeyValueStorage.instance;
 
+  KeyValueStorage() {
+    _storage.init();
+  }
+
   // Retrieves string password from encrypted storage
   Future<String?> getAuthPassword() async {
     return await _storage.getEncrypted(KeyConstant.passwordKey) ?? '';

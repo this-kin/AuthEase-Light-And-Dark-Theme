@@ -16,12 +16,13 @@ class ApiService implements ApiInterface {
   }
 
   @override
-  Future<T> getData<T>(
-      {required endpoint,
-      Json? params,
-      CancelToken? cancelToken,
-      bool acceptToken = true,
-      required T Function(Json json) result}) async {
+  Future<T> getData<T>({
+    required endpoint,
+    Json? params,
+    CancelToken? cancelToken,
+    bool acceptToken = true,
+    required T Function(Json json) result,
+  }) async {
     late Json json;
     try {
       final result = await _dio.get<Json>(
@@ -30,6 +31,36 @@ class ApiService implements ApiInterface {
         cancelToken: cancelToken,
         options: Options(headers: <String, Object?>{
           'token': acceptToken,
+        }),
+      );
+      json = result;
+    } on Exception catch (e) {
+      throw NetworkException.getDioException(e);
+    }
+    try {
+      return result(json);
+    } on Exception catch (e) {
+      throw NetworkException.getDioException(e);
+    }
+  }
+
+  @override
+  Future<T> postData<T>({
+    required endpoint,
+    Json? params,
+    CancelToken? cancelToken,
+    bool acceptToken = true,
+    required T Function(Json json) result,
+  }) async {
+    late Json json;
+    try {
+      final result = await _dio.post<Json>(
+        endpoint: endpoint,
+        params: params,
+        cancelToken: cancelToken,
+        options: Options(headers: <String, Object?>{
+          'token': acceptToken,
+          // "Accept": "application/json"
         }),
       );
       json = result;
@@ -58,35 +89,6 @@ class ApiService implements ApiInterface {
         cancelToken: cancelToken,
         options: Options(headers: <String, Object?>{
           'token': acceptToken,
-        }),
-      );
-      json = result;
-    } on Exception catch (e) {
-      throw NetworkException.getDioException(e);
-    }
-    try {
-      return result(json);
-    } on Exception catch (e) {
-      throw NetworkException.getDioException(e);
-    }
-  }
-
-  @override
-  Future<T> postData<T>(
-      {required endpoint,
-      Json? params,
-      CancelToken? cancelToken,
-      bool acceptToken = true,
-      required T Function(Json json) result}) async {
-    late Json json;
-    try {
-      final result = await _dio.post(
-        endpoint: endpoint,
-        params: params,
-        cancelToken: cancelToken,
-        options: Options(headers: <String, Object?>{
-          'token': acceptToken,
-          "Accept": "application/json"
         }),
       );
       json = result;

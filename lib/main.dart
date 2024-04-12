@@ -4,10 +4,12 @@ import 'package:qoute_app/core/router/app_router.dart';
 import 'package:qoute_app/core/theme/custom_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoute_app/domain/local_storage/base_kv_storage.dart';
 import 'package:qoute_app/presentation/providers/theme_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   runZonedGuarded(() {
     runApp(ProviderScope(child: MyApp()));
   }, (error, stack) {});

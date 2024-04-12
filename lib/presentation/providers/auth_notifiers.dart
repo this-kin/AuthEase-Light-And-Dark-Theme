@@ -51,7 +51,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     }
   }
 
-  void _updateCredential(String email, password) {
+  void _updateCredential(email, password) {
     _storage.setAuthEmail(email);
     _storage.setAuthPassword(password);
   }
@@ -105,9 +105,8 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
         password: password,
       );
       state = AuthState.authenticated(name);
-      // _updateCredential(name, password);
-      // _storage.setAuthToken(result!);
-      // _updateAuthProfile();
+      _updateCredential(name, password);
+      _storage.setAuthToken(result!);
     } catch (e) {
       debugPrint("provider error $e");
       state = AuthState.failed(reason: e.toString());
@@ -121,10 +120,11 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     final userState = _ref.watch(userStateProvider.notifier);
     state = AuthState.authenticating();
     try {
-      _currentUser = await _authRepository.getUser();
-      userState.state = _currentUser;
-      _updateAuthProfile();
+      final result = await _authRepository.getUser();
+      // userState.state = _currentUser;
+      // _updateAuthProfile();
     } catch (e) {
+      debugPrint("get user provider $e");
       state = AuthState.failed(reason: e.toString());
     }
   }
