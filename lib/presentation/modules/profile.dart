@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:qoute_app/presentation/providers/auth_notifiers.dart';
 import 'package:qoute_app/presentation/providers/auth_provider.dart';
 import 'package:qoute_app/presentation/providers/theme_provider.dart';
@@ -19,6 +18,7 @@ class Profile extends ConsumerWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
+        elevation: 1,
         leading: Semantics(
           button: true,
           child: InkWell(
@@ -32,14 +32,14 @@ class Profile extends ConsumerWidget {
               child: SvgPicture.asset(
                 ConstantImage.back,
                 fit: BoxFit.scaleDown,
-                color: theme.iconTheme.color,
+                color: Colors.white,
               ),
             ),
           ),
         ),
         centerTitle: true,
         title: Text(
-          "${userData!.username}",
+          "Dammy Richie",
           style: theme.textTheme.bodyMedium!.copyWith(
             fontSize: 17.sp,
             fontWeight: FontWeight.bold,
@@ -66,22 +66,27 @@ class Profile extends ConsumerWidget {
       body: Container(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CachedNetworkImage(
-                width: 200.w,
-                height: 200.h,
-                imageUrl: "${userData.image}",
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
-              SizedBox(height: 5.h),
-              Text("${userData.phone}"),
-              SizedBox(height: 5.h),
-              Text("${userData.email}"),
-            ],
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network(
+                  "https://avataaars.io/?accessoriesType=Blank&avatarStyle=Circle&clotheColor=Black&clotheType=ShirtCrewNeck&eyeType=Hearts&eyebrowType=SadConcernedNatural&facialHairColor=Blonde&facialHairType=BeardMedium&hairColor=Black&hatColor=Blue01&mouthType=Twinkle&skinColor=Pale&topType=ShortHairSides",
+                  height: 100.h,
+                  width: 100.w,
+                  loadingBuilder: (context, child, loadingProgress) =>
+                      (loadingProgress == null)
+                          ? child
+                          : CircularProgressIndicator(),
+                  errorBuilder: (context, url, error) => Icon(Icons.error),
+                ),
+                SizedBox(height: 5.h),
+                Text("09068732878"),
+                SizedBox(height: 5.h),
+                Text("amailtodammy@gmail.com"),
+              ],
+            ),
           ),
         ),
       ),

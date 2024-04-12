@@ -26,7 +26,9 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((ref) {
 class RouteNotifier extends ChangeNotifier {
   final Ref _ref;
 
-  RouteNotifier(this._ref);
+  RouteNotifier(this._ref) {
+    _ref.listen<AuthState>(authProvider, (previous, next) => notifyListeners());
+  }
 
   String? redirectLogic(BuildContext context, GoRouterState state) {
     // auth provider

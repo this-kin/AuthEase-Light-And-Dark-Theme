@@ -4,7 +4,6 @@ import 'package:qoute_app/core/router/app_router.dart';
 import 'package:qoute_app/core/theme/custom_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoute_app/domain/local_storage/base_kv_storage.dart';
 import 'package:qoute_app/presentation/providers/theme_provider.dart';
 
 void main() {
@@ -22,10 +21,11 @@ class MyApp extends ConsumerWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: (BuildContext context, Widget? child) {
+        final themeMode = ref.watch(themeProvider).themeMode;
         return MaterialApp.router(
           title: "AuthEase",
           debugShowCheckedModeBanner: false,
-          themeMode: ref.watch(themeProvider).themeMode,
+          themeMode: themeMode,
           theme: CustomTheme.lightTheme(context),
           darkTheme: CustomTheme.darkTheme(context),
           routerDelegate: router.routerDelegate,

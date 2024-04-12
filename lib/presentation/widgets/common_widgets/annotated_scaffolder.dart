@@ -19,11 +19,11 @@ class AnnotatedScaffold extends ConsumerWidget {
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
           // [supports for only andriod]
-          statusBarIconBrightness: con.themeMode == ThemeMode.light
+          statusBarIconBrightness: con.theme == ThemeData.light()
               ? Brightness.dark
               : Brightness.light,
           // [supports for only ios]
-          statusBarBrightness: con.themeMode == ThemeMode.light
+          statusBarBrightness: con.theme == ThemeData.dark()
               ? Brightness.light
               : Brightness.dark,
           statusBarColor: Colors.transparent,

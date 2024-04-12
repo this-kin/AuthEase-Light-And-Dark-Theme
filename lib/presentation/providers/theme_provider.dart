@@ -8,14 +8,21 @@ final themeProvider = ChangeNotifierProvider<ThemeChangeNotifier>((ref) {
 class ThemeChangeNotifier extends ChangeNotifier {
   ThemeChangeNotifier();
 
-  ThemeMode get themeMode => _themeMode;
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeData get theme => _theme;
+
+  ThemeMode themeMode = ThemeMode.light;
+
+  static ThemeData _theme = ThemeData.light();
 
   void changeTheme() {
-    if (_themeMode == ThemeMode.light) {
-      _themeMode = ThemeMode.dark;
+    if (_theme == ThemeData.light()) {
+      _theme = ThemeData.dark();
+      themeMode = ThemeMode.dark;
+      notifyListeners();
+    } else {
+      _theme = ThemeData.light();
+      themeMode = ThemeMode.light;
+      notifyListeners();
     }
-    _themeMode = ThemeMode.light;
-    notifyListeners();
   }
 }
