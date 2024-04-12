@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:qoute_app/data/entities/blog_model.dart';
 import 'package:qoute_app/domain/networking/api_service.dart';
 import 'package:qoute_app/domain/repositories/base_crud_repository.dart';
@@ -63,9 +63,13 @@ mutation createBlogPost(${model.title}: String!, ${model.subtitle}: String!, ${m
       }
     """,
       response: (response) {
-        debugPrint("get all blogs response $response");
-
+        debugPrint("get posts $response");
+        final articles = response["allBlogPosts"] as List;
         List<BlogModel> blogs = [];
+        for (var i in articles) {
+          final model = BlogModel.fromJson(i);
+          blogs.add(model);
+        }
         return blogs;
       },
     );

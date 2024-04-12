@@ -2,7 +2,7 @@ enum RouteGenerator {
   home(path: '/home', name: 'home'),
   inbox(path: "/inbox", name: 'inbox'),
   search(path: "/search", name: 'search'),
-  searchforgot(path: "/forgot", name: "forgot"),
+  article(path: "/article", name: "article"),
   profile(path: '/profile', name: 'profile');
 
   final String path;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pinput/pinput.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
 import 'package:qoute_app/core/theme/theme_color.dart';
 
@@ -158,49 +157,3 @@ OutlineInputBorder errorBorder() {
     borderSide: const BorderSide(color: AppColor.errorColor),
   );
 }
-
-PinTheme defaultPinTheme(BuildContext context) => PinTheme(
-      height: 60.h,
-      width: 60.w,
-      textStyle: TextStyle(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w700,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        border: Border(
-          bottom: BorderSide(color: AppColor.accentColor),
-        ),
-      ),
-    );
-
-PinTheme focusPinTheme(context) => PinTheme(
-      height: 60.h,
-      width: 60.w,
-      textStyle: TextStyle(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w700,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        border: Border(
-          bottom: BorderSide(color: AppColor.primaryColor),
-        ),
-      ),
-    );
-
-PinTheme errorPinTheme(context) => PinTheme(
-      height: 60.h,
-      width: 60.w,
-      textStyle: TextStyle(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w700,
-        color: AppColor.errorColor,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        border: Border(
-          bottom: BorderSide(color: AppColor.errorColor),
-        ),
-      ),
-    );

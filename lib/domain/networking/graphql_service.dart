@@ -4,21 +4,21 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:qoute_app/constants/api_constants.dart';
 
 class GraphqlService {
-  late final HttpLink? httpLink;
-
-  ValueNotifier<GraphQLClient> getClient() {
+  ValueNotifier<GraphQLClient> initialize() {
+    HttpLink? httpLink;
     httpLink ??= HttpLink(ApiConstants.baseUrl);
     final ValueNotifier<GraphQLClient> client = ValueNotifier(
       GraphQLClient(
-          link: httpLink!, cache: GraphQLCache(store: InMemoryStore())),
+          link: httpLink, cache: GraphQLCache(store: InMemoryStore())),
     );
 
     return client;
   }
 
   Future<QueryResult> get<T>(String query) async {
+    final client = initialize();
     final queryOptions = QueryOptions(document: gql(query));
-    final result = await getClient().value.query(queryOptions);
+    final result = await client.value.query(queryOptions);
     return result;
   }
 
@@ -27,7 +27,7 @@ class GraphqlService {
       document: gql(query),
       variables: {"nRepositories": 50},
     );
-    final result = await getClient().value.query(queryOptions);
+    final result = await initialize().value.query(queryOptions);
     return result;
   }
 
@@ -36,7 +36,7 @@ class GraphqlService {
       document: gql(query),
       variables: data,
     );
-    final result = await getClient().value.mutate(mutationOptions);
+    final result = await initialize().value.mutate(mutationOptions);
     return result;
   }
 
@@ -45,7 +45,7 @@ class GraphqlService {
       document: gql(query),
       variables: data,
     );
-    final result = await getClient().value.mutate(mutationOptions);
+    final result = await initialize().value.mutate(mutationOptions);
     return result;
   }
 
@@ -54,7 +54,7 @@ class GraphqlService {
       document: gql(query),
       variables: data,
     );
-    final result = await getClient().value.mutate(mutationOptions);
+    final result = await initialize().value.mutate(mutationOptions);
     return result;
   }
 }

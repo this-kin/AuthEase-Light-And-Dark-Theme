@@ -18,7 +18,7 @@ class BlogModel {
     json['id'] = id;
     json['body'] = body;
     json['title'] = title;
-    json['subtitle'] = subtitle;
+    json['subTitle'] = subtitle;
     json['dateCreated'] = dateCreated;
 
     return json;
@@ -29,7 +29,7 @@ class BlogModel {
       id: json['id'],
       body: json['body'],
       title: json['title'],
-      subtitle: json['subtitle'],
+      subtitle: json['subTitle'],
       dateCreated: json["dateCreated"],
     );
   }

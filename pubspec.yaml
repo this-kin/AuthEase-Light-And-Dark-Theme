@@ -35,8 +35,7 @@ dependencies:
 
   dio: ^5.4.2+1
   flutter_secure_storage:
-  go_router:
-  pinput:
+  go_router: ^10.0.0
   shared_preferences:
   toastification: 
   flutter_styled_toast: 

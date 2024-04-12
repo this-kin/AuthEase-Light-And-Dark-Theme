@@ -3,10 +3,15 @@ import 'package:go_router/go_router.dart';
 import 'package:qoute_app/core/router/routes.dart';
 import 'package:qoute_app/core/enum/route_enum.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qoute_app/presentation/modules/article.dart';
+import 'package:qoute_app/presentation/modules/create_article.dart';
 import 'package:qoute_app/presentation/modules/inbox.dart';
 import 'package:qoute_app/presentation/modules/search.dart';
 
 final GlobalKey<NavigatorState> _rootNavigator = GlobalKey(debugLabel: 'root');
+
+final GlobalKey<NavigatorState> _shellNavigator =
+    GlobalKey(debugLabel: 'shell');
 
 final Provider<GoRouter> routerProvider = Provider<GoRouter>((ref) {
   final router = RouteNotifier(ref);
@@ -23,9 +28,9 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((ref) {
 });
 
 class RouteNotifier extends ChangeNotifier {
-  final Ref _ref;
+  final Ref ref;
 
-  RouteNotifier(this._ref) {}
+  RouteNotifier(this.ref);
 
   String? redirectLogic(BuildContext context, GoRouterState state) {
     return null;
@@ -34,25 +39,43 @@ class RouteNotifier extends ChangeNotifier {
   List<RouteBase> get routes => _routes;
 
   final List<RouteBase> _routes = [
-    GoRoute(
-      path: RouteGenerator.home.path,
-      name: RouteGenerator.home.name,
-      builder: (_, __) => Home(),
-    ),
-    GoRoute(
-      path: RouteGenerator.inbox.path,
-      name: RouteGenerator.inbox.name,
-      builder: (_, __) => Inbox(),
-    ),
-    GoRoute(
-      path: RouteGenerator.search.path,
-      name: RouteGenerator.search.name,
-      builder: (_, __) => Search(),
-    ),
-    GoRoute(
-      path: RouteGenerator.profile.path,
-      name: RouteGenerator.profile.name,
-      builder: (_, __) => Profile(),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, shell) => Home(navigationShell: shell),
+      branches: [
+        StatefulShellBranch(navigatorKey: _shellNavigator, routes: [
+          GoRoute(
+            path: RouteGenerator.home.path,
+            name: RouteGenerator.home.name,
+            builder: (_, __) => Article(),
+          ),
+          GoRoute(
+            path: RouteGenerator.article.path,
+            name: RouteGenerator.article.name,
+            builder: (_, __) => CreateArticle(),
+          ),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
+            path: RouteGenerator.inbox.path,
+            name: RouteGenerator.inbox.name,
+            builder: (_, __) => Inbox(),
+          ),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
+            path: RouteGenerator.search.path,
+            name: RouteGenerator.search.name,
+            builder: (_, __) => Search(),
+          ),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
+            path: RouteGenerator.profile.path,
+            name: RouteGenerator.profile.name,
+            builder: (_, __) => Profile(),
+          ),
+        ]),
+      ],
     ),
   ];
 }
