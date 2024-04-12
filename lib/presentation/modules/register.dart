@@ -31,7 +31,7 @@ class Register extends ConsumerWidget {
         registered: (_) {
           // dispose input controllers and show success message toast
           showToast(
-            "Login Successful",
+            "Registeration Successful",
             context: context,
             backgroundColor: Colors.greenAccent,
             position: StyledToastPosition.bottom,

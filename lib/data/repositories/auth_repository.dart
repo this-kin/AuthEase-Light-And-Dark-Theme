@@ -36,8 +36,8 @@ class AuthRepository extends BaseAuthRepository {
   }
 
   @override
-  Future<dynamic> register({username, email, password, phone, address}) async {
-    return await _apiService.postData<dynamic>(
+  Future<String> register({username, email, password, phone, address}) async {
+    return await _apiService.postData<String>(
       endpoint: ApiConstants.register,
       params: {
         "username": username,

@@ -37,7 +37,7 @@ class DioService {
     return response.data;
   }
 
-  Future<Json> post<T>({
+  Future<dynamic> post<T>({
     required endpoint,
     Json? params,
     Options? options,

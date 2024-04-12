@@ -61,6 +61,7 @@ class ApiService implements ApiInterface {
         options: Options(
           headers: <String, Object?>{
             'token': acceptToken,
+            "content-type": "application/json",
           },
         ),
       );

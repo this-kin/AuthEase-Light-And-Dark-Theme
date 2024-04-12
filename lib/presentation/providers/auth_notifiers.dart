@@ -77,7 +77,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   }) async {
     state = const AuthState.authenticating();
     try {
-      await _authRepository.register(
+      final result = await _authRepository.register(
         username: name,
         email: email,
         password: password,
@@ -85,9 +85,8 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
         address: address,
       );
       state = AuthState.registered(name);
-      _updateCredential(email, password);
-      // login(name: name, password: password);
       _storage.setAuthState(state);
+      await login(name: name, password: password);
     } on NetworkException catch (e) {
       state = AuthState.failed(reason: e.message);
     } catch (e) {
