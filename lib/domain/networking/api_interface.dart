@@ -48,7 +48,7 @@ abstract class ApiInterface {
     Json? params,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json? json) result,
+    required T Function(Json json) result,
   });
 
   /// Base method for updating [data] at the [endpoint].
@@ -68,7 +68,7 @@ abstract class ApiInterface {
     Json? params,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json? json) result,
+    required T Function(Json json) result,
   });
 
   /// Base method for deleting [data] at the [endpoint].
@@ -88,7 +88,7 @@ abstract class ApiInterface {
     Json? params,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json? json) result,
+    required T Function(Json json) result,
   });
 
   /// Base method for inserting [data] with images at the [endpoint].
@@ -108,7 +108,7 @@ abstract class ApiInterface {
     required List<File> file,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json? json) response,
+    required T Function(Json json) response,
   });
 
   /// Base method for inserting [data] with a single image at the [endpoint].
@@ -128,7 +128,7 @@ abstract class ApiInterface {
     required File file,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json? json) response,
+    required T Function(Json json) response,
   });
 
   /// Base method for inserting [image] at the [endpoint].
@@ -147,7 +147,7 @@ abstract class ApiInterface {
     required File? image,
     CancelToken? cancelToken,
     bool acceptToken = true,
-    required T Function(Json? json) response,
+    required T Function(Json json) response,
   });
 
   /// Base method for cancelling requests pre-maturely

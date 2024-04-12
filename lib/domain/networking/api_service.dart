@@ -80,7 +80,7 @@ class ApiService implements ApiInterface {
       required T Function(Json json) result}) async {
     late Json json;
     try {
-      final result = await _dio.post<Json>(
+      final result = await _dio.post(
         endpoint: endpoint,
         params: params,
         cancelToken: cancelToken,

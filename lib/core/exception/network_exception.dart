@@ -103,7 +103,7 @@ class NetworkException with _$NetworkException {
               message: 'Connection Error',
             );
           case DioExceptionType.unknown:
-            debugPrint("err  ${error.toString()}");
+            debugPrint("err  ${error.response}");
             debugPrint("err is ${error.message}");
             debugPrint("err response is  ${error.response?.data}");
             debugPrint("err status code is  ${error.response?.statusCode}");

@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
 import '../widgets/common_widgets/annotated_scaffolder.dart';
-import '../widgets/common_widgets/icon_widget.dart';
 import '../widgets/common_widgets/primary_button.dart';
 
 class FingerPrint extends ConsumerWidget {

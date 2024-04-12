@@ -38,7 +38,7 @@ class RefreshTokenInterceptor extends Interceptor {
   /// changing according to your own API. **
   @override
   void onError(
-    DioException dioError,
+    DioError dioError,
     ErrorInterceptorHandler handler,
   ) async {
     if (dioError.response != null) {
@@ -98,7 +98,7 @@ class RefreshTokenInterceptor extends Interceptor {
   /// ** The structure of response is dependant on the API and may not always
   /// be the same. It might need changing according to your own API. **
   Future<String?> _refreshTokenRequest({
-    required DioException dioError,
+    required DioError dioError,
     required ErrorInterceptorHandler handler,
     required Dio tokenDio,
     required Json data,
@@ -122,7 +122,7 @@ class RefreshTokenInterceptor extends Interceptor {
       } else {
         throw Exception;
       }
-    } on DioException catch (de) {
+    } on DioError catch (de) {
       //only caught here for logging
       //forward to try-catch in dio_service for handling
       debugPrint('\t--> ERROR');

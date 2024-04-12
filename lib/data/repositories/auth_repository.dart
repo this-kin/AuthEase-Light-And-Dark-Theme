@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:qoute_app/constants/api_constants.dart';
+import 'package:qoute_app/core/typedef.dart';
 import 'package:qoute_app/data/entities/user_model.dart';
 import 'package:qoute_app/domain/networking/api_service.dart';
 import 'package:qoute_app/domain/repositories/base_auth_repository.dart';
@@ -22,8 +24,8 @@ class AuthRepository extends BaseAuthRepository {
   }
 
   @override
-  Future<String?> login({String? username, password}) async {
-    return await _apiService.postData(
+  Future<dynamic> login({username, password}) async {
+    return await _apiService.postData<Json>(
       endpoint: ApiConstants.login,
       params: {
         "username": username,
@@ -31,15 +33,17 @@ class AuthRepository extends BaseAuthRepository {
       },
       acceptToken: false,
       result: (result) {
-        final response = result['token'];
-        return response;
+        debugPrint("result $result");
+        // return response[];
+
+        return {"": "response"};
       },
     );
   }
 
   @override
-  Future<String?> register(
-      {String? username, email, password, phone, address, image}) async {
+  Future<dynamic> register(
+      {username, email, password, phone, address, image}) async {
     return await _apiService.postData(
       endpoint: ApiConstants.register,
       params: {

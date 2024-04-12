@@ -83,7 +83,7 @@ class ApiInterceptor extends Interceptor {
 
     //Reject all error codes from server except 402 and 200 OK
     return handler.reject(
-      DioException(
+      DioError(
         requestOptions: response.requestOptions,
         response: response,
       ),

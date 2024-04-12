@@ -25,14 +25,21 @@ class Login extends ConsumerWidget {
         authenticated: (_) {
           //  show success message toast
           showToast(
-            "Login Successful",
+            "Registeration Successful",
             context: context,
+            backgroundColor: Colors.greenAccent,
             position: StyledToastPosition.bottom,
           );
         },
         failed: (message) {
           // dispose input controllers and show error message toast
-          _disposeController();
+          // _disposeController();
+          showToast(
+            "$message",
+            context: context,
+            backgroundColor: Colors.redAccent,
+            position: StyledToastPosition.bottom,
+          );
         },
         orElse: () {},
       );

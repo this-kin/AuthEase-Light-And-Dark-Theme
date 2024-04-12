@@ -26,7 +26,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
         _storage = storage,
         _authRepository = authRepository,
         super(AuthState.unauthorized()) {
-    _initialize();
+    // _initialize();
   }
 
   void _initialize() async {
@@ -85,6 +85,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       );
       state = AuthState.registered(result);
       _updateCredential(email, password);
+      login(name: name, password: password);
       _updateAuthProfile();
     } catch (e) {
       state = AuthState.failed(reason: e.toString());
@@ -103,10 +104,12 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
         username: name,
         password: password,
       );
-      state = AuthState.authenticated(result);
-      _updateCredential(name, password);
-      _updateAuthProfile();
+      state = AuthState.authenticated(name);
+      // _updateCredential(name, password);
+      // _storage.setAuthToken(result!);
+      // _updateAuthProfile();
     } catch (e) {
+      debugPrint("provider error $e");
       state = AuthState.failed(reason: e.toString());
     }
   }

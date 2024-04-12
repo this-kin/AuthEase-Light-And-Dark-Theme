@@ -47,12 +47,12 @@ class RouteNotifier extends ChangeNotifier {
     /// if current page is LOGIN and AUTHSTATE is AUTHENTICATED
     /// if LOGIN  was successful GOTO HOME
     if (isLogin && authState is AUTHENTICATED) {
-      return RouteGenerator.home.path;
+      return RouteGenerator.profile.path;
 
       /// if current page is SIGNUP and AUTHSTATE is REGISTERED
-      /// if SIGNUP was successful GOTO HOME
+      /// if SIGNUP was successful GOTO PROFLE
     } else if (isSignup && authState is REGISTERED) {
-      return RouteGenerator.home.path;
+      return RouteGenerator.profile.path;
 
       /// if current page is HOME OR PROFILE and AUTHSTATE is UNAUTHENTICATED
       /// if user LOGGED OUT GOTO LOGIN

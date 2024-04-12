@@ -38,9 +38,9 @@ final _dioService = Provider<DioService>(
   (ref) => DioService(
     client: ref.read(dioProvider),
     interceptors: [
-      ApiInterceptor(ref),
+      // ApiInterceptor(ref),
       LoggingInterceptor(),
-      RefreshTokenInterceptor(ref: ref, dioClient: ref.read(dioProvider))
+      // RefreshTokenInterceptor(ref: ref, dioClient: ref.read(dioProvider))
     ],
   ),
 );

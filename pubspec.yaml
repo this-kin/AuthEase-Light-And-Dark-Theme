@@ -33,7 +33,7 @@ dependencies:
   flutter_screenutil:
   flutter_svg:
 
-  dio:
+  dio: ^5.4.2+1
   flutter_secure_storage:
   go_router:
   pinput:
