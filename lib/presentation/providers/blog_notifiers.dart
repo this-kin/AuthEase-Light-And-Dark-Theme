@@ -21,8 +21,8 @@ class BlogStateNotifier extends StateNotifier<FutureState> {
         subtitle: subtitle,
         dateCreated: DateTime.now().toString(),
       );
-      final result = await _repository.createBlog(model);
-      state = FutureState.data(data: result);
+      await _repository.createBlog(model);
+      state = FutureState.data(data: "Blog created successfully!🌟");
     } catch (e) {
       debugPrint("create err $e");
       state = FutureState.failed(reason: e.toString());
@@ -38,8 +38,8 @@ class BlogStateNotifier extends StateNotifier<FutureState> {
         title: title,
         subtitle: subtitle,
       );
-      final result = await _repository.updateBlog(model);
-      state = FutureState.data(data: result);
+      await _repository.updateBlog(model);
+      state = FutureState.data(data: "Blog updated successfully!🌟");
     } catch (e) {
       state = FutureState.failed(reason: e.toString());
     }
@@ -48,8 +48,8 @@ class BlogStateNotifier extends StateNotifier<FutureState> {
   Future<void> delete({String? blogId}) async {
     state = const FutureState.loading();
     try {
-      final result = await _repository.deleteBlog(blogId);
-      state = FutureState.data(data: result);
+      await _repository.deleteBlog(blogId);
+      state = FutureState.data(data: "Blog deleted successfully!🌟");
     } catch (e) {
       state = FutureState.failed(reason: e.toString());
     }

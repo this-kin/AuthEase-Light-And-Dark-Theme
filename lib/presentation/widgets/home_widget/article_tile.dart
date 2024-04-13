@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qoute_app/core/enum/route_enum.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/data/entities/blog_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoute_app/presentation/providers/blog_provider.dart';
@@ -15,7 +15,7 @@ class ArticleTile extends ConsumerWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.h),
       child: Dismissible(
-        key: ValueKey(model!.id),
+        key: UniqueKey(),
         background: Container(
           color: Colors.redAccent,
           child: Center(
@@ -25,9 +25,9 @@ class ArticleTile extends ConsumerWidget {
             ),
           ),
         ),
-        onDismissed: (direction) {
+        onDismissed: (direction) async {
           // on swipe delete blog post
-          ref.read(blogStateProvider.notifier).delete(blogId: model!.id);
+          await ref.read(blogStateProvider.notifier).delete(blogId: model!.id);
         },
         child: InkWell(
           onTap: () {
@@ -122,7 +122,7 @@ class HomeErrorWidget extends ConsumerWidget {
             ),
           ),
           onPressed: () async {
-            final result = ref.refresh(getAllBlogProvider);
+            ref.refresh(getAllBlogProvider);
           },
           child: Text(
             "RETRY",

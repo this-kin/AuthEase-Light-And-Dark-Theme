@@ -1,9 +1,5 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:qoute_app/constants/exception_constants.dart';
 
 part 'network_exception.freezed.dart';
 
@@ -63,89 +59,4 @@ class NetworkException with _$NetworkException {
     required String name,
     required String message,
   }) = _ConnectionErrorException;
-
-  static NetworkException getDioException(Exception error) {
-    debugPrint('from get exception ${error.toString()}');
-    try {
-      if (error is DioException) {
-        switch (error.type) {
-          case DioExceptionType.cancel:
-            return const NetworkException.cancelException(
-              name: ExceptionConstants.cancelException,
-              message: 'Request cancelled prematurely',
-            );
-          case DioExceptionType.connectionTimeout:
-            return const NetworkException.connectTimeoutException(
-              name: ExceptionConstants.connectTimeoutException,
-              message: 'Connection not established',
-            );
-          case DioExceptionType.sendTimeout:
-            return const NetworkException.sendTimeoutException(
-              name: ExceptionConstants.sendTimeoutException,
-              message: 'Failed to send',
-            );
-          case DioExceptionType.receiveTimeout:
-            return const NetworkException.receiveTimeoutException(
-              name: ExceptionConstants.receiveTimeoutException,
-              message: 'Failed to receive',
-            );
-          case DioExceptionType.badCertificate:
-            return const NetworkException.badCertificateException(
-              name: ExceptionConstants.badCertificateException,
-              message: 'Bad Certificate',
-            );
-          case DioExceptionType.badResponse:
-            return const NetworkException.badCertificateException(
-              name: ExceptionConstants.badCertificateException,
-              message: 'Bad Response',
-            );
-          case DioExceptionType.connectionError:
-            return const NetworkException.badCertificateException(
-              name: ExceptionConstants.badCertificateException,
-              message: 'Connection Error',
-            );
-          case DioExceptionType.unknown:
-            debugPrint("error message ${error.response!.statusMessage}");
-            if (error.message!.contains(ExceptionConstants.socketException)) {
-              return const NetworkException.fetchDataException(
-                name: ExceptionConstants.fetchDataException,
-                message: 'No internet connectivity',
-              );
-            } else if (error.message!
-                .contains(ExceptionConstants.httpException)) {
-              return const NetworkException.fetchDataException(
-                name: ExceptionConstants.httpException,
-                message: 'Connection closed while receiving data',
-              );
-            } else {
-              final name = "UnknownError";
-              final message = error.message!;
-              switch (name) {
-                case ExceptionConstants.tokenExpiredException:
-                  return NetworkException.tokenExpiredException(
-                      name: name, message: message);
-                default:
-                  return NetworkException.apiException(
-                      name: name, message: message);
-              }
-            }
-        }
-      } else {
-        return const NetworkException.unrecognizedException(
-          name: ExceptionConstants.unrecognizedException,
-          message: 'Error unrecognized',
-        );
-      }
-    } on FormatException catch (e) {
-      return NetworkException.formatException(
-        name: ExceptionConstants.formatException,
-        message: e.message,
-      );
-    } on Exception catch (_) {
-      return const NetworkException.unrecognizedException(
-        name: ExceptionConstants.unrecognizedException,
-        message: 'Error unrecognized',
-      );
-    }
-  }
 }

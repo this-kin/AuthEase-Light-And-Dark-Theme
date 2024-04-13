@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:qoute_app/data/entities/blog_model.dart';
 import 'package:qoute_app/domain/networking/api_service.dart';
@@ -126,8 +128,7 @@ class CrudRepository extends BaseCrudRepository {
       },
       response: (response) {
         debugPrint("update response $response");
-        final articles = response["blogPost"];
-        final blog = BlogModel.fromJson(articles);
+        final blog = BlogModel.fromJson(response);
         return blog;
       },
     );

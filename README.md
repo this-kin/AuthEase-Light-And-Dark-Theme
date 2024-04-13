@@ -17,40 +17,6 @@ Flutter 3.15.5
 
 # Screenshots
 
- | 1 | 2|
-|------|-------|
-|<img src="screenshots/screenshot_1.png" width="400">|<img src="screenshots/screenshot_2.png" width="400">|
-
-
- | 3 | 4|
-|------|-------|
-|<img src="screenshots/screenshot_3.png" width="400">|<img src="screenshots/screenshot_4.png" width="400">|
-
-
-
- | 5 | 6|
-|------|-------|
-|<img src="screenshots/screenshot_5.png" width="400">|<img src="screenshots/screenshot_6.png" width="400">|
-
-
-
- | 7 | 8|
-|------|-------|
-|<img src="screenshots/screenshot_7.png" width="400">|<img src="screenshots/screenshot_8.png" width="400">|
-
- | 9 | 10|
-|------|-------|
-|<img src="screenshots/screenshot_9.png" width="400">|<img src="screenshots/screenshot_10.png" width="400">|
-
-
- | 11 | 12|
-|------|-------|
-|<img src="screenshots/screenshot_11.png" width="400">|<img src="screenshots/screenshot_12.png" width="400">|
-
- | 13 | 14|
-|------|-------|
-|<img src="screenshots/screenshot_13.png" width="400">|<img src="screenshots/screenshot_14.png" width="400">|
-
 
 # Command
 ### Install dependencies
@@ -78,13 +44,12 @@ flutter build apk
 - [flutter_riverpod](https://pub.dev/packages/flutter_riverpod) 
 - [google_fonts](https://pub.dev/packages/google_fonts) 
 - [flutter_screenutil](https://pub.dev/packages/flutter_screenutil) 
-- [dio](https://pub.dev/packages/dio) 
+- [graphql_flutter](https://pub.dev/packages/graphql_flutter) 
 - [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage) 
 - [go_router](https://pub.dev/packages/go_router) 
 - [pinput](https://pub.dev/packages/pinput)
 - [flutter_svg](https://pub.dev/packages/flutter_svg) 
 - [shared_preferences](https://pub.dev/packages/shared_preferences) 
-- [toastification](https://pub.dev/packages/toastification)
 - [flutter_styled_toast](https://pub.dev/packages/flutter_styled_toast)
 
 

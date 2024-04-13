@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qoute_app/core/toast_helper.dart';
 import 'package:qoute_app/data/entities/blog_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:qoute_app/presentation/providers/blog_provider.dart';
 import 'package:qoute_app/presentation/providers/states/future_state.dart';
 import 'package:qoute_app/presentation/widgets/common_widgets/custom_field.dart';
@@ -31,20 +31,10 @@ class UpdateArticle extends ConsumerWidget {
       (previous, next) {
         next.maybeWhen(
           data: (message) {
-            showToast(
-              "Blog updated successfully!🌟",
-              context: context,
-              backgroundColor: Colors.greenAccent,
-              position: StyledToastPosition.bottom,
-            );
+            ToastHelper.success(context, message: message);
           },
           failed: (message) {
-            showToast(
-              "$message",
-              context: context,
-              backgroundColor: Colors.redAccent,
-              position: StyledToastPosition.bottom,
-            );
+            ToastHelper.err(context, message: message);
           },
           orElse: () {},
         );

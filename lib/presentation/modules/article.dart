@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:qoute_app/core/toast_helper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
+
 import 'package:qoute_app/presentation/providers/blog_provider.dart';
 import 'package:qoute_app/presentation/providers/states/future_state.dart';
 import 'package:qoute_app/presentation/widgets/home_widget/article_tile.dart';
@@ -26,20 +27,11 @@ class _ArticleState extends ConsumerState<Article> {
       (previous, next) {
         next.maybeWhen(
           data: (message) {
-            showToast(
-              "Blog deleted successfully!🌟",
-              context: context,
-              backgroundColor: Colors.greenAccent,
-              position: StyledToastPosition.bottom,
-            );
+            ref.refresh(getAllBlogProvider);
+            ToastHelper.success(context, message: message);
           },
           failed: (message) {
-            showToast(
-              "$message",
-              context: context,
-              backgroundColor: Colors.redAccent,
-              position: StyledToastPosition.bottom,
-            );
+            ToastHelper.err(context, message: message);
           },
           orElse: () {},
         );
