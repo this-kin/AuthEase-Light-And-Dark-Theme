@@ -16,6 +16,7 @@ Flutter 3.15.5
 - A little knowledge of Dart and Flutter
 
 # Screenshots
+|<video src="screenshots/WhatsApp Video 2024-04-13 at 10.35.09_9de6783c.mp4" width="400">|
 
 
 # Command
@@ -55,17 +56,13 @@ flutter build apk
 
 # Features
 - Light/Dark Theme
-- A registration page that consumes the /api/register routeBuild a registration page that consumes the api/register route
-- a login page which makes a request to the /api/login route after successful registration.
-- On login/registration, the user is  redirected to a profile page which will call the /api/profile endpoint and display the user profile
+- A Articles page that displays all articles
+- A page to display articles
+- A page to create a new article with form validation
+- A Dismissible to delete/remove article
 
 
-## Solutions
-- Form Validation is handled with comparation of user input and Regular Expression (Regex) also with the help of GlobalKey<FormState> we can validate forms in Flutter, i have created a class that stores my Regex with comment indicating its purpose.
-- It's possible to get such errors in applications, but with the help of Dio Interceptors we can validate every response and request we are making to the server, i have implemented a simple Dio Interceptors for RefreshToken check the domain/networking/interceptor layer i also added comment for better understanding
-- If customer is already logged in on login page, redirect them to the profile page or home page GoRouter as an inbuilt feature for redirecting routes this particular feature is my favorite feature of GoRouter check core/app_router.dart layer for more information
-- Since there's no api for logout which i assume is a little normal for custom api application i implemented a function called clearStorage to clear storage every state in the app is been stored local, once  we clear storage app gets redirected to login page
-- Screens are well presentable, (shameless plug) i'm something of a UI/UX Designer myself, all other part of the screen can be found  inside of the README.md screenshots section (there's also a dark theme)
+
 ## Author
 
 👤 **Dammy Richie**
