@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoute_app/constants/image_constants.dart';
+import 'package:qoute_app/core/enum/route_enum.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
 import 'package:qoute_app/data/entities/blog_model.dart';
 
@@ -35,7 +36,16 @@ class ArticleDetail extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text("${blog!.title}"),
-        actions: [],
+        actions: [
+          IconButton(
+            onPressed: () {
+              // go to update
+              GoRouter.of(context)
+                  .pushNamed(RouteGenerator.update.name, extra: blog);
+            },
+            icon: Icon(Icons.menu),
+          )
+        ],
       ),
       backgroundColor: context.theme.scaffoldBackgroundColor,
       body: Container(

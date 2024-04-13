@@ -33,8 +33,12 @@ class ExceptionConstants {
   /// The name of the exception for an unknown type of failure.
   static const String unrecognizedException = 'UnrecognizedException';
 
+  /// The name of the exception for an http exception failure.
   static const String httpException = "HttpException";
 
+  /// The name of the exception for an unknown bad certificate failure.
   static const String badCertificateException = "BadCertificateExpection";
+
+  /// The name of the exception for an connection error
   static const String connectionErrorException = "ConnectionErrorException";
 }

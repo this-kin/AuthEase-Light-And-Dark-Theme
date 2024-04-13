@@ -118,9 +118,17 @@ class CrudRepository extends BaseCrudRepository {
                       }
                     }
         """,
-      param: model.toJson(),
+      param: {
+        "blogId": model.id,
+        "body": model.body,
+        "title": model.title,
+        "subTitle": model.subtitle,
+      },
       response: (response) {
-        return response;
+        debugPrint("update response $response");
+        final articles = response["blogPost"];
+        final blog = BlogModel.fromJson(articles);
+        return blog;
       },
     );
   }

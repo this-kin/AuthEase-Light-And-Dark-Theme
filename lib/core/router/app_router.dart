@@ -9,6 +9,7 @@ import 'package:qoute_app/presentation/modules/create_article.dart';
 import 'package:qoute_app/presentation/modules/detail.dart';
 import 'package:qoute_app/presentation/modules/inbox.dart';
 import 'package:qoute_app/presentation/modules/search.dart';
+import 'package:qoute_app/presentation/modules/update_article.dart';
 
 final GlobalKey<NavigatorState> _rootNavigator = GlobalKey(debugLabel: 'root');
 
@@ -41,6 +42,21 @@ class RouteNotifier extends ChangeNotifier {
   List<RouteBase> get routes => _routes;
 
   final List<RouteBase> _routes = [
+    GoRoute(
+      path: RouteGenerator.article.path,
+      name: RouteGenerator.article.name,
+      builder: (_, __) => CreateArticle(),
+    ),
+    GoRoute(
+      path: RouteGenerator.details.path,
+      name: RouteGenerator.details.name,
+      builder: (_, state) => ArticleDetail(blog: state.extra as BlogModel),
+    ),
+    GoRoute(
+      path: RouteGenerator.update.path,
+      name: RouteGenerator.update.name,
+      builder: (_, state) => UpdateArticle(blog: state.extra as BlogModel),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => Home(navigationShell: shell),
       branches: [
@@ -73,16 +89,6 @@ class RouteNotifier extends ChangeNotifier {
           ),
         ]),
       ],
-    ),
-    GoRoute(
-      path: RouteGenerator.article.path,
-      name: RouteGenerator.article.name,
-      builder: (_, __) => CreateArticle(),
-    ),
-    GoRoute(
-      path: RouteGenerator.details.path,
-      name: RouteGenerator.details.name,
-      builder: (_, state) => ArticleDetail(blog: state.extra as BlogModel),
     ),
   ];
 }

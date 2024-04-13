@@ -4,6 +4,7 @@ enum RouteGenerator {
   search(path: "/search", name: 'search'),
   article(path: "/article", name: "article"),
   details(path: "/details", name: "details"),
+  update(path: "/update", name: "update"),
   profile(path: '/profile', name: 'profile');
 
   final String path;

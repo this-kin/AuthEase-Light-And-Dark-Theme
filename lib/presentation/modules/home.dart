@@ -26,7 +26,8 @@ class Home extends ConsumerWidget {
         backgroundColor: context.theme.primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         onPressed: () {
-          context.goNamed(RouteGenerator.article.name);
+          // go to create new article
+          GoRouter.of(context).pushNamed(RouteGenerator.article.name);
         },
       ),
       bottomNavigationBar: Container(

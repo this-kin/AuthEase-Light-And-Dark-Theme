@@ -8,7 +8,8 @@ import 'package:qoute_app/presentation/providers/blog_notifiers.dart';
 import 'package:qoute_app/presentation/providers/states/future_state.dart';
 
 //
-final getAllBlogProvider = FutureProvider<List<BlogModel>>((ref) async {
+final getAllBlogProvider =
+    FutureProvider.autoDispose<List<BlogModel>>((ref) async {
   return ref.read(crudRepositoryProvider).getAllBlogs();
 });
 

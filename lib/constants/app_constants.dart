@@ -1,5 +1,7 @@
 const kDuration = Duration(milliseconds: 300);
 
+/// A utility class for getting paths for API endpoints.
+/// This class has no constructor and all methods are `static`.
 class Constants {
   // an email regex (Regular Expression) to validate email (ex: amailtodammy@gmail.com)
   static RegExp emailRegex = RegExp(

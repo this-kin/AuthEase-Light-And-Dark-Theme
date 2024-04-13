@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:qoute_app/core/extensions/widget_extension.dart';
 import 'package:qoute_app/presentation/providers/blog_provider.dart';
+import 'package:qoute_app/presentation/providers/states/future_state.dart';
 import 'package:qoute_app/presentation/widgets/home_widget/article_tile.dart';
 
 class Article extends ConsumerStatefulWidget {
@@ -19,6 +21,30 @@ class _ArticleState extends ConsumerState<Article> {
   @override
   Widget build(BuildContext context) {
     final articles = ref.watch(getAllBlogProvider);
+    ref.listen<FutureState>(
+      blogStateProvider,
+      (previous, next) {
+        next.maybeWhen(
+          data: (message) {
+            showToast(
+              "Blog deleted successfully!🌟",
+              context: context,
+              backgroundColor: Colors.greenAccent,
+              position: StyledToastPosition.bottom,
+            );
+          },
+          failed: (message) {
+            showToast(
+              "$message",
+              context: context,
+              backgroundColor: Colors.redAccent,
+              position: StyledToastPosition.bottom,
+            );
+          },
+          orElse: () {},
+        );
+      },
+    );
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,

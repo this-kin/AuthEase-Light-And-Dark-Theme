@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:qoute_app/data/entities/blog_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qoute_app/constants/image_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:qoute_app/presentation/providers/blog_provider.dart';
 import 'package:qoute_app/presentation/providers/states/future_state.dart';
 import 'package:qoute_app/presentation/widgets/common_widgets/custom_field.dart';
 
-class CreateArticle extends ConsumerWidget {
-  const CreateArticle({super.key});
+class UpdateArticle extends ConsumerWidget {
+  final BlogModel? blog;
+
+  const UpdateArticle({super.key, this.blog});
 
   static final _formKey = GlobalKey<FormState>();
 
@@ -20,18 +23,20 @@ class CreateArticle extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    _bodyController.text = blog!.body!;
+    _titleController.text = blog!.title!;
+    _subtitleController.text = blog!.subtitle!;
     ref.listen<FutureState>(
       blogStateProvider,
       (previous, next) {
         next.maybeWhen(
           data: (message) {
             showToast(
-              "Blog created successfully!🌟",
+              "Blog updated successfully!🌟",
               context: context,
               backgroundColor: Colors.greenAccent,
               position: StyledToastPosition.bottom,
             );
-            _dispose();
           },
           failed: (message) {
             showToast(
@@ -45,7 +50,6 @@ class CreateArticle extends ConsumerWidget {
         );
       },
     );
-
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -70,20 +74,21 @@ class CreateArticle extends ConsumerWidget {
           ),
         ),
         centerTitle: true,
-        title: Text("Create New Blog"),
+        title: Text("Update Blog"),
         actions: [
           TextButton(
             onPressed: () {
               // create
               if (_formKey.currentState!.validate()) {
-                ref.read(blogStateProvider.notifier).create(
+                ref.read(blogStateProvider.notifier).update(
+                      id: blog!.id,
                       body: _bodyController.text,
                       title: _titleController.text,
                       subtitle: _subtitleController.text,
                     );
               }
             },
-            child: Text("Create"),
+            child: Text("Update"),
           )
         ],
       ),
@@ -160,11 +165,5 @@ class CreateArticle extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  void _dispose() {
-    _titleController.clear();
-    _bodyController.clear();
-    _subtitleController.clear();
   }
 }

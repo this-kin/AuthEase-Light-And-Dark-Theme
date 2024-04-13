@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'future_state.freezed.dart';
 
+/// A collection of statuses that FutureState can have.
 @freezed
 class FutureState<T> with _$FutureState<T> {
   const factory FutureState.idle() = IDLE;

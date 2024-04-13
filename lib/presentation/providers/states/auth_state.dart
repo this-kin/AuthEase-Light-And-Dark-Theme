@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_state.freezed.dart';
 
+/// A collection of statuses that AuthState can have.
 @freezed
 class AuthState with _$AuthState {
   const factory AuthState.unauthorized() = UNAUTHORIZED;
