@@ -1,4 +1,4 @@
-# Cubex Technical Interview  🔐
+# VMODEL Technical Interview  🔐
 
 
 Securely access your world with ease, powered by our Authentication app with auto-themeing technology. Say goodbye to the hassle of manually switching themes and trust in the reliable Riverpod and Flutter framework at the core of our app 
@@ -16,7 +16,7 @@ Flutter 3.15.5
 - A little knowledge of Dart and Flutter
 
 # Screenshots
-|<video src="screenshots/WhatsApp Video 2024-04-13 at 10.35.09_9de6783c.mp4" width="400">|
+<video controls src="https://github.com/this-kin/AuthEase-Light-And-Dark-Theme/raw/vmodel/screenshots/WhatsApp%20Video%202024-04-13%20at%2010.35.09_9de6783c.mp4" title="screenshots/WhatsApp Video 2024-04-13 at 10.35.09_9de6783c.mp4" width= 400 height= 1000 ></video>
 
 
 # Command
