@@ -85,8 +85,8 @@ class CrudRepository extends BaseCrudRepository {
   Future<BlogModel> getBlog(String? blogId) async {
     return await _apiService.getData(
       query: """
-      query getBlog($blogId: String!) {
-       blogPost(blogId: $blogId) {
+      query getBlog(\$blogId: String!) {
+       blogPost(blogId: \$blogId) {
         id
         title
         subTitle
@@ -105,19 +105,19 @@ class CrudRepository extends BaseCrudRepository {
   Future<BlogModel> updateBlog(BlogModel model) async {
     return await _apiService.updateData(
       query: """
-        mutation updateBlogPost(${model.id}: String!, ${model.title}: String!, ${model.subtitle}: String!, ${model.body}: String!) {
-     updateBlog(blogId: ${model.id}, title: ${model.title}, subTitle: ${model.subtitle}, body: ${model.body}) {
-        success
-          blogPost {
-            id
-            title
-            subTitle
-            body
-            dateCreated
-      }
-    }
-}
-""",
+        mutation updateBlogPost(\$blogId: String!, \$title: String!, \$subTitle: String!, \$body: String!) {
+                    updateBlog(blogId: \$blogId, title: \$title, subTitle: \$subTitle, body: \$body) {
+                        success
+                        blogPost {
+                          id
+                          title
+                          subTitle
+                          body
+                          dateCreated
+                        }
+                      }
+                    }
+        """,
       param: model.toJson(),
       response: (response) {
         return response;

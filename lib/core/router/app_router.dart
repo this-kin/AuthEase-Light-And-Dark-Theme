@@ -3,8 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:qoute_app/core/router/routes.dart';
 import 'package:qoute_app/core/enum/route_enum.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qoute_app/data/entities/blog_model.dart';
 import 'package:qoute_app/presentation/modules/article.dart';
 import 'package:qoute_app/presentation/modules/create_article.dart';
+import 'package:qoute_app/presentation/modules/detail.dart';
 import 'package:qoute_app/presentation/modules/inbox.dart';
 import 'package:qoute_app/presentation/modules/search.dart';
 
@@ -76,6 +78,11 @@ class RouteNotifier extends ChangeNotifier {
       path: RouteGenerator.article.path,
       name: RouteGenerator.article.name,
       builder: (_, __) => CreateArticle(),
+    ),
+    GoRoute(
+      path: RouteGenerator.details.path,
+      name: RouteGenerator.details.name,
+      builder: (_, state) => ArticleDetail(blog: state.extra as BlogModel),
     ),
   ];
 }
